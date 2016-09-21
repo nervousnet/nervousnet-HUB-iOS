@@ -1,0 +1,523 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		22A68AF41D92DD9B00E75C04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A68AF31D92DD9B00E75C04 /* AppDelegate.swift */; };
+		22A68AF61D92DD9B00E75C04 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A68AF51D92DD9B00E75C04 /* RootViewController.swift */; };
+		22A68AF81D92DD9B00E75C04 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A68AF71D92DD9B00E75C04 /* DataViewController.swift */; };
+		22A68AFA1D92DD9B00E75C04 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A68AF91D92DD9B00E75C04 /* ModelController.swift */; };
+		22A68AFD1D92DD9B00E75C04 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22A68AFB1D92DD9B00E75C04 /* Main.storyboard */; };
+		22A68AFF1D92DD9B00E75C04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22A68AFE1D92DD9B00E75C04 /* Assets.xcassets */; };
+		22A68B021D92DD9B00E75C04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22A68B001D92DD9B00E75C04 /* LaunchScreen.storyboard */; };
+		22A68B0D1D92DD9B00E75C04 /* nervousnet_HUB_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A68B0C1D92DD9B00E75C04 /* nervousnet_HUB_iOSTests.swift */; };
+		22A68B181D92DD9B00E75C04 /* nervousnet_HUB_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A68B171D92DD9B00E75C04 /* nervousnet_HUB_iOSUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		22A68B091D92DD9B00E75C04 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 22A68AE81D92DD9B00E75C04 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 22A68AEF1D92DD9B00E75C04;
+			remoteInfo = "nervousnet-HUB-iOS";
+		};
+		22A68B141D92DD9B00E75C04 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 22A68AE81D92DD9B00E75C04 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 22A68AEF1D92DD9B00E75C04;
+			remoteInfo = "nervousnet-HUB-iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		22A68AF01D92DD9B00E75C04 /* nervousnet-HUB-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "nervousnet-HUB-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		22A68AF31D92DD9B00E75C04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		22A68AF51D92DD9B00E75C04 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		22A68AF71D92DD9B00E75C04 /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
+		22A68AF91D92DD9B00E75C04 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
+		22A68AFC1D92DD9B00E75C04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		22A68AFE1D92DD9B00E75C04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		22A68B011D92DD9B00E75C04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		22A68B031D92DD9B00E75C04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22A68B081D92DD9B00E75C04 /* nervousnet-HUB-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "nervousnet-HUB-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		22A68B0C1D92DD9B00E75C04 /* nervousnet_HUB_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nervousnet_HUB_iOSTests.swift; sourceTree = "<group>"; };
+		22A68B0E1D92DD9B00E75C04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22A68B131D92DD9B00E75C04 /* nervousnet-HUB-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "nervousnet-HUB-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		22A68B171D92DD9B00E75C04 /* nervousnet_HUB_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nervousnet_HUB_iOSUITests.swift; sourceTree = "<group>"; };
+		22A68B191D92DD9B00E75C04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		22A68AED1D92DD9B00E75C04 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22A68B051D92DD9B00E75C04 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22A68B101D92DD9B00E75C04 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		22A68AE71D92DD9B00E75C04 = {
+			isa = PBXGroup;
+			children = (
+				22A68AF21D92DD9B00E75C04 /* nervousnet-HUB-iOS */,
+				22A68B0B1D92DD9B00E75C04 /* nervousnet-HUB-iOSTests */,
+				22A68B161D92DD9B00E75C04 /* nervousnet-HUB-iOSUITests */,
+				22A68AF11D92DD9B00E75C04 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		22A68AF11D92DD9B00E75C04 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				22A68AF01D92DD9B00E75C04 /* nervousnet-HUB-iOS.app */,
+				22A68B081D92DD9B00E75C04 /* nervousnet-HUB-iOSTests.xctest */,
+				22A68B131D92DD9B00E75C04 /* nervousnet-HUB-iOSUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		22A68AF21D92DD9B00E75C04 /* nervousnet-HUB-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				22A68AF31D92DD9B00E75C04 /* AppDelegate.swift */,
+				22A68AF51D92DD9B00E75C04 /* RootViewController.swift */,
+				22A68AF71D92DD9B00E75C04 /* DataViewController.swift */,
+				22A68AF91D92DD9B00E75C04 /* ModelController.swift */,
+				22A68AFB1D92DD9B00E75C04 /* Main.storyboard */,
+				22A68AFE1D92DD9B00E75C04 /* Assets.xcassets */,
+				22A68B001D92DD9B00E75C04 /* LaunchScreen.storyboard */,
+				22A68B031D92DD9B00E75C04 /* Info.plist */,
+			);
+			path = "nervousnet-HUB-iOS";
+			sourceTree = "<group>";
+		};
+		22A68B0B1D92DD9B00E75C04 /* nervousnet-HUB-iOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				22A68B0C1D92DD9B00E75C04 /* nervousnet_HUB_iOSTests.swift */,
+				22A68B0E1D92DD9B00E75C04 /* Info.plist */,
+			);
+			path = "nervousnet-HUB-iOSTests";
+			sourceTree = "<group>";
+		};
+		22A68B161D92DD9B00E75C04 /* nervousnet-HUB-iOSUITests */ = {
+			isa = PBXGroup;
+			children = (
+				22A68B171D92DD9B00E75C04 /* nervousnet_HUB_iOSUITests.swift */,
+				22A68B191D92DD9B00E75C04 /* Info.plist */,
+			);
+			path = "nervousnet-HUB-iOSUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		22A68AEF1D92DD9B00E75C04 /* nervousnet-HUB-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22A68B1C1D92DD9B00E75C04 /* Build configuration list for PBXNativeTarget "nervousnet-HUB-iOS" */;
+			buildPhases = (
+				22A68AEC1D92DD9B00E75C04 /* Sources */,
+				22A68AED1D92DD9B00E75C04 /* Frameworks */,
+				22A68AEE1D92DD9B00E75C04 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "nervousnet-HUB-iOS";
+			productName = "nervousnet-HUB-iOS";
+			productReference = 22A68AF01D92DD9B00E75C04 /* nervousnet-HUB-iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		22A68B071D92DD9B00E75C04 /* nervousnet-HUB-iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22A68B1F1D92DD9B00E75C04 /* Build configuration list for PBXNativeTarget "nervousnet-HUB-iOSTests" */;
+			buildPhases = (
+				22A68B041D92DD9B00E75C04 /* Sources */,
+				22A68B051D92DD9B00E75C04 /* Frameworks */,
+				22A68B061D92DD9B00E75C04 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				22A68B0A1D92DD9B00E75C04 /* PBXTargetDependency */,
+			);
+			name = "nervousnet-HUB-iOSTests";
+			productName = "nervousnet-HUB-iOSTests";
+			productReference = 22A68B081D92DD9B00E75C04 /* nervousnet-HUB-iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		22A68B121D92DD9B00E75C04 /* nervousnet-HUB-iOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22A68B221D92DD9B00E75C04 /* Build configuration list for PBXNativeTarget "nervousnet-HUB-iOSUITests" */;
+			buildPhases = (
+				22A68B0F1D92DD9B00E75C04 /* Sources */,
+				22A68B101D92DD9B00E75C04 /* Frameworks */,
+				22A68B111D92DD9B00E75C04 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				22A68B151D92DD9B00E75C04 /* PBXTargetDependency */,
+			);
+			name = "nervousnet-HUB-iOSUITests";
+			productName = "nervousnet-HUB-iOSUITests";
+			productReference = 22A68B131D92DD9B00E75C04 /* nervousnet-HUB-iOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		22A68AE81D92DD9B00E75C04 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "ETH Zurich - COSS";
+				TargetAttributes = {
+					22A68AEF1D92DD9B00E75C04 = {
+						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 5R8S596684;
+					};
+					22A68B071D92DD9B00E75C04 = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = 22A68AEF1D92DD9B00E75C04;
+					};
+					22A68B121D92DD9B00E75C04 = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = 22A68AEF1D92DD9B00E75C04;
+					};
+				};
+			};
+			buildConfigurationList = 22A68AEB1D92DD9B00E75C04 /* Build configuration list for PBXProject "nervousnet-HUB-iOS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 22A68AE71D92DD9B00E75C04;
+			productRefGroup = 22A68AF11D92DD9B00E75C04 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				22A68AEF1D92DD9B00E75C04 /* nervousnet-HUB-iOS */,
+				22A68B071D92DD9B00E75C04 /* nervousnet-HUB-iOSTests */,
+				22A68B121D92DD9B00E75C04 /* nervousnet-HUB-iOSUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		22A68AEE1D92DD9B00E75C04 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22A68B021D92DD9B00E75C04 /* LaunchScreen.storyboard in Resources */,
+				22A68AFF1D92DD9B00E75C04 /* Assets.xcassets in Resources */,
+				22A68AFD1D92DD9B00E75C04 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22A68B061D92DD9B00E75C04 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22A68B111D92DD9B00E75C04 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		22A68AEC1D92DD9B00E75C04 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22A68AF61D92DD9B00E75C04 /* RootViewController.swift in Sources */,
+				22A68AFA1D92DD9B00E75C04 /* ModelController.swift in Sources */,
+				22A68AF81D92DD9B00E75C04 /* DataViewController.swift in Sources */,
+				22A68AF41D92DD9B00E75C04 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22A68B041D92DD9B00E75C04 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22A68B0D1D92DD9B00E75C04 /* nervousnet_HUB_iOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22A68B0F1D92DD9B00E75C04 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22A68B181D92DD9B00E75C04 /* nervousnet_HUB_iOSUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		22A68B0A1D92DD9B00E75C04 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 22A68AEF1D92DD9B00E75C04 /* nervousnet-HUB-iOS */;
+			targetProxy = 22A68B091D92DD9B00E75C04 /* PBXContainerItemProxy */;
+		};
+		22A68B151D92DD9B00E75C04 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 22A68AEF1D92DD9B00E75C04 /* nervousnet-HUB-iOS */;
+			targetProxy = 22A68B141D92DD9B00E75C04 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		22A68AFB1D92DD9B00E75C04 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22A68AFC1D92DD9B00E75C04 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		22A68B001D92DD9B00E75C04 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22A68B011D92DD9B00E75C04 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		22A68B1A1D92DD9B00E75C04 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		22A68B1B1D92DD9B00E75C04 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		22A68B1D1D92DD9B00E75C04 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "nervousnet-HUB-iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.ethz.coss.nervousnet-HUB-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		22A68B1E1D92DD9B00E75C04 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "nervousnet-HUB-iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.ethz.coss.nervousnet-HUB-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		22A68B201D92DD9B00E75C04 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "nervousnet-HUB-iOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.ethz.coss.nervousnet-HUB-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/nervousnet-HUB-iOS.app/nervousnet-HUB-iOS";
+			};
+			name = Debug;
+		};
+		22A68B211D92DD9B00E75C04 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "nervousnet-HUB-iOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.ethz.coss.nervousnet-HUB-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/nervousnet-HUB-iOS.app/nervousnet-HUB-iOS";
+			};
+			name = Release;
+		};
+		22A68B231D92DD9B00E75C04 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "nervousnet-HUB-iOSUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.ethz.coss.nervousnet-HUB-iOSUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "nervousnet-HUB-iOS";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		22A68B241D92DD9B00E75C04 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "nervousnet-HUB-iOSUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.ethz.coss.nervousnet-HUB-iOSUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "nervousnet-HUB-iOS";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		22A68AEB1D92DD9B00E75C04 /* Build configuration list for PBXProject "nervousnet-HUB-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22A68B1A1D92DD9B00E75C04 /* Debug */,
+				22A68B1B1D92DD9B00E75C04 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22A68B1C1D92DD9B00E75C04 /* Build configuration list for PBXNativeTarget "nervousnet-HUB-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22A68B1D1D92DD9B00E75C04 /* Debug */,
+				22A68B1E1D92DD9B00E75C04 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22A68B1F1D92DD9B00E75C04 /* Build configuration list for PBXNativeTarget "nervousnet-HUB-iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22A68B201D92DD9B00E75C04 /* Debug */,
+				22A68B211D92DD9B00E75C04 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22A68B221D92DD9B00E75C04 /* Build configuration list for PBXNativeTarget "nervousnet-HUB-iOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22A68B231D92DD9B00E75C04 /* Debug */,
+				22A68B241D92DD9B00E75C04 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 22A68AE81D92DD9B00E75C04 /* Project object */;
+}
