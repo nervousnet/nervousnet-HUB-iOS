@@ -7,11 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0754182D1DE75A6B00327B41 /* SensorPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075418261DE75A6B00327B41 /* SensorPageViewController.swift */; };
+		0754182E1DE75A6B00327B41 /* RootTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075418271DE75A6B00327B41 /* RootTableViewController.swift */; };
+		0754182F1DE75A6B00327B41 /* AnalyticsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075418281DE75A6B00327B41 /* AnalyticsTableViewController.swift */; };
+		075418301DE75A6B00327B41 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075418291DE75A6B00327B41 /* SettingsTableViewController.swift */; };
+		075418311DE75A6B00327B41 /* FrequencyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0754182A1DE75A6B00327B41 /* FrequencyTableViewController.swift */; };
+		075418321DE75A6B00327B41 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0754182B1DE75A6B00327B41 /* SettingsTableViewCell.swift */; };
+		075418331DE75A6B00327B41 /* FrequencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0754182C1DE75A6B00327B41 /* FrequencyTableViewCell.swift */; };
+		075418351DE75B2300327B41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 075418341DE75B2300327B41 /* Main.storyboard */; };
 		22A68AF41D92DD9B00E75C04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A68AF31D92DD9B00E75C04 /* AppDelegate.swift */; };
 		22A68AF61D92DD9B00E75C04 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A68AF51D92DD9B00E75C04 /* RootViewController.swift */; };
 		22A68AF81D92DD9B00E75C04 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A68AF71D92DD9B00E75C04 /* DataViewController.swift */; };
 		22A68AFA1D92DD9B00E75C04 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A68AF91D92DD9B00E75C04 /* ModelController.swift */; };
-		22A68AFD1D92DD9B00E75C04 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22A68AFB1D92DD9B00E75C04 /* Main.storyboard */; };
 		22A68AFF1D92DD9B00E75C04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22A68AFE1D92DD9B00E75C04 /* Assets.xcassets */; };
 		22A68B021D92DD9B00E75C04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22A68B001D92DD9B00E75C04 /* LaunchScreen.storyboard */; };
 		22A68B0D1D92DD9B00E75C04 /* nervousnet_HUB_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A68B0C1D92DD9B00E75C04 /* nervousnet_HUB_iOSTests.swift */; };
@@ -38,13 +45,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		075418261DE75A6B00327B41 /* SensorPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorPageViewController.swift; sourceTree = "<group>"; };
+		075418271DE75A6B00327B41 /* RootTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTableViewController.swift; sourceTree = "<group>"; };
+		075418281DE75A6B00327B41 /* AnalyticsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsTableViewController.swift; sourceTree = "<group>"; };
+		075418291DE75A6B00327B41 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		0754182A1DE75A6B00327B41 /* FrequencyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrequencyTableViewController.swift; sourceTree = "<group>"; };
+		0754182B1DE75A6B00327B41 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		0754182C1DE75A6B00327B41 /* FrequencyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrequencyTableViewCell.swift; sourceTree = "<group>"; };
+		075418341DE75B2300327B41 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		09683561BDEECD42E5A4EE5F /* Pods_nervousnet_HUB_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nervousnet_HUB_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		22A68AF01D92DD9B00E75C04 /* nervousnet-HUB-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "nervousnet-HUB-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22A68AF31D92DD9B00E75C04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22A68AF51D92DD9B00E75C04 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		22A68AF71D92DD9B00E75C04 /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
 		22A68AF91D92DD9B00E75C04 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
-		22A68AFC1D92DD9B00E75C04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		22A68AFE1D92DD9B00E75C04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22A68B011D92DD9B00E75C04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22A68B031D92DD9B00E75C04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -112,12 +126,19 @@
 			children = (
 				38BBB3BF1DE5ECB600BDD178 /* WebAxons */,
 				22A68AF31D92DD9B00E75C04 /* AppDelegate.swift */,
+				075418261DE75A6B00327B41 /* SensorPageViewController.swift */,
+				075418271DE75A6B00327B41 /* RootTableViewController.swift */,
+				075418281DE75A6B00327B41 /* AnalyticsTableViewController.swift */,
+				075418291DE75A6B00327B41 /* SettingsTableViewController.swift */,
+				0754182A1DE75A6B00327B41 /* FrequencyTableViewController.swift */,
+				0754182B1DE75A6B00327B41 /* SettingsTableViewCell.swift */,
+				0754182C1DE75A6B00327B41 /* FrequencyTableViewCell.swift */,
 				22A68AF51D92DD9B00E75C04 /* RootViewController.swift */,
 				22A68AF71D92DD9B00E75C04 /* DataViewController.swift */,
 				22A68AF91D92DD9B00E75C04 /* ModelController.swift */,
-				22A68AFB1D92DD9B00E75C04 /* Main.storyboard */,
 				22A68AFE1D92DD9B00E75C04 /* Assets.xcassets */,
 				22A68B001D92DD9B00E75C04 /* LaunchScreen.storyboard */,
+				075418341DE75B2300327B41 /* Main.storyboard */,
 				22A68B031D92DD9B00E75C04 /* Info.plist */,
 			);
 			path = "nervousnet-HUB-iOS";
@@ -277,9 +298,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				075418351DE75B2300327B41 /* Main.storyboard in Resources */,
 				22A68B021D92DD9B00E75C04 /* LaunchScreen.storyboard in Resources */,
 				22A68AFF1D92DD9B00E75C04 /* Assets.xcassets in Resources */,
-				22A68AFD1D92DD9B00E75C04 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,11 +373,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				075418331DE75A6B00327B41 /* FrequencyTableViewCell.swift in Sources */,
 				22A68AF61D92DD9B00E75C04 /* RootViewController.swift in Sources */,
 				22A68AFA1D92DD9B00E75C04 /* ModelController.swift in Sources */,
 				22A68AF81D92DD9B00E75C04 /* DataViewController.swift in Sources */,
+				0754182E1DE75A6B00327B41 /* RootTableViewController.swift in Sources */,
+				0754182F1DE75A6B00327B41 /* AnalyticsTableViewController.swift in Sources */,
+				0754182D1DE75A6B00327B41 /* SensorPageViewController.swift in Sources */,
+				075418321DE75A6B00327B41 /* SettingsTableViewCell.swift in Sources */,
+				075418311DE75A6B00327B41 /* FrequencyTableViewController.swift in Sources */,
 				22A68AF41D92DD9B00E75C04 /* AppDelegate.swift in Sources */,
 				3825C5581DE74238000FD8EE /* AxonStore.swift in Sources */,
+				075418301DE75A6B00327B41 /* SettingsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,14 +420,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		22A68AFB1D92DD9B00E75C04 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				22A68AFC1D92DD9B00E75C04 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		22A68B001D92DD9B00E75C04 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
