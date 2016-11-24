@@ -1,0 +1,6 @@
+framework module Pods_nervousnet_HUB_iOS {
+  umbrella header "Pods-nervousnet-HUB-iOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

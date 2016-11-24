@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "4F7A1AB3186DA75EF431A717430E381904EB48A0",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "C620182627BFD52ABA0C929A010ECC9C2EFB0E12" : 9223372036854775807,
+    "4F7A1AB3186DA75EF431A717430E381904EB48A0" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "B3FAA85F-D40F-4F6F-B8A3-DD6F31DBEA08",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "C620182627BFD52ABA0C929A010ECC9C2EFB0E12" : "ios_forks\/nervousnet-iOS\/",
+    "4F7A1AB3186DA75EF431A717430E381904EB48A0" : "nervousnet-HUB-iOS\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "nervousnet-HUB-iOS",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "nervousnet-HUB-iOS.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/nervousnet\/nervousnet-HUB-iOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4F7A1AB3186DA75EF431A717430E381904EB48A0"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/a-enz\/nervousnet-iOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C620182627BFD52ABA0C929A010ECC9C2EFB0E12"
+    }
+  ]
+}

@@ -16,6 +16,8 @@
 		22A68B021D92DD9B00E75C04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22A68B001D92DD9B00E75C04 /* LaunchScreen.storyboard */; };
 		22A68B0D1D92DD9B00E75C04 /* nervousnet_HUB_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A68B0C1D92DD9B00E75C04 /* nervousnet_HUB_iOSTests.swift */; };
 		22A68B181D92DD9B00E75C04 /* nervousnet_HUB_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A68B171D92DD9B00E75C04 /* nervousnet_HUB_iOSUITests.swift */; };
+		3825C5581DE74238000FD8EE /* AxonStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3825C5571DE74238000FD8EE /* AxonStore.swift */; };
+		B76CD29BDE7B281C4735A2BA /* Pods_nervousnet_HUB_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09683561BDEECD42E5A4EE5F /* Pods_nervousnet_HUB_iOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		09683561BDEECD42E5A4EE5F /* Pods_nervousnet_HUB_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nervousnet_HUB_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		22A68AF01D92DD9B00E75C04 /* nervousnet-HUB-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "nervousnet-HUB-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22A68AF31D92DD9B00E75C04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22A68AF51D92DD9B00E75C04 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +54,9 @@
 		22A68B131D92DD9B00E75C04 /* nervousnet-HUB-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "nervousnet-HUB-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22A68B171D92DD9B00E75C04 /* nervousnet_HUB_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nervousnet_HUB_iOSUITests.swift; sourceTree = "<group>"; };
 		22A68B191D92DD9B00E75C04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3825C5571DE74238000FD8EE /* AxonStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AxonStore.swift; sourceTree = "<group>"; };
+		612CF515B4FD4C7919BD20E2 /* Pods-nervousnet-HUB-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nervousnet-HUB-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-nervousnet-HUB-iOS/Pods-nervousnet-HUB-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		DFE7F8B7D3E6F05F15FFB1A8 /* Pods-nervousnet-HUB-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nervousnet-HUB-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-nervousnet-HUB-iOS/Pods-nervousnet-HUB-iOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B76CD29BDE7B281C4735A2BA /* Pods_nervousnet_HUB_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +92,8 @@
 				22A68B0B1D92DD9B00E75C04 /* nervousnet-HUB-iOSTests */,
 				22A68B161D92DD9B00E75C04 /* nervousnet-HUB-iOSUITests */,
 				22A68AF11D92DD9B00E75C04 /* Products */,
+				F5EC49450EFC467958326F20 /* Pods */,
+				FF092EBF7451C9FB9C783EF4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +110,7 @@
 		22A68AF21D92DD9B00E75C04 /* nervousnet-HUB-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				38BBB3BF1DE5ECB600BDD178 /* WebAxons */,
 				22A68AF31D92DD9B00E75C04 /* AppDelegate.swift */,
 				22A68AF51D92DD9B00E75C04 /* RootViewController.swift */,
 				22A68AF71D92DD9B00E75C04 /* DataViewController.swift */,
@@ -131,6 +141,31 @@
 			path = "nervousnet-HUB-iOSUITests";
 			sourceTree = "<group>";
 		};
+		38BBB3BF1DE5ECB600BDD178 /* WebAxons */ = {
+			isa = PBXGroup;
+			children = (
+				3825C5571DE74238000FD8EE /* AxonStore.swift */,
+			);
+			name = WebAxons;
+			sourceTree = "<group>";
+		};
+		F5EC49450EFC467958326F20 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				612CF515B4FD4C7919BD20E2 /* Pods-nervousnet-HUB-iOS.debug.xcconfig */,
+				DFE7F8B7D3E6F05F15FFB1A8 /* Pods-nervousnet-HUB-iOS.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FF092EBF7451C9FB9C783EF4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				09683561BDEECD42E5A4EE5F /* Pods_nervousnet_HUB_iOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,9 +173,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 22A68B1C1D92DD9B00E75C04 /* Build configuration list for PBXNativeTarget "nervousnet-HUB-iOS" */;
 			buildPhases = (
+				2987B28FB8991898CDDB87AF /* [CP] Check Pods Manifest.lock */,
 				22A68AEC1D92DD9B00E75C04 /* Sources */,
 				22A68AED1D92DD9B00E75C04 /* Frameworks */,
 				22A68AEE1D92DD9B00E75C04 /* Resources */,
+				D135D9F0D66FFD7B30085CCF /* [CP] Embed Pods Frameworks */,
+				DAF4C8536CC5F75D17A7A262 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -261,6 +299,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2987B28FB8991898CDDB87AF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D135D9F0D66FFD7B30085CCF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-nervousnet-HUB-iOS/Pods-nervousnet-HUB-iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DAF4C8536CC5F75D17A7A262 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-nervousnet-HUB-iOS/Pods-nervousnet-HUB-iOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		22A68AEC1D92DD9B00E75C04 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -270,6 +356,7 @@
 				22A68AFA1D92DD9B00E75C04 /* ModelController.swift in Sources */,
 				22A68AF81D92DD9B00E75C04 /* DataViewController.swift in Sources */,
 				22A68AF41D92DD9B00E75C04 /* AppDelegate.swift in Sources */,
+				3825C5581DE74238000FD8EE /* AxonStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +496,7 @@
 		};
 		22A68B1D1D92DD9B00E75C04 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 612CF515B4FD4C7919BD20E2 /* Pods-nervousnet-HUB-iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
@@ -425,6 +513,7 @@
 		};
 		22A68B1E1D92DD9B00E75C04 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DFE7F8B7D3E6F05F15FFB1A8 /* Pods-nervousnet-HUB-iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
