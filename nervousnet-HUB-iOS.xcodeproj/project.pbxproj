@@ -24,6 +24,8 @@
 		22A68B0D1D92DD9B00E75C04 /* nervousnet_HUB_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A68B0C1D92DD9B00E75C04 /* nervousnet_HUB_iOSTests.swift */; };
 		22A68B181D92DD9B00E75C04 /* nervousnet_HUB_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A68B171D92DD9B00E75C04 /* nervousnet_HUB_iOSUITests.swift */; };
 		3825C5581DE74238000FD8EE /* AxonStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3825C5571DE74238000FD8EE /* AxonStore.swift */; };
+		38B521411DEEE59E001015BF /* AxonServerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B521401DEEE59E001015BF /* AxonServerController.swift */; };
+		38B5214E1DEEECF7001015BF /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 38B5214D1DEEECF7001015BF /* Assets */; };
 		B76CD29BDE7B281C4735A2BA /* Pods_nervousnet_HUB_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09683561BDEECD42E5A4EE5F /* Pods_nervousnet_HUB_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +71,8 @@
 		22A68B171D92DD9B00E75C04 /* nervousnet_HUB_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nervousnet_HUB_iOSUITests.swift; sourceTree = "<group>"; };
 		22A68B191D92DD9B00E75C04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3825C5571DE74238000FD8EE /* AxonStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AxonStore.swift; sourceTree = "<group>"; };
+		38B521401DEEE59E001015BF /* AxonServerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AxonServerController.swift; sourceTree = "<group>"; };
+		38B5214D1DEEECF7001015BF /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
 		612CF515B4FD4C7919BD20E2 /* Pods-nervousnet-HUB-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nervousnet-HUB-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-nervousnet-HUB-iOS/Pods-nervousnet-HUB-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		DFE7F8B7D3E6F05F15FFB1A8 /* Pods-nervousnet-HUB-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nervousnet-HUB-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-nervousnet-HUB-iOS/Pods-nervousnet-HUB-iOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,6 +128,7 @@
 		22A68AF21D92DD9B00E75C04 /* nervousnet-HUB-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				38B5214D1DEEECF7001015BF /* Assets */,
 				38BBB3BF1DE5ECB600BDD178 /* WebAxons */,
 				22A68AF31D92DD9B00E75C04 /* AppDelegate.swift */,
 				075418261DE75A6B00327B41 /* SensorPageViewController.swift */,
@@ -165,6 +170,7 @@
 		38BBB3BF1DE5ECB600BDD178 /* WebAxons */ = {
 			isa = PBXGroup;
 			children = (
+				38B521401DEEE59E001015BF /* AxonServerController.swift */,
 				3825C5571DE74238000FD8EE /* AxonStore.swift */,
 			);
 			name = WebAxons;
@@ -299,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				075418351DE75B2300327B41 /* Main.storyboard in Resources */,
+				38B5214E1DEEECF7001015BF /* Assets in Resources */,
 				22A68B021D92DD9B00E75C04 /* LaunchScreen.storyboard in Resources */,
 				22A68AFF1D92DD9B00E75C04 /* Assets.xcassets in Resources */,
 			);
@@ -384,6 +391,7 @@
 				075418311DE75A6B00327B41 /* FrequencyTableViewController.swift in Sources */,
 				22A68AF41D92DD9B00E75C04 /* AppDelegate.swift in Sources */,
 				3825C5581DE74238000FD8EE /* AxonStore.swift in Sources */,
+				38B521411DEEE59E001015BF /* AxonServerController.swift in Sources */,
 				075418301DE75A6B00327B41 /* SettingsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

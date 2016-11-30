@@ -16,7 +16,7 @@ import Zip
 ///
 class AxonStore : NSObject {
 
-    static let includedAxonDir = "\(Bundle.main.resourcePath)/Assets/included-axons/" //TODO: check if this does the same as NSBundle.getMainBundle().resourcePath
+    static let includedAxonDir = "\(Bundle.main.resourcePath)/Assets/included-axons/"
     static let remoteAxonTestingRepo = "https://api.github.com/repos/nervousnet/nervousnet-axons/contents/testing?ref=master"
     static let remoteAxonRepoZipSuffix = "/archive/master.zip"
     static let installedAxonsDir = "\(NSHomeDirectory())/Documents/nervousnet-installed-axons"
