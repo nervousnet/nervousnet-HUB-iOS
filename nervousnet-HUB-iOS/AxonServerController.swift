@@ -95,6 +95,11 @@ class AxonServerController {
         
         
         // route to get current sensor data
+        ///
+        /// URL:                /\(PATH_AXON_API)/raw-sensor-data
+        /// query parameter:    axon (String)
+        /// e.g.: localhost:8080/axon-api/raw-sensor-data?axon=gps
+        ///
         self.server.GET["/\(PATH_AXON_API)/raw-sensor-data"] = { request in
             
             if let axon = self.parseRawRequest(queryParams: request.queryParams) {
@@ -111,7 +116,14 @@ class AxonServerController {
         
         
         // route to get historic sensor data
-        self.server.GET["/\(PATH_AXON_RES)/historic-sensor-data"] = { request in
+        ///
+        /// URL:                /\(PATH_AXON_API)//historic-sensor-data"
+        /// query parameter:    axon (String), 
+        ///                     start (convertible to UInt64), 
+        ///                     end (convertible to UInt64)
+        /// e.g.: localhost:8080/axon-api/historic-sensor-data?axon=gps&start=1&end=5
+        ///
+        self.server.GET["/\(PATH_AXON_API)/historic-sensor-data"] = { request in
             
             if let paramValues = self.parseHistoricRequest(queryParams: request.queryParams) {
                 
@@ -173,7 +185,7 @@ class AxonServerController {
                     axon = tuple.1
                 case "start":
                     s = tuple.1
-                case "stop":
+                case "end":
                     e = tuple.1
             default:
                 log.error("Bad historic request with unexpected parameters")
