@@ -26,6 +26,9 @@
 		3825C5581DE74238000FD8EE /* AxonStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3825C5571DE74238000FD8EE /* AxonStore.swift */; };
 		38B521411DEEE59E001015BF /* AxonServerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B521401DEEE59E001015BF /* AxonServerController.swift */; };
 		38B5214E1DEEECF7001015BF /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 38B5214D1DEEECF7001015BF /* Assets */; };
+		38DA7DB31E0172F000D34864 /* NervousnetDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DA7DB21E0172F000D34864 /* NervousnetDBManager.swift */; };
+		38DA7DB71E017CE500D34864 /* GeneralSensorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DA7DB61E017CE500D34864 /* GeneralSensorConfiguration.swift */; };
+		38DA7DB91E01953100D34864 /* DBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DA7DB81E01953100D34864 /* DBConstants.swift */; };
 		B76CD29BDE7B281C4735A2BA /* Pods_nervousnet_HUB_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09683561BDEECD42E5A4EE5F /* Pods_nervousnet_HUB_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +76,9 @@
 		3825C5571DE74238000FD8EE /* AxonStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AxonStore.swift; sourceTree = "<group>"; };
 		38B521401DEEE59E001015BF /* AxonServerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AxonServerController.swift; sourceTree = "<group>"; };
 		38B5214D1DEEECF7001015BF /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
+		38DA7DB21E0172F000D34864 /* NervousnetDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NervousnetDBManager.swift; sourceTree = "<group>"; };
+		38DA7DB61E017CE500D34864 /* GeneralSensorConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralSensorConfiguration.swift; sourceTree = "<group>"; };
+		38DA7DB81E01953100D34864 /* DBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBConstants.swift; sourceTree = "<group>"; };
 		612CF515B4FD4C7919BD20E2 /* Pods-nervousnet-HUB-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nervousnet-HUB-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-nervousnet-HUB-iOS/Pods-nervousnet-HUB-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		DFE7F8B7D3E6F05F15FFB1A8 /* Pods-nervousnet-HUB-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nervousnet-HUB-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-nervousnet-HUB-iOS/Pods-nervousnet-HUB-iOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,6 +136,7 @@
 			children = (
 				38B5214D1DEEECF7001015BF /* Assets */,
 				38BBB3BF1DE5ECB600BDD178 /* WebAxons */,
+				38DA7DB51E0172FC00D34864 /* Database */,
 				22A68AF31D92DD9B00E75C04 /* AppDelegate.swift */,
 				075418261DE75A6B00327B41 /* SensorPageViewController.swift */,
 				075418271DE75A6B00327B41 /* RootTableViewController.swift */,
@@ -174,6 +181,16 @@
 				3825C5571DE74238000FD8EE /* AxonStore.swift */,
 			);
 			name = WebAxons;
+			sourceTree = "<group>";
+		};
+		38DA7DB51E0172FC00D34864 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				38DA7DB21E0172F000D34864 /* NervousnetDBManager.swift */,
+				38DA7DB61E017CE500D34864 /* GeneralSensorConfiguration.swift */,
+				38DA7DB81E01953100D34864 /* DBConstants.swift */,
+			);
+			name = Database;
 			sourceTree = "<group>";
 		};
 		F5EC49450EFC467958326F20 /* Pods */ = {
@@ -384,15 +401,18 @@
 				22A68AF61D92DD9B00E75C04 /* RootViewController.swift in Sources */,
 				22A68AFA1D92DD9B00E75C04 /* ModelController.swift in Sources */,
 				22A68AF81D92DD9B00E75C04 /* DataViewController.swift in Sources */,
+				38DA7DB71E017CE500D34864 /* GeneralSensorConfiguration.swift in Sources */,
 				0754182E1DE75A6B00327B41 /* RootTableViewController.swift in Sources */,
 				0754182F1DE75A6B00327B41 /* AnalyticsTableViewController.swift in Sources */,
 				0754182D1DE75A6B00327B41 /* SensorPageViewController.swift in Sources */,
 				075418321DE75A6B00327B41 /* SettingsTableViewCell.swift in Sources */,
+				38DA7DB31E0172F000D34864 /* NervousnetDBManager.swift in Sources */,
 				075418311DE75A6B00327B41 /* FrequencyTableViewController.swift in Sources */,
 				22A68AF41D92DD9B00E75C04 /* AppDelegate.swift in Sources */,
 				3825C5581DE74238000FD8EE /* AxonStore.swift in Sources */,
 				38B521411DEEE59E001015BF /* AxonServerController.swift in Sources */,
 				075418301DE75A6B00327B41 /* SettingsTableViewController.swift in Sources */,
+				38DA7DB91E01953100D34864 /* DBConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
