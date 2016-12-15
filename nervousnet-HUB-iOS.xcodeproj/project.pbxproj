@@ -24,6 +24,7 @@
 		22A68B0D1D92DD9B00E75C04 /* nervousnet_HUB_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A68B0C1D92DD9B00E75C04 /* nervousnet_HUB_iOSTests.swift */; };
 		22A68B181D92DD9B00E75C04 /* nervousnet_HUB_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A68B171D92DD9B00E75C04 /* nervousnet_HUB_iOSUITests.swift */; };
 		3825C5581DE74238000FD8EE /* AxonStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3825C5571DE74238000FD8EE /* AxonStore.swift */; };
+		386E86F11E02BF0600BDFA63 /* SensorReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386E86F01E02BF0600BDFA63 /* SensorReading.swift */; };
 		38B521411DEEE59E001015BF /* AxonServerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B521401DEEE59E001015BF /* AxonServerController.swift */; };
 		38B5214E1DEEECF7001015BF /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 38B5214D1DEEECF7001015BF /* Assets */; };
 		38DA7DB31E0172F000D34864 /* NervousnetDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DA7DB21E0172F000D34864 /* NervousnetDBManager.swift */; };
@@ -74,6 +75,7 @@
 		22A68B171D92DD9B00E75C04 /* nervousnet_HUB_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nervousnet_HUB_iOSUITests.swift; sourceTree = "<group>"; };
 		22A68B191D92DD9B00E75C04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3825C5571DE74238000FD8EE /* AxonStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AxonStore.swift; sourceTree = "<group>"; };
+		386E86F01E02BF0600BDFA63 /* SensorReading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorReading.swift; sourceTree = "<group>"; };
 		38B521401DEEE59E001015BF /* AxonServerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AxonServerController.swift; sourceTree = "<group>"; };
 		38B5214D1DEEECF7001015BF /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
 		38DA7DB21E0172F000D34864 /* NervousnetDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NervousnetDBManager.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				38DA7DB21E0172F000D34864 /* NervousnetDBManager.swift */,
 				38DA7DB61E017CE500D34864 /* GeneralSensorConfiguration.swift */,
 				38DA7DB81E01953100D34864 /* DBConstants.swift */,
+				386E86F01E02BF0600BDFA63 /* SensorReading.swift */,
 			);
 			name = Database;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				22A68AFA1D92DD9B00E75C04 /* ModelController.swift in Sources */,
 				22A68AF81D92DD9B00E75C04 /* DataViewController.swift in Sources */,
 				38DA7DB71E017CE500D34864 /* GeneralSensorConfiguration.swift in Sources */,
+				386E86F11E02BF0600BDFA63 /* SensorReading.swift in Sources */,
 				0754182E1DE75A6B00327B41 /* RootTableViewController.swift in Sources */,
 				0754182F1DE75A6B00327B41 /* AnalyticsTableViewController.swift in Sources */,
 				0754182D1DE75A6B00327B41 /* SensorPageViewController.swift in Sources */,

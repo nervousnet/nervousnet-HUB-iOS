@@ -32,6 +32,7 @@ class NervousnetDBManager {
             DBCON = try Connection("\(path)/\(DBConstants.DB_NAME)")
             log.info("Database connection established")
         } catch _ {
+            //TODO: how to proceed with failed DB connection?
             log.severe("Failed to connect to the database, trying to proceed without")
             DBCON = nil
         }
@@ -67,7 +68,17 @@ class NervousnetDBManager {
  
     
     /// DB SETUP QUERIES
-    public func deleteTableIfExists() {}
+    public func deleteTableIfExists(config: GeneralSensorConfiguration) {
+        let table = Table(getTableName(config.sensorID))
+        
+        do {
+            try DBCON?.run(table.drop(ifExists: true))
+            log.info("DB Table \(self.getTableName(config.sensorID)) dropped")
+        } catch _ {
+            //TODO: in general, how to handle failed DB connection - if at all?
+            log.error("No DB connection - could not create new table")
+        }
+    }
     
     
     public func createTableIfNotExists(config : GeneralSensorConfiguration) {
@@ -83,21 +94,20 @@ class NervousnetDBManager {
                     
                     
                     switch(type) {
-                    case "int":
+                    case .int_t:
                         t.column(DBConstants.COLUMN_TYPE_INTEGER(withName: name))
-                    case "double":
+                    case .double_t:
                         t.column(DBConstants.COLUMN_TYPE_REAL(withName: name))
-                    case "String":
+                    case .string_t:
                         t.column(DBConstants.COLUMN_TYPE_TEXT(withName: name))
-                    default:
-                        log.error("unexpected parameter type, not creating table")
-                        return
                     }
                 }
 
             })
+            log.info("DB Table \(self.getTableName(config.sensorID)) available")
         } catch _ {
             //TODO: in general, how to handle failed DB connection - if at all?
+            log.error("No DB connection - could not create new table")
         }
     }
     
