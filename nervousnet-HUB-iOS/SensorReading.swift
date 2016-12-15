@@ -62,7 +62,7 @@ public class SensorReading {
         }
 
         //check if the index is not out of bounds
-        guard let c = values?.count, c <= index else {
+        guard let c = values?.count, c > index else {
             return false
         }
         
