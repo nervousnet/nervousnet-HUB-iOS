@@ -8,10 +8,10 @@
 
 import Foundation
 
-class GeneralSensorConfiguration {
+public class GeneralSensorConfiguration {
     
     // Fix the possible config types in an enmum
-    enum sType {
+    public enum sType {
         case int_t
         case double_t
         case string_t

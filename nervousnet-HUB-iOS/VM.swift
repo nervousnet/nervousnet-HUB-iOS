@@ -25,60 +25,133 @@ public class VM {
     
     
     
-    
     public init() {
         configManager = ConfigurationManager()
         
-        
-        
+     
         for config in configManager.getAllConfigurations() {
             //TODO: if possible provide type BasicSensorConfiguration directly instead of forcing
-            self.initSensor(withConfig: config as! BasicSensorConfiguration)
+            do {
+                try self.initSensor(withConfig: config as! BasicSensorConfiguration)
+            } catch _ {
+                log.error("Initialization error")
+            }
         }
         
         if configManager.getNervousState() == VMConstants.NervousState.RUNNING {
-            startSensors()
+            startAllSensors()
         }
-    }
-    
-    
-    
-    
-    
-    /// SENSOR CONTROL METHODS
-    /// ======================
-    
-    private func initSensor(withConfig config : BasicSensorConfiguration) -> BaseSensor {
         
-        return BaseSensor()
+        //TODO: register eventbus
     }
     
-    public func startSensors() {
+    
+    
+    
+    //////////////////////////////
+    /// SENSOR CONTROL METHODS ///
+    /// ====================== ///
+    
+    private func initSensor(withConfig config : BasicSensorConfiguration) throws -> BaseSensor {
+        if let sensor = sensorMap[config.sensorID] {
+            sensor.stop()
+        } //MARK: if the sensor existed already, why proceed here?
+        
+        guard config.samplingrate >= 0 else {
+            log.error("Negative sampling rate, sensor not initialized")
+            throw VMErrors.SensorIsOffException
+        }
+        
+        //samplingrate is guaranteed to be positive from now on
+        
+        
+        let newSensor = BaseSensor() //TODO: create this dynamically correct
+        sensorMap[config.sensorID] = newSensor //if sensorID already in the list we overwrite the sensor object
+        
+        dbManager.createTableIfNotExists(config: config)
+        
+
+        
+        return newSensor
+    }
+    
+    
+    public func registerSensor(withConfig config : GeneralSensorConfiguration) {/* TODO: no impl in android */ }
+    
+    
+    public func startAllSensors() {
         for sensorID in configManager.getSensorIDs() {
             startSensor(withID: sensorID)
         }
     }
     
+    
     public func startSensor(withID id : Int64) {
-        
+        if let sensor = sensorMap[id] {
+            sensor.start()
+        } else {
+            do {
+                let newSensor = try initSensor(
+                    withConfig: configManager.getConfiguration(forID: id) as! BasicSensorConfiguration)
+                newSensor.start()
+            } catch VMErrors.SensorIsOffException {
+                log.error("sensor unexpectedly switched off")
+            } catch _ {
+                log.error("Unkown error occured")
+            }
+
+        }
+    }
+    
+    
+    public func stopAllSensors() {
+        for sensorID in configManager.getSensorIDs() {
+            startSensor(withID: sensorID)
+        }
+    }
+    
+    
+    public func stopSensor(withID id : Int64) {
+        if let sensor = sensorMap[id] {
+            sensor.stop()
+        }
+    }
+    
+    
+    
+    
+    ///////////////////////
+    /// SENSOR GET DATA ///
+    /// =============== ///
+
+    private func getLatestReading() {
+        //TODO
     }
     
     
     
     
     
-    /// UUID METHODS
-    /// ============
+    ////////////////////
+    /// UUID METHODS ///
+    /// ============ ///
     
     //TODO: make this synchronized. how??
     // http://stackoverflow.com/questions/24045895/what-is-the-swift-equivalent-to-objective-cs-synchronized
+
     public func newUUID() {
         uuid = UUID()
-        //FIXME: make sure that UUID is the same as android ID. Otherwise DB processing might be quite annoying (plus data about OS of user is leaked to the public)
     }
     
     
     
+    /////////////////
+    /// VM ERRORS ///
+    /// ========= ///
+    
+    private enum VMErrors : Error {
+        case SensorIsOffException
+    }
     
     
     

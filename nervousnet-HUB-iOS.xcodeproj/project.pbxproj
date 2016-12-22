@@ -146,6 +146,7 @@
 				383CAC221E0AB4A20053BECB /* classdummies */,
 				38BBB3BF1DE5ECB600BDD178 /* webaxons */,
 				38DA7DB51E0172FC00D34864 /* database */,
+				383CAC1F1E0AB0B90053BECB /* vm */,
 				22A68AF31D92DD9B00E75C04 /* AppDelegate.swift */,
 				075418261DE75A6B00327B41 /* SensorPageViewController.swift */,
 				075418271DE75A6B00327B41 /* RootTableViewController.swift */,
@@ -161,7 +162,6 @@
 				22A68B001D92DD9B00E75C04 /* LaunchScreen.storyboard */,
 				075418341DE75B2300327B41 /* Main.storyboard */,
 				22A68B031D92DD9B00E75C04 /* Info.plist */,
-				383CAC1F1E0AB0B90053BECB /* vm */,
 			);
 			path = "nervousnet-HUB-iOS";
 			sourceTree = "<group>";
