@@ -24,16 +24,8 @@ class AxonServerController {
     
     var pseudoSensorData: Int = 0
 
-    init(){
+    init(){        
         startAxonHTTPServer()
-        
-        //TODO: remove automatic download of axon, only for testing while UI missing
-        AxonStore.getRemoteAxonList() //needs to be loaded first
-        if AxonStore.downloadAndInstall(axonIndex: 0) {
-            log.debug("Downloaded axon-one successfully for testing")
-        } else {
-            log.debug("Failed to download axon-one for testing")
-        }
     }
     
     

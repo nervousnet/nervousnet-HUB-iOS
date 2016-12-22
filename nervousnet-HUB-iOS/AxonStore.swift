@@ -168,7 +168,6 @@ class AxonStore : NSObject {
         }
         
         return false
-        
     }
     
     
@@ -227,7 +226,7 @@ struct AxonDetails {
     title,
     description,
     icon : String
-    let repository_url,
+    public private(set) var repository_url,
     author : String?
     
     init(name : String, title : String, description : String, icon : String) {
