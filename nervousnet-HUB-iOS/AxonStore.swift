@@ -16,21 +16,21 @@ import Zip
 ///
 class AxonStore : NSObject {
 
-    static let includedAxonDir = "\(Bundle.main.resourcePath)/Assets/included-axons/"
-    static let remoteAxonTestingRepo = "https://api.github.com/repos/nervousnet/nervousnet-axons/contents/testing?ref=master"
-    static let remoteAxonRepoZipSuffix = "/archive/master.zip"
-    static let installedAxonsDir = "\(NSHomeDirectory())/Documents/nervousnet-installed-axons"
-    static let singleAxonRootURL = "http://localhost:8080/nervousnet-axons"
-    static let axonIndexFile = "axon.html"
+    private static let includedAxonDir = "\(Bundle.main.resourcePath)/Assets/included-axons/"
+    private static let remoteAxonTestingRepo = "https://api.github.com/repos/nervousnet/nervousnet-axons/contents/testing?ref=master"
+    private static let remoteAxonRepoZipSuffix = "/archive/master.zip"
+    private static let installedAxonsDir = "\(NSHomeDirectory())/Documents/nervousnet-installed-axons"
+    private static let singleAxonRootURL = "http://localhost:8080/nervousnet-axons"
+    private static let axonIndexFile = "axon.html"
 
-    static var remoteAxonList = Array<Array<String>>()
+    private static var remoteAxonList = Array<AxonDetails>()
     static private var lastFetched = NSDate().timeIntervalSince1970 //TODO: apparently in seconds, check
     static private let updateInterval = 3600.0 //seconds
     
     
     
-    class func getInstalledAxonsList() -> Array<Array<String>>{
-        var installedAxons = Array<Array<String>>()
+    class func getInstalledAxonsList() -> Array<AxonDetails>{
+        var installedAxons = Array<AxonDetails>()
         let filemanager:FileManager = FileManager()
         let files = filemanager.enumerator(atPath: installedAxonsDir)
         
@@ -38,13 +38,23 @@ class AxonStore : NSObject {
             if((file as AnyObject).hasSuffix("/package.json")){
                 let appPackageJSON = JSON(data: NSData(contentsOfFile: "\(installedAxonsDir)/\(file)")! as Data)
                 
-                let arrayOfStrings: [String] = [appPackageJSON["name"].string!, appPackageJSON["title"].string!, appPackageJSON["description"].string!, appPackageJSON["icon"].string!];
+                let axonDetails = AxonDetails(name: appPackageJSON["name"].string!,
+                                              title: appPackageJSON["title"].string!,
+                                              description: appPackageJSON["description"].string!,
+                                              icon: appPackageJSON["icon"].string!)
                 
-                installedAxons.append(arrayOfStrings)
+                installedAxons.append(axonDetails)
             }
         }
         
         return installedAxons
+    }
+    
+    
+    
+    class func downladAndInstall(axonName: String) -> Bool {
+        let index = self.getRemoteAxonIndexByName(axonName: axonName)
+        return downloadAndInstall(axonIndex: index)
     }
     
     
@@ -57,7 +67,7 @@ class AxonStore : NSObject {
         //Get documents directory URL
         let fileManager = FileManager.default
         let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
-        let sourceUrl = NSURL(string: "\(axon[4])/\(remoteAxonRepoZipSuffix)")!
+        let sourceUrl = NSURL(string: "\(axon.repository_url)/\(remoteAxonRepoZipSuffix)")!
         
         
         //Get the file name and create a LOCAL destination URL
@@ -75,7 +85,7 @@ class AxonStore : NSObject {
         
         
         do {
-            let axonName = axon[0]
+            let axonName = axon.name
             let axonZipFile = destinationURL
             let unzipDirectory = try Zip.quickUnzipFile(axonZipFile) // Unzip
             
@@ -109,35 +119,32 @@ class AxonStore : NSObject {
             
             return false
         }
-        
-
     }
     
 
 
 
-    class func getRemoteAxonIndexByName(axonName: String) -> Int {
+    private class func getRemoteAxonIndexByName(axonName: String) -> Int {
         fetchRemoteAxonList()
         for (index,_) in remoteAxonList.enumerated() {
             
-            if(self.remoteAxonList[index][0] == axonName){
+            if(self.remoteAxonList[index].name == axonName){
                 return index
             }
             
         }
         
         return -1
-        
     }
 
 
-    class func getRemoteAxon(axonIndex: Int) -> Array<String> {
+    class func getRemoteAxon(axonIndex: Int) -> AxonDetails {
         fetchRemoteAxonList()
         return remoteAxonList[axonIndex]
     }
 
     
-    class func getLocalAxon(axonIndex: Int) -> Array<String> {
+    class func getLocalAxon(axonIndex: Int) -> AxonDetails {
         return getInstalledAxonsList()[axonIndex]
     }
 
@@ -166,7 +173,7 @@ class AxonStore : NSObject {
     
     
     
-    class func getRemoteAxonList() -> Array<Array<String>> {
+    class func getRemoteAxonList() -> Array<AxonDetails> {
         fetchRemoteAxonList()
         return remoteAxonList
     }
@@ -184,7 +191,7 @@ class AxonStore : NSObject {
         }
         
         let endpoint = NSURL(string: remoteAxonTestingRepo)
-        var resultList = Array<Array<String>>()
+        var resultList = Array<AxonDetails>()
 
         if let data = NSData(contentsOf: endpoint! as URL) {
 
@@ -196,8 +203,13 @@ class AxonStore : NSObject {
                 let axon_json_url = NSURL(string: axon_metadata["download_url"].stringValue)
                 let axon_json = NSData(contentsOf: axon_json_url! as URL)
                 let axon = JSON(data: axon_json! as Data);
-                let arrayOfStrings: [String] = [axon["name"].stringValue, axon["title"].stringValue, axon["description"].stringValue, axon["icon"].stringValue, axon["repository"]["url"].stringValue, axon["author"].stringValue]
-                resultList.append(arrayOfStrings)
+                let axonDetails = AxonDetails(name:             axon["name"].stringValue,
+                                              title:            axon["title"].stringValue,
+                                              description:      axon["description"].stringValue,
+                                              icon:             axon["icon"].stringValue,
+                                              repository_url:   axon["repository"]["url"].stringValue,
+                                              author:           axon["author"].stringValue)
+                resultList.append(axonDetails)
             }
         }else{
             log.error("cannot download remote axon list")
@@ -207,5 +219,34 @@ class AxonStore : NSObject {
         remoteAxonList = resultList
     }
 
+}
+
+
+struct AxonDetails {
+    public let name,
+    title,
+    description,
+    icon : String
+    let repository_url,
+    author : String?
+    
+    init(name : String, title : String, description : String, icon : String) {
+        
+        self.name = name
+        self.title = title
+        self.description = description
+        self.icon = icon
+    }
+    
+    init(name : String, title : String, description : String, icon : String,
+         repository_url : String, author : String) {
+        
+        self.name = name
+        self.title = title
+        self.description = description
+        self.icon = icon
+        self.repository_url = repository_url
+        self.author = author
+    }
 }
 
