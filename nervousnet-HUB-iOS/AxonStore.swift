@@ -24,6 +24,9 @@ class AxonStore : NSObject {
     static let axonIndexFile = "axon.html"
 
     static var remoteAxonList = Array<Array<String>>()
+    static private var lastFetched = NSDate().timeIntervalSince1970 //TODO: apparently in seconds, check
+    static private let updateInterval = 3600.0 //seconds
+    
     
     
     class func getInstalledAxonsList() -> Array<Array<String>>{
@@ -114,7 +117,7 @@ class AxonStore : NSObject {
 
 
     class func getRemoteAxonIndexByName(axonName: String) -> Int {
-        
+        fetchRemoteAxonList()
         for (index,_) in remoteAxonList.enumerated() {
             
             if(self.remoteAxonList[index][0] == axonName){
@@ -129,6 +132,7 @@ class AxonStore : NSObject {
 
 
     class func getRemoteAxon(axonIndex: Int) -> Array<String> {
+        fetchRemoteAxonList()
         return remoteAxonList[axonIndex]
     }
 
@@ -153,7 +157,7 @@ class AxonStore : NSObject {
             return true
         }
         catch let error as NSError {
-            log.error("Ooops! Something went wrong: \(error)")
+            log.error("An error occured while removing axon: \(error)")
         }
         
         return false
@@ -161,15 +165,30 @@ class AxonStore : NSObject {
     }
     
     
-    //blocking task, TODO: implement caching
-    class func getRemoteAxonList() -> Array<Array<String>>{
+    
+    class func getRemoteAxonList() -> Array<Array<String>> {
+        fetchRemoteAxonList()
+        return remoteAxonList
+    }
+    
+    
+    
+    //blocking task
+    private class func fetchRemoteAxonList() {
+        
+        let current_ts = NSDate().timeIntervalSince1970
+        let valid_until_ts = lastFetched + updateInterval
+        
+        guard remoteAxonList.isEmpty || (current_ts > valid_until_ts) else { //basic caching
+            return
+        }
         
         let endpoint = NSURL(string: remoteAxonTestingRepo)
-    
+        var resultList = Array<Array<String>>()
+
         if let data = NSData(contentsOf: endpoint! as URL) {
 
             let json = JSON(data: data as Data);
-            remoteAxonList = Array<Array<String>>()
             
             //get the individual package details by going through the jsons in the repo
             for (_,axon_metadata) in json{
@@ -178,13 +197,14 @@ class AxonStore : NSObject {
                 let axon_json = NSData(contentsOf: axon_json_url! as URL)
                 let axon = JSON(data: axon_json! as Data);
                 let arrayOfStrings: [String] = [axon["name"].stringValue, axon["title"].stringValue, axon["description"].stringValue, axon["icon"].stringValue, axon["repository"]["url"].stringValue, axon["author"].stringValue]
-                remoteAxonList.append(arrayOfStrings)
+                resultList.append(arrayOfStrings)
             }
         }else{
             log.error("cannot download remote axon list")
         }
         
-        return remoteAxonList
+        lastFetched = current_ts
+        remoteAxonList = resultList
     }
 
 }
