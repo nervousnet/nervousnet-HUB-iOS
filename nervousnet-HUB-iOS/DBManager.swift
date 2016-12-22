@@ -9,10 +9,10 @@
 import Foundation
 import SQLite
 
-class NervousnetDBManager {
+class DBManager {
     
     //DB manager as a singleton
-    public static let sharedInstance = NervousnetDBManager()
+    public static let sharedInstance = DBManager()
     private let DBCON : Connection?
     
     //TODO make sure DB operations run on background thread
@@ -114,7 +114,7 @@ class NervousnetDBManager {
     
     /// HELPER FUNCTIONS
     
-    private func getTableName(_ sensorID : UInt64) -> String {
+    private func getTableName(_ sensorID : Int64) -> String {
         return "ID\(sensorID)"
     }
     
