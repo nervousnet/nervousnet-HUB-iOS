@@ -66,7 +66,9 @@ public class SensorReading {
             return false
         }
         
-        //if values == nil this does nothing:
+        //if values == nil this does nothing
+        //but we already tested 'values' for nil in previous guard
+        //MARK: could be a problem if we are doing multithreading
         values?[index] = value
         
         return true

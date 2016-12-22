@@ -17,11 +17,11 @@ class GeneralSensorConfiguration {
         case string_t
     }
     
-    public private(set) var sensorID : UInt64 //getter: public, setter: private
+    public private(set) var sensorID : Int64 //getter: public, setter: private
     public private(set) var sensorName : String
     public private(set) var parameterDef : [(name: String, type: sType)]
     
-    init(sensorID : UInt64, sensorName : String, parameterDef : [(name: String, type: sType)]) {
+    init(sensorID : Int64, sensorName : String, parameterDef : [(name: String, type: sType)]) {
         self.sensorID = sensorID
         self.sensorName = sensorName
         self.parameterDef = parameterDef
