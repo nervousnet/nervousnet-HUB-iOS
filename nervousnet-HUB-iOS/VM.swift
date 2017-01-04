@@ -118,16 +118,75 @@ public class VM {
     }
     
     
+    ////////////////////////
+    /// SENSOR DB ACCESS ///
+    /// ================ ///
     
+    // WRITE
     
-    ///////////////////////
-    /// SENSOR GET DATA ///
-    /// =============== ///
-
-    private func getLatestReading() {
+    public func store(reading : SensorReading) {
         //TODO
     }
     
+    
+    public func store(readingList : [SensorReading]) {
+        //TODO
+    }
+    
+    
+    
+    // READ
+    
+    private func getLatestReading(sensorID : Int64) {
+        //TODO
+    }
+    
+    
+    private func getReading(sensorID : Int64) {
+        //TODO
+    }
+    
+    
+    private func getReadings(sensorID : Int64, start : UInt64, end : UInt64) {
+        //TODO
+    }
+    
+    
+    
+    // DB MANAGEMENT
+    
+    public func deleteTableIfExists(sensorID : Int64) {
+        //TODO
+    }
+    
+    
+    public func deleteTableIfNotExists(sensorID : Int64) {
+        //TODO
+    }
+    
+    
+    public func createTableIfNotExists(sensorID : Int64) {
+        //TODO
+    }
+    
+    
+    public func deleteAllDatabases() {
+        //TODO
+    }
+    
+    
+    
+    //////////////////////
+    /// STATE HANDLING ///
+    /// ============== ///
+    //MARK: why does this state stuff exist??
+    public func storeNervousnetState() { }
+    
+    public func getNervousnetState() { }
+    
+    public func updateSensorState() { }
+
+    public func storeSensorState() { }
     
     
     
@@ -136,7 +195,7 @@ public class VM {
     /// UUID METHODS ///
     /// ============ ///
     
-    //TODO: make this synchronized. how??
+    //TODO: make this synchronized. how (and why)??
     // http://stackoverflow.com/questions/24045895/what-is-the-swift-equivalent-to-objective-cs-synchronized
 
     public func newUUID() {
