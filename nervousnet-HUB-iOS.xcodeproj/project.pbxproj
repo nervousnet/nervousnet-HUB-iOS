@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		071844B41E2650AD00FFF319 /* BasicSensorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071844B31E2650AD00FFF319 /* BasicSensorConfiguration.swift */; };
+		071844B61E26510900FFF319 /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071844B51E26510900FFF319 /* ConfigurationManager.swift */; };
+		071844B81E26512400FFF319 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071844B71E26512400FFF319 /* Constants.swift */; };
+		071844BA1E26514B00FFF319 /* JSONConfigurationLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071844B91E26514B00FFF319 /* JSONConfigurationLoader.swift */; };
+		071844BC1E26516200FFF319 /* StateDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071844BB1E26516200FFF319 /* StateDBManager.swift */; };
+		071844BE1E2651D300FFF319 /* iConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071844BD1E2651D300FFF319 /* iConfigurationManager.swift */; };
+		071844C01E26529C00FFF319 /* NNEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071844BF1E26529C00FFF319 /* NNEvent.swift */; };
+		071844C31E26530B00FFF319 /* AppleSensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071844C21E26530B00FFF319 /* AppleSensor.swift */; };
+		071844C61E2653B900FFF319 /* BaseSensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071844C51E2653B900FFF319 /* BaseSensor.swift */; };
+		071844C81E2653CC00FFF319 /* BatterySensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071844C71E2653CC00FFF319 /* BatterySensor.swift */; };
+		071844CA1E2653DB00FFF319 /* NoiseSensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071844C91E2653DB00FFF319 /* NoiseSensor.swift */; };
+		071844CC1E2654ED00FFF319 /* SensorReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071844CB1E2654ED00FFF319 /* SensorReading.swift */; };
 		0754182D1DE75A6B00327B41 /* SensorPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075418261DE75A6B00327B41 /* SensorPageViewController.swift */; };
 		0754182E1DE75A6B00327B41 /* RootTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075418271DE75A6B00327B41 /* RootTableViewController.swift */; };
 		0754182F1DE75A6B00327B41 /* AnalyticsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075418281DE75A6B00327B41 /* AnalyticsTableViewController.swift */; };
@@ -27,7 +39,6 @@
 		383CAC1E1E0AB0B10053BECB /* VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383CAC1D1E0AB0B10053BECB /* VM.swift */; };
 		383CAC281E0AB8840053BECB /* ClassDummies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383CAC271E0AB8840053BECB /* ClassDummies.swift */; };
 		383CAC2A1E0ACF920053BECB /* VMConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383CAC291E0ACF920053BECB /* VMConstants.swift */; };
-		386E86F11E02BF0600BDFA63 /* SensorReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386E86F01E02BF0600BDFA63 /* SensorReading.swift */; };
 		38B521411DEEE59E001015BF /* AxonServerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B521401DEEE59E001015BF /* AxonServerController.swift */; };
 		38B5214E1DEEECF7001015BF /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 38B5214D1DEEECF7001015BF /* Assets */; };
 		38DA7DB31E0172F000D34864 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DA7DB21E0172F000D34864 /* DBManager.swift */; };
@@ -54,6 +65,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		071844B31E2650AD00FFF319 /* BasicSensorConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicSensorConfiguration.swift; sourceTree = "<group>"; };
+		071844B51E26510900FFF319 /* ConfigurationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
+		071844B71E26512400FFF319 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		071844B91E26514B00FFF319 /* JSONConfigurationLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONConfigurationLoader.swift; sourceTree = "<group>"; };
+		071844BB1E26516200FFF319 /* StateDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateDBManager.swift; sourceTree = "<group>"; };
+		071844BD1E2651D300FFF319 /* iConfigurationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iConfigurationManager.swift; sourceTree = "<group>"; };
+		071844BF1E26529C00FFF319 /* NNEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNEvent.swift; sourceTree = "<group>"; };
+		071844C21E26530B00FFF319 /* AppleSensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleSensor.swift; sourceTree = "<group>"; };
+		071844C51E2653B900FFF319 /* BaseSensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSensor.swift; sourceTree = "<group>"; };
+		071844C71E2653CC00FFF319 /* BatterySensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatterySensor.swift; sourceTree = "<group>"; };
+		071844C91E2653DB00FFF319 /* NoiseSensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoiseSensor.swift; sourceTree = "<group>"; };
+		071844CB1E2654ED00FFF319 /* SensorReading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorReading.swift; sourceTree = "<group>"; };
 		075418261DE75A6B00327B41 /* SensorPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorPageViewController.swift; sourceTree = "<group>"; };
 		075418271DE75A6B00327B41 /* RootTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTableViewController.swift; sourceTree = "<group>"; };
 		075418281DE75A6B00327B41 /* AnalyticsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsTableViewController.swift; sourceTree = "<group>"; };
@@ -81,7 +104,6 @@
 		383CAC1D1E0AB0B10053BECB /* VM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VM.swift; sourceTree = "<group>"; };
 		383CAC271E0AB8840053BECB /* ClassDummies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassDummies.swift; sourceTree = "<group>"; };
 		383CAC291E0ACF920053BECB /* VMConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VMConstants.swift; sourceTree = "<group>"; };
-		386E86F01E02BF0600BDFA63 /* SensorReading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorReading.swift; sourceTree = "<group>"; };
 		38B521401DEEE59E001015BF /* AxonServerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AxonServerController.swift; sourceTree = "<group>"; };
 		38B5214D1DEEECF7001015BF /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
 		38DA7DB21E0172F000D34864 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
@@ -117,6 +139,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		071844B11E264FD300FFF319 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				075418261DE75A6B00327B41 /* SensorPageViewController.swift */,
+				075418271DE75A6B00327B41 /* RootTableViewController.swift */,
+				075418281DE75A6B00327B41 /* AnalyticsTableViewController.swift */,
+				075418291DE75A6B00327B41 /* SettingsTableViewController.swift */,
+				0754182A1DE75A6B00327B41 /* FrequencyTableViewController.swift */,
+				0754182B1DE75A6B00327B41 /* SettingsTableViewCell.swift */,
+				0754182C1DE75A6B00327B41 /* FrequencyTableViewCell.swift */,
+				22A68AF51D92DD9B00E75C04 /* RootViewController.swift */,
+				22A68AF71D92DD9B00E75C04 /* DataViewController.swift */,
+				22A68B001D92DD9B00E75C04 /* LaunchScreen.storyboard */,
+				075418341DE75B2300327B41 /* Main.storyboard */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		071844B21E26507100FFF319 /* configuration */ = {
+			isa = PBXGroup;
+			children = (
+				071844CB1E2654ED00FFF319 /* SensorReading.swift */,
+				071844B31E2650AD00FFF319 /* BasicSensorConfiguration.swift */,
+				071844B51E26510900FFF319 /* ConfigurationManager.swift */,
+				071844B71E26512400FFF319 /* Constants.swift */,
+				38DA7DB61E017CE500D34864 /* GeneralSensorConfiguration.swift */,
+				071844B91E26514B00FFF319 /* JSONConfigurationLoader.swift */,
+				071844BB1E26516200FFF319 /* StateDBManager.swift */,
+				071844BD1E2651D300FFF319 /* iConfigurationManager.swift */,
+			);
+			name = configuration;
+			sourceTree = "<group>";
+		};
+		071844C11E2652A800FFF319 /* events */ = {
+			isa = PBXGroup;
+			children = (
+				071844BF1E26529C00FFF319 /* NNEvent.swift */,
+			);
+			name = events;
+			sourceTree = "<group>";
+		};
+		071844C41E26531100FFF319 /* sensors */ = {
+			isa = PBXGroup;
+			children = (
+				071844C21E26530B00FFF319 /* AppleSensor.swift */,
+				071844C51E2653B900FFF319 /* BaseSensor.swift */,
+				071844C71E2653CC00FFF319 /* BatterySensor.swift */,
+				071844C91E2653DB00FFF319 /* NoiseSensor.swift */,
+			);
+			name = sensors;
+			sourceTree = "<group>";
+		};
 		22A68AE71D92DD9B00E75C04 = {
 			isa = PBXGroup;
 			children = (
@@ -142,25 +216,18 @@
 		22A68AF21D92DD9B00E75C04 /* nervousnet-HUB-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				22A68AFE1D92DD9B00E75C04 /* Assets.xcassets */,
 				38B5214D1DEEECF7001015BF /* Assets */,
 				383CAC221E0AB4A20053BECB /* classdummies */,
 				38BBB3BF1DE5ECB600BDD178 /* webaxons */,
+				071844B21E26507100FFF319 /* configuration */,
 				38DA7DB51E0172FC00D34864 /* database */,
+				071844C11E2652A800FFF319 /* events */,
+				071844C41E26531100FFF319 /* sensors */,
 				383CAC1F1E0AB0B90053BECB /* vm */,
-				22A68AF31D92DD9B00E75C04 /* AppDelegate.swift */,
-				075418261DE75A6B00327B41 /* SensorPageViewController.swift */,
-				075418271DE75A6B00327B41 /* RootTableViewController.swift */,
-				075418281DE75A6B00327B41 /* AnalyticsTableViewController.swift */,
-				075418291DE75A6B00327B41 /* SettingsTableViewController.swift */,
-				0754182A1DE75A6B00327B41 /* FrequencyTableViewController.swift */,
-				0754182B1DE75A6B00327B41 /* SettingsTableViewCell.swift */,
-				0754182C1DE75A6B00327B41 /* FrequencyTableViewCell.swift */,
-				22A68AF51D92DD9B00E75C04 /* RootViewController.swift */,
-				22A68AF71D92DD9B00E75C04 /* DataViewController.swift */,
+				071844B11E264FD300FFF319 /* UI */,
 				22A68AF91D92DD9B00E75C04 /* ModelController.swift */,
-				22A68AFE1D92DD9B00E75C04 /* Assets.xcassets */,
-				22A68B001D92DD9B00E75C04 /* LaunchScreen.storyboard */,
-				075418341DE75B2300327B41 /* Main.storyboard */,
+				22A68AF31D92DD9B00E75C04 /* AppDelegate.swift */,
 				22A68B031D92DD9B00E75C04 /* Info.plist */,
 			);
 			path = "nervousnet-HUB-iOS";
@@ -213,8 +280,6 @@
 		38DA7DB51E0172FC00D34864 /* database */ = {
 			isa = PBXGroup;
 			children = (
-				38DA7DB61E017CE500D34864 /* GeneralSensorConfiguration.swift */,
-				386E86F01E02BF0600BDFA63 /* SensorReading.swift */,
 				38DA7DB21E0172F000D34864 /* DBManager.swift */,
 				38DA7DB81E01953100D34864 /* DBConstants.swift */,
 			);
@@ -426,24 +491,35 @@
 			buildActionMask = 2147483647;
 			files = (
 				075418331DE75A6B00327B41 /* FrequencyTableViewCell.swift in Sources */,
+				071844B41E2650AD00FFF319 /* BasicSensorConfiguration.swift in Sources */,
 				22A68AF61D92DD9B00E75C04 /* RootViewController.swift in Sources */,
 				383CAC1E1E0AB0B10053BECB /* VM.swift in Sources */,
 				22A68AFA1D92DD9B00E75C04 /* ModelController.swift in Sources */,
 				22A68AF81D92DD9B00E75C04 /* DataViewController.swift in Sources */,
+				071844B81E26512400FFF319 /* Constants.swift in Sources */,
 				38DA7DB71E017CE500D34864 /* GeneralSensorConfiguration.swift in Sources */,
-				386E86F11E02BF0600BDFA63 /* SensorReading.swift in Sources */,
+				071844BA1E26514B00FFF319 /* JSONConfigurationLoader.swift in Sources */,
+				071844CA1E2653DB00FFF319 /* NoiseSensor.swift in Sources */,
 				0754182E1DE75A6B00327B41 /* RootTableViewController.swift in Sources */,
 				383CAC2A1E0ACF920053BECB /* VMConstants.swift in Sources */,
 				0754182F1DE75A6B00327B41 /* AnalyticsTableViewController.swift in Sources */,
 				0754182D1DE75A6B00327B41 /* SensorPageViewController.swift in Sources */,
+				071844BE1E2651D300FFF319 /* iConfigurationManager.swift in Sources */,
+				071844BC1E26516200FFF319 /* StateDBManager.swift in Sources */,
 				075418321DE75A6B00327B41 /* SettingsTableViewCell.swift in Sources */,
 				38DA7DB31E0172F000D34864 /* DBManager.swift in Sources */,
+				071844B61E26510900FFF319 /* ConfigurationManager.swift in Sources */,
+				071844C81E2653CC00FFF319 /* BatterySensor.swift in Sources */,
 				075418311DE75A6B00327B41 /* FrequencyTableViewController.swift in Sources */,
+				071844C31E26530B00FFF319 /* AppleSensor.swift in Sources */,
 				22A68AF41D92DD9B00E75C04 /* AppDelegate.swift in Sources */,
 				3825C5581DE74238000FD8EE /* AxonStore.swift in Sources */,
+				071844CC1E2654ED00FFF319 /* SensorReading.swift in Sources */,
 				38B521411DEEE59E001015BF /* AxonServerController.swift in Sources */,
 				075418301DE75A6B00327B41 /* SettingsTableViewController.swift in Sources */,
+				071844C61E2653B900FFF319 /* BaseSensor.swift in Sources */,
 				38DA7DB91E01953100D34864 /* DBConstants.swift in Sources */,
+				071844C01E26529C00FFF319 /* NNEvent.swift in Sources */,
 				383CAC281E0AB8840053BECB /* ClassDummies.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

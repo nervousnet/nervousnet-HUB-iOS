@@ -10,28 +10,41 @@ import Foundation
 
 public class GeneralSensorConfiguration {
     
-    // Fix the possible config types in an enmum
-    public enum sType {
-        case int_t
-        case double_t
-        case string_t
-    }
+//    // Fix the possible config types in an enmum
+//    public enum sType {
+//        case int_t
+//        case double_t
+//        case string_t
+//    }
     
     public private(set) var sensorID : Int64 //getter: public, setter: private
     public private(set) var sensorName : String
-    public private(set) var parameterDef : [(name: String, type: sType)]
+    public private(set) var parameterNames : [String]
+    public private(set) var parameterTypes : [String] //Maybe change later, but needs operators properly working
     
-    init(sensorID : Int64, sensorName : String, parameterDef : [(name: String, type: sType)]) {
+    init(sensorID : Int64, sensorName : String, parameterNames : [String], parameterTypes : [String] ) {
         self.sensorID = sensorID
         self.sensorName = sensorName
-        self.parameterDef = parameterDef
+        self.parameterNames = parameterNames
+        self.parameterTypes = parameterTypes
     }
     
     public var parameterDim : Int {
         get {
-            return parameterDef.count
+            return parameterNames.count
         }
     }
     
+    public func toString() -> String{
+        let returnString : String =
+            "ConfigurationClass{" +
+                "sensorName=" + self.sensorName +
+                "\\" +
+                ", parametersNames=" + self.parametersNames.joined(separator: ", ") +
+                ", parametersTypes=" + self.parametersTypes.joined(separator: ", ") +
+        "}"
+        return returnString
+    }
+
     
 }

@@ -38,7 +38,7 @@ public class VM {
             }
         }
         
-        if configManager.getNervousState() == VMConstants.NervousState.RUNNING {
+        if configManager.getNervousnetStateate() == VMConstants.NervousState.RUNNING {
             startAllSensors()
         }
         
@@ -92,7 +92,7 @@ public class VM {
         } else {
             do {
                 let newSensor = try initSensor(
-                    withConfig: configManager.getConfiguration(forID: id) as! BasicSensorConfiguration)
+                    withConfig: configManager.getConfiguration(sensorID: id) as! BasicSensorConfiguration)
                 newSensor.start()
             } catch VMErrors.SensorIsOffException {
                 log.error("sensor unexpectedly switched off")

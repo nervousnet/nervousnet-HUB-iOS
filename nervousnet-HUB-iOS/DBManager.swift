@@ -177,16 +177,18 @@ class DBManager {
                 t.column(DBConstants.COLUMN_ID, primaryKey: .autoincrement)
                 t.column(DBConstants.COLUMN_TIMESTAMP)
                 
-                for (name, type) in config.parameterDef {
+                for name in config.parameterNames {
+                    for type in config.parameterTypes{
                     
                     
-                    switch(type) {
-                    case .int_t:
-                        t.column(DBConstants.COLUMN_TYPE_INTEGER(withName: name))
-                    case .double_t:
-                        t.column(DBConstants.COLUMN_TYPE_REAL(withName: name))
-                    case .string_t:
-                        t.column(DBConstants.COLUMN_TYPE_TEXT(withName: name))
+                        switch(type) { //TODO: Fix
+                        case .int_t:
+                            t.column(DBConstants.COLUMN_TYPE_INTEGER(withName: name))
+                        case .double_t:
+                            t.column(DBConstants.COLUMN_TYPE_REAL(withName: name))
+                        case .string_t:
+                            t.column(DBConstants.COLUMN_TYPE_TEXT(withName: name))
+                        }
                     }
                 }
 
