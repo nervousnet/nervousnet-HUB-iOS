@@ -12,6 +12,6 @@ class JSONConfigurationLoader {
     init () {}
     
     func load () -> [BasicSensorConfiguration]{
-        return [BasicSensorConfiguration(sensorID: 0)]
+        return [BasicSensorConfiguration()]
     }
 }

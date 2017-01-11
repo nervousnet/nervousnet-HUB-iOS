@@ -25,7 +25,7 @@ public class ConfigurationManager : iConfigurationManager {
             
             //try {
             var state : Int = stateDBManager.getSensorState(sensorID: conf.sensorID);
-            conf.setState(state);
+            conf.setState(state: state);
 //            } catch (NoSuchElementException e) {
 //            stateDBManager.storeSensorState(conf.getSensorID(), conf.getState());
 //            }

@@ -47,7 +47,7 @@ public class BasicSensorConfiguration : GeneralSensorConfiguration {
     }
     
    
-    public func toString() -> String{
+    public override func toString() -> String{
         let returnString : String =
             "ConfigurationClass{" +
                 "sensorName=" + self.sensorName +

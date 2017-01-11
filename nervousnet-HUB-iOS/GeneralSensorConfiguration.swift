@@ -40,8 +40,8 @@ public class GeneralSensorConfiguration {
             "ConfigurationClass{" +
                 "sensorName=" + self.sensorName +
                 "\\" +
-                ", parametersNames=" + self.parametersNames.joined(separator: ", ") +
-                ", parametersTypes=" + self.parametersTypes.joined(separator: ", ") +
+                ", parametersNames=" + self.parameterNames.joined(separator: ", ") +
+                ", parametersTypes=" + self.parameterTypes.joined(separator: ", ") +
         "}"
         return returnString
     }
