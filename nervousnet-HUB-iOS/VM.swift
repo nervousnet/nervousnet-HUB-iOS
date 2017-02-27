@@ -55,28 +55,39 @@ public class VM {
     /// SENSOR CONTROL METHODS ///
     /// ====================== ///
     
-    /* Initialize sensor with a given configuration */
+    /* Initialize sensor with a given configuration, dynamically create the correct sensor wrapper class given by the 'wrapperName'
+     * in the config 
+     */
     private func initSensor(withConfig config : BasicSensorConfiguration) throws -> BaseSensor {
         if let sensor = sensorMap[config.sensorID] {
             sensor.stop()
         } //MARK: if the sensor existed already, why proceed here?
         
-        guard config.samplingrate >= 0 else {
+        do {
+            try dbManager.createTableIfNotExists(config: config)
+        } catch DBManager.DBError.DBConnectionError {
+            log.error("Unable to create DB table since there seems to be no DB connection")
+            throw VMErrors.DBConnectionError
+        }
+        
+        guard config.samplingrate >= 0 else {   //samplingrate is guaranteed to be positive for the rest of this function
             log.error("Negative sampling rate, sensor not initialized")
             throw VMErrors.SensorIsOffException
         }
         
-        //samplingrate is guaranteed to be positive from now on
-        
-        
-        let newSensor = BaseSensor() //TODO: create this dynamically correct
-        sensorMap[config.sensorID] = newSensor //if sensorID already in the list we overwrite the sensor object
-        
-        dbManager.createTableIfNotExists(config: config)
-        
 
+        //create the correct Sensor dynamically according to its name
+        //source: http://thecache.trov.com/swift-2-create-an-instance-of-a-class-from-a-string-by-calling-a-custom-initializer/
         
-        return newSensor
+        if let sensorType = NSClassFromString(config.getWrapperName()) as? BaseSensor.Type {
+            let newSensor = sensorType.init(config: config)
+            sensorMap[config.sensorID] = newSensor //if sensorID already in the list we overwrite the sensor object
+            
+            return newSensor
+        } else {
+            log.error("unable to infer sensor type from given wrapper name: \(config.getWrapperName())")
+            throw VMErrors.InstantiationException
+        }
     }
     
     
@@ -134,48 +145,55 @@ public class VM {
     // WRITE
     
     public func store(reading : SensorReading) {
-        //TODO
+        dbManager.store(reading: reading)
     }
     
     
     public func store(readingList : [SensorReading]) {
-        //TODO
+        dbManager.store(readings: readingList)
     }
+    
     
     
     
     // READ
     
-    private func getLatestReading(sensorID : Int64) {
-        //TODO
+    /**
+     * Returns latest reading that has been stored since starting the application.
+     */
+    public func getLatestReading(sensorID : Int64) throws -> SensorReading {
+        return try dbManager.getLatestReading(sensorID: sensorID) //TODO: error handling here?
     }
     
     
-    private func getReading(sensorID : Int64) {
-        //TODO
+    public func getReadings(sensorID : Int64) throws -> [SensorReading] {
+        return try dbManager.getReadings(with : configManager.getConfiguration(sensorID: sensorID)) //TODO: error handling here?
     }
     
     
-    private func getReadings(sensorID : Int64, start : UInt64, end : UInt64) {
-        //TODO
+    public func getReadings(sensorID : Int64, start : Int64, end : Int64) throws -> [SensorReading] {
+        return try dbManager.getReadings(with: configManager.getConfiguration(sensorID: sensorID),
+                                         startTimestamp: start,
+                                         endTimestamp: end)
+         //TODO: error handling here?
     }
+    
+    
+    //TODO: getReading and getReadings with a callback function
+    
+    
     
     
     
     // DB MANAGEMENT
     
-    public func deleteTableIfExists(sensorID : Int64) {
-        //TODO
+    public func deleteTableIfExists(sensorID : Int64) throws {
+        try dbManager.deleteTableIfExists(config: configManager.getConfiguration(sensorID: sensorID))
     }
     
     
-    public func deleteTableIfNotExists(sensorID : Int64) {
-        //TODO
-    }
-    
-    
-    public func createTableIfNotExists(sensorID : Int64) {
-        //TODO
+    public func createTableIfNotExists(sensorID : Int64) throws {
+        try dbManager.createTableIfNotExists(config: configManager.getConfiguration(sensorID: sensorID))
     }
     
     
@@ -317,7 +335,9 @@ public class VM {
     /// ========= ///
     
     private enum VMErrors : Error {
-        case SensorIsOffException
+        case SensorIsOffException       //
+        case DBConnectionError          // dbManager was unable to connect to the DB
+        case InstantiationException     // unable to create class from string
     }
     
     
