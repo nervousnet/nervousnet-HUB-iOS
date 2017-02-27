@@ -180,18 +180,25 @@ class DBManager {
                 
                 for (name, type) in zip(columnNames, columnTypes) {
                     
+                    var success = true
+                    
                     switch(type) { //TODO: change strings to enum type?
                     case "int":
                         let column = DBConstants.COLUMN_TYPE_INTEGER(withName: name)
-                        reading.setValue(paramName: name, value: row[column])
+                        success = reading.setValue(paramName: name, value: row[column])
                     case "double":
                         let column = DBConstants.COLUMN_TYPE_REAL(withName: name)
-                        reading.setValue(paramName: name, value: row[column])
+                        success = reading.setValue(paramName: name, value: row[column])
                     case "String":
                         let column = DBConstants.COLUMN_TYPE_TEXT(withName: name)
-                        reading.setValue(paramName: name, value: row[column])
+                        success = reading.setValue(paramName: name, value: row[column])
                     default:
                         log.error("unexpected DB type. skipping creation of column")
+                        continue
+                    }
+                    
+                    if !success {
+                        log.error("unable to set value of parameter \(name) ... skipping")
                         continue
                     }
                 }
