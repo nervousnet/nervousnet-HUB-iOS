@@ -8,31 +8,26 @@
 
 import Foundation
 
-class JSONConfigurationLoader {
-    init () {}
-    
-    func load () -> [BasicSensorConfiguration]{
-        return [BasicSensorConfiguration()]
-    }
-}
 
-public class JsonConfigurationLoader {
+
+public class JSONConfigurationLoader {
     
-    private var CONF_FILE_NAME : String = "sensors_configuration.json"
-    private let LOG_TAG : String = String(describing: JsonConfigurationLoader.self)
+    private var CONF_FILE_NAME : String = "sensors_configuration"
+    private let LOG_TAG : String = String(describing: JSONConfigurationLoader.self)
+    
+    init (){
+    }
 
 //    private Context context;
-//    
+//
 //    protected JsonConfigurationLoader(Context context) {
 //        this.context = context;
 //    }
     
-    internal func load () -> [BasicSensorConfiguration] {
+    internal func load (data : Data) -> [BasicSensorConfiguration] {
         var list = [BasicSensorConfiguration]()
         do{
-            if let file = Bundle.main.url(forResource: "sensors_configuration", withExtension: "json") {
-                let data = try Data(contentsOf: file)
-                let json = try JSONSerialization.jsonObject(with: data, options: [])
+            if let json = try JSONSerialization.jsonObject(with: data, options: []) as Any?{
                 //print(json)
                 if let dictionary = json as? [String: Any] {
                     
@@ -111,6 +106,26 @@ public class JsonConfigurationLoader {
                 }
             }
             else {
+                print("not a valid format")
+            }
+        }catch{(error.localizedDescription)}
+        
+        
+        
+        return list
+    }
+
+    
+    internal func load () -> [BasicSensorConfiguration] {
+        var list = [BasicSensorConfiguration]()
+        do{
+            if let file = Bundle.main.url(forResource: CONF_FILE_NAME, withExtension: "json") {
+                let data = try Data(contentsOf: file)
+                list = self.load(data: data)
+                //print(json)
+               
+            }
+            else {
                 print("no file")
             }
         }catch{(error.localizedDescription)}
@@ -120,32 +135,26 @@ public class JsonConfigurationLoader {
         return list
     }
     
-    internal static func load (strJson : String) -> [BasicSensorConfiguration] {
+    internal func load (strJson : String) -> [BasicSensorConfiguration]{
         var list = [BasicSensorConfiguration]()
-        let json = try? JSONSerialization.jsonObject(with: strJson, options: [])
+        do{
+            if let data = try Data(base64Encoded: strJson) {
+                
+                list = self.load(data : data)
+                //print(json)
+                
+            }
+            else {
+                print("not a Valid Data Format")
+            }
+        }catch{(error.localizedDescription)}
         
-        if let dictionary = jason as? [String: Any] {
-            if let sensorConfList = dictionary["sensors_configurations"] as? [String: Any] {
-                for sensorConf in sensorConfList{
-                    var sensorID : Int = sensorConf["sensorID"]
-                    var sensorName : String = sensorConf["sensorName"]
-                    let parametersNames = sensorConf["parametersNames"] as? [String]
-                }
-            }
-            
-            for (key, value) in dictionary {
-                // access all key / value pairs in dictionary
-            }
-            
-            if let nestedDictionary = dictionary["anotherKey"] as? [String: Any] {
-                // access nested dictionary values by key
-            }
-        }
+        
         
         return list
     }
     
+    
 }
-
 
 

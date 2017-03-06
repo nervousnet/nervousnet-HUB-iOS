@@ -10,71 +10,30 @@ import Foundation
 
 public class ConfigurationManager : iConfigurationManager {
     
-    var configMap : [Int64 : GeneralSensorConfiguration]
-    var stateDBManager :StateDBManager
-    
-    public init () {
-        self.configMap = [:]
-        self.stateDBManager =  StateDBManager()
-        var loader = JSONConfigurationLoader()
-        
-        var confList : [BasicSensorConfiguration] = loader.load();
-        for  conf in confList {
-            
-            configMap[conf.sensorID] = conf
-            
-            //try {
-            var state : Int = stateDBManager.getSensorState(sensorID: conf.sensorID);
-            conf.setState(state: state);
-//            } catch (NoSuchElementException e) {
-//            stateDBManager.storeSensorState(conf.getSensorID(), conf.getState());
-//            }
-        }
+    func getAllConfigurations() -> [GeneralSensorConfiguration] {
+        return [GeneralSensorConfiguration]()
     }
     
-    
-    public func getAllConfigurations() -> [GeneralSensorConfiguration]{
-        return configMap.values
+    func getConfiguration(sensorID: Int64) throws -> GeneralSensorConfiguration {
+        return GeneralSensorConfiguration(sensorID: 5, sensorName: "a", parameterNames: ["hi"], parameterTypes: ["Double"])
     }
     
-    public func getSensorIDs() {
-        return (configMap.keys as! [Int64])
+    func getNervousnetState() -> Int {
+        return Int()
     }
     
-    public func getConfiguration(sensorID : Int64) throws -> GeneralSensorConfiguration { //NoSuchElementException
-        //if configMap.keys.contains(sensorID) {
-            return configMap[sensorID]!
-        //}
-        //else
-        //throw new NoSuchElementException("Sensor " + sensorID + " has not been configured.");
+    func getSensorIDs() -> [Int64] {
+        return [Int64]()
     }
     
-    public func getSensorState(sensorID : Int64) throws -> Int {//NoSuchElementException
-        //if configMap.keys.contains(sensorID) {
-        return (configMap[sensorID] as! BasicSensorConfiguration).state
-        //else
-        //throw new NoSuchElementException("Sensor " + sensorID + " has not been configured.");
+    func getSensorState(sensorID: Int64) throws -> Int {
+        return Int()
     }
     
-    public func setSensorState(sensorID : Int64, state: Int) throws -> Void { //NoSuchElementException
-        //if configMap.keys.contains(sensorID) {
-        stateDBManager.storeSensorState(sensorID  : sensorID, state: state);
-        (configMap[sensorID] as! BasicSensorConfiguration).setState(state);
-        //}
-        //else
-        //throw new NoSuchElementException("Sensor " + sensorID + " has not been configured.");
+    func setNervousnetState(state: Int) {
     }
     
-    public func getNervousnetState() throws -> Int{ //NoSuchElementException
-        //try {
-        return stateDBManager.getNervousnetState();
-        //} catch (NoSuchElementException e) {
-        //return NervousnetVMConstants.STATE_PAUSED;
-        //}
-    }
-    
-    public func setNervousnetState(state :Int) throws -> Void {//NoSuchElementException {
-        stateDBManager.storeNervousnetState(state);
+    func setSensorState(sensorID: Int64, state: Int) throws {
     }
     
 }
