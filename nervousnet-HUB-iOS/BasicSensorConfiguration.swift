@@ -54,15 +54,14 @@ public class BasicSensorConfiguration : GeneralSensorConfiguration {
     }
     
     public override func toString() -> String{
-        let returnString = "fixing overly complex string"
-//        let returnString : String =
-//            "ConfigurationClass{" +
-//                "sensorName=" + self.sensorName +
-//                "\\" +
-//                ", parametersNames=" + self.parameterNames.joined(separator: ", ") +
-//                ", parametersTypes=" + self.parameterTypes.joined(separator: ", ") +
-//                ", samplingPeriod="  + self.samplingrate +
-//            "}"
+        var returnString : String = "ConfigurationClass{"
+            returnString +=         ("sensorName=" + self.sensorName)
+            returnString +=         ("\\" + ", parametersNames=")
+            returnString +=         self.parameterNames.joined(separator: ", ")
+            returnString +=         (", parametersTypes=" + self.parameterTypes.joined(separator: ", "))
+            returnString +=         (", samplingPeriod="  + String(self.samplingrate))
+            returnString +=         "}"
+       
         return returnString
     }
 

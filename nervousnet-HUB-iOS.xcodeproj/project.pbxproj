@@ -28,9 +28,6 @@
 		075418331DE75A6B00327B41 /* FrequencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0754182C1DE75A6B00327B41 /* FrequencyTableViewCell.swift */; };
 		075418351DE75B2300327B41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 075418341DE75B2300327B41 /* Main.storyboard */; };
 		22A68AF41D92DD9B00E75C04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A68AF31D92DD9B00E75C04 /* AppDelegate.swift */; };
-		22A68AF61D92DD9B00E75C04 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A68AF51D92DD9B00E75C04 /* RootViewController.swift */; };
-		22A68AF81D92DD9B00E75C04 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A68AF71D92DD9B00E75C04 /* DataViewController.swift */; };
-		22A68AFA1D92DD9B00E75C04 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A68AF91D92DD9B00E75C04 /* ModelController.swift */; };
 		22A68AFF1D92DD9B00E75C04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22A68AFE1D92DD9B00E75C04 /* Assets.xcassets */; };
 		22A68B021D92DD9B00E75C04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22A68B001D92DD9B00E75C04 /* LaunchScreen.storyboard */; };
 		22A68B0D1D92DD9B00E75C04 /* nervousnet_HUB_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A68B0C1D92DD9B00E75C04 /* nervousnet_HUB_iOSTests.swift */; };
@@ -88,9 +85,6 @@
 		09683561BDEECD42E5A4EE5F /* Pods_nervousnet_HUB_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nervousnet_HUB_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		22A68AF01D92DD9B00E75C04 /* nervousnet-HUB-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "nervousnet-HUB-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22A68AF31D92DD9B00E75C04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		22A68AF51D92DD9B00E75C04 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		22A68AF71D92DD9B00E75C04 /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
-		22A68AF91D92DD9B00E75C04 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		22A68AFE1D92DD9B00E75C04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22A68B011D92DD9B00E75C04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22A68B031D92DD9B00E75C04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -149,8 +143,6 @@
 				0754182A1DE75A6B00327B41 /* FrequencyTableViewController.swift */,
 				0754182B1DE75A6B00327B41 /* SettingsTableViewCell.swift */,
 				0754182C1DE75A6B00327B41 /* FrequencyTableViewCell.swift */,
-				22A68AF51D92DD9B00E75C04 /* RootViewController.swift */,
-				22A68AF71D92DD9B00E75C04 /* DataViewController.swift */,
 				22A68B001D92DD9B00E75C04 /* LaunchScreen.storyboard */,
 				075418341DE75B2300327B41 /* Main.storyboard */,
 			);
@@ -226,7 +218,6 @@
 				071844C41E26531100FFF319 /* sensors */,
 				383CAC1F1E0AB0B90053BECB /* vm */,
 				071844B11E264FD300FFF319 /* UI */,
-				22A68AF91D92DD9B00E75C04 /* ModelController.swift */,
 				22A68AF31D92DD9B00E75C04 /* AppDelegate.swift */,
 				22A68B031D92DD9B00E75C04 /* Info.plist */,
 			);
@@ -492,10 +483,7 @@
 			files = (
 				075418331DE75A6B00327B41 /* FrequencyTableViewCell.swift in Sources */,
 				071844B41E2650AD00FFF319 /* BasicSensorConfiguration.swift in Sources */,
-				22A68AF61D92DD9B00E75C04 /* RootViewController.swift in Sources */,
 				383CAC1E1E0AB0B10053BECB /* VM.swift in Sources */,
-				22A68AFA1D92DD9B00E75C04 /* ModelController.swift in Sources */,
-				22A68AF81D92DD9B00E75C04 /* DataViewController.swift in Sources */,
 				071844B81E26512400FFF319 /* Constants.swift in Sources */,
 				38DA7DB71E017CE500D34864 /* GeneralSensorConfiguration.swift in Sources */,
 				071844BA1E26514B00FFF319 /* JSONConfigurationLoader.swift in Sources */,

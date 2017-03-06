@@ -34,7 +34,8 @@ public class JSONConfigurationLoader {
                     //print(dictionary["sensors_configurations"] as! [Any])
                     
                     if let sensorConfList = dictionary["sensors_configurations"] as? [Any] {
-                        for conf in sensorConfList{
+                        
+                        for conf in sensorConfList {
                             let sensorConf = ((conf as! [String:Any]))
                             
                             var values = [String:Any]()
