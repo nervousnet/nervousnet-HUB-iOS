@@ -10,10 +10,13 @@ import Foundation
 
 public class VMConstants {
 
+    /*
     enum NervousState {
         case RUNNING
         case PAUSED
     }
+    */
+    
     
     
     

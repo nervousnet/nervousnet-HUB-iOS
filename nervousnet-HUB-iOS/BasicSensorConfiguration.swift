@@ -24,6 +24,14 @@ public class BasicSensorConfiguration : GeneralSensorConfiguration {
     
     
     
+    public func getWrapperName() -> String {
+        //post: expects a fully qualified class name that can be used in NSClassFromString
+        // TODO: use NSStringFromClass if possible
+        return "Dummy return value: Implement properly"
+    }
+    
+    
+    
     func setState(state : Int){
         self.state = state;
         

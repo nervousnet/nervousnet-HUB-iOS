@@ -20,8 +20,15 @@ public class SensorReading {
         }
         set(parameterNames){
             self.pNames = parameterNames
-            if values == nil || parameterNames?.count != values?.count {
-                values = [] //new empty list
+            if let list = parameterNames {
+                if values == nil ||
+                list.count != values?.count {
+                
+                values = [Any?](repeating: nil, count: list.count)
+                }
+            }
+            else {
+                values = nil
             }
         }
     }
@@ -38,11 +45,9 @@ public class SensorReading {
     
     public init(sensorID : Int64,
                 sensorName : String,
-                timestampEpoch : Int64,
                 parameterNames : [String]) {
         self.sensorID = sensorID
         self.sensorName = sensorName
-        self.timestampEpoch = timestampEpoch
         self.parameterNames = parameterNames
         
         

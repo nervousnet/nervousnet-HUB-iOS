@@ -16,19 +16,27 @@ import Swifter
 ///
 class AxonServerController {
     
+    // create an HttpServer using the Swifter pod
     var server = HttpServer()
     
+    
+    //resource paths
     let axonResourceDir = "\(Bundle.main.resourcePath!)/Assets/axon-resources/"
     let axonDir = "\(NSHomeDirectory())/Documents/nervousnet-installed-axons/"
     //let laeController = LAEController() TODO: connect to sensor data layer
     
+    
+    // TODO: remove later. for now provides sensor 'data'
     var pseudoSensorData: Int = 0
 
+    
+    
     init(){        
         startAxonHTTPServer()
     }
     
     
+    // start the server and map the possible http request paths
     func startAxonHTTPServer(){
         
         do {
@@ -38,13 +46,23 @@ class AxonServerController {
         } catch {
             log.error("Server start error: \(error)")
         }
-
     }
 
+    
     
     func restoreAxonHTTPServer(){
         self.startAxonHTTPServer()
     }
+    
+    
+    
+    /* map the possible http GET request this server can handle:
+     * /                                    provides overview of available paths
+     * /PATH_AXON_RES/static/:resource      serves static resources (e.g.: libs.js, styles.css)
+     * /PATH_AXON_RES/:axonname/:resource   serves static axon-specific resources (e.g.: axon.html)
+     * /PATH_AXON_API/raw-sensor-data       serves current sensor data (check below for more info)
+     * /PATH_AXON_API/historic-sensor-data  serves sensor data from a timespan (check below for more info)
+     */
     
     let PATH_AXON_API = "axon-api"
     let PATH_AXON_RES = "axon-res"
@@ -131,6 +149,8 @@ class AxonServerController {
     }
     
     
+    
+    /* write the http response */
     private func returnRawResponse(_ fileURL:String) -> HttpResponse {
         
         if let contentsOfFile = NSData(contentsOfFile: fileURL) {
@@ -147,6 +167,8 @@ class AxonServerController {
         
     }
     
+    
+    
     //unwrap query params and return axon name if the parameter name matches
     private func parseRawRequest(queryParams : [(String, String)] ) -> String? {
         
@@ -161,6 +183,8 @@ class AxonServerController {
         
         return nil
     }
+    
+    
     
     private func parseHistoricRequest(queryParams : [(String, String)] ) -> (axon: String, start: UInt64, end: UInt64)? {
 
@@ -199,6 +223,7 @@ class AxonServerController {
         }
         
     }
+    
     
     
     private func getSensorDataFor(axon: String, start: UInt64 = 0, end: UInt64 = 0) -> NSDictionary {
