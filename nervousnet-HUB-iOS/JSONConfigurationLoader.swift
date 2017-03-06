@@ -27,20 +27,98 @@ public class JsonConfigurationLoader {
 //        this.context = context;
 //    }
     
-    /*internal func load() -> [BasicSensorConfiguration]{
+    internal func load () -> [BasicSensorConfiguration] {
+        var list = [BasicSensorConfiguration]()
+        do{
+            if let file = Bundle.main.url(forResource: "sensors_configuration", withExtension: "json") {
+                let data = try Data(contentsOf: file)
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                //print(json)
+                if let dictionary = json as? [String: Any] {
+                    
+                    //print(dictionary["sensors_configurations"] as! [Any])
+                    
+                    if let sensorConfList = dictionary["sensors_configurations"] as? [Any] {
+                        for conf in sensorConfList{
+                            let sensorConf = ((conf as! [String:Any]))
+                            
+                            var values = [String:Any]()
+                            
+                            
+                            if let sensorID = sensorConf ["sensorID"] as? Int64{
+                                print("sensorID is", sensorID)
+                                values["sensorID"] = sensorID
+                            }
+                            else {
+                                print("no ID")
+                                values["sensorID"] = -1 as! Int64
+                            }
+                            
+                            if let sensorName = sensorConf["sensorName"] as? String{
+                                print("sensorName is", sensorName)
+                                values["sensorName"] = sensorName
+                            }
+                            else {
+                                print("no Name")
+                                values["sensorName"] = "-1"
+                            }
+                            
+                            if let parameterNames = sensorConf["parametersNames"] as? [String] {
+                                print("parameterNames are", parameterNames)
+                                values["parameterNames"] = parameterNames
+                            }
+                            else {
+                                print("no parameterNames")
+                                values["parameterNames"] = ["-1"]
+                            }
+                            
+                            if let parameterTypes = sensorConf["parametersTypes"] as? [String]{
+                                print("parameterTypes are", parameterTypes)
+                                values["parameterTypes"] = parameterTypes
+                            }
+                                
+                            else {
+                                print("no parameterTypes")
+                                values["parameterTypes"] = ["-1"]
+                            }
+                            
+                            if let samplingrates = sensorConf["samplingRates"] as? [Int64]{
+                                print("samplingRates are", samplingrates)
+                                values["samplingRates"] = samplingrates
+                            }
+                            else {
+                                print("no samplingrates")
+                                values["samplingRates"] = [-1] as! [Int64]
+                            }
+                            
+                            if let state = sensorConf["initialState"] as? Int {
+                                print("state is", state)
+                                values["state"] = state
+                            }
+                                
+                            else {
+                                print("no state")
+                                values["state"] = -1 as! Int
+                            }
+                            
+                            
+                            
+                            print("creating Object")
+                            
+                            list.append(BasicSensorConfiguration(sensorID: values["sensorID"] as! Int64, sensorName: values["sensorName"] as! String, parameterNames: values["parameterNames"] as! [String], parameterTypes: values["parameterTypes"] as! [String], samplingrates: values["samplingRates"] as! [Int64], state: values["state"] as! Int))
+                        }
+                    }
+                }
+            }
+            else {
+                print("no file")
+            }
+        }catch{(error.localizedDescription)}
         
-        var line : String = ""
-        var total : String = ""
-        //try {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(context.getAssets().open(CONF_FILE_NAME)))
-        //try {
-        while ((line = reader.readLine()) != null){
-            total += line
-        }
-        //catch (Exception e){e.printStackTrace();}
-        //catch (Exception e){Log.d(LOG_TAG, "ERROR " + e.getMessage());}
-        return load(total);
-    }*/
+        
+        
+        return list
+    }
     
     internal static func load (strJson : String) -> [BasicSensorConfiguration] {
         var list = [BasicSensorConfiguration]()
@@ -70,37 +148,4 @@ public class JsonConfigurationLoader {
 }
 
 
-{
-    "name": "Caffè Macs",
-    "coordinates": {
-        "lat": 37.330576,
-        "lng": -122.029739
-    },
-    "meals": ["breakfast", "lunch", "dinner"]
-}
 
-extension Restaurant {
-    init?(json: [String: Any]) {
-        guard let name = json["name"] as? String,
-            let coordinatesJSON = json["coordinates"] as? [String: Double],
-            let latitude = coordinatesJSON["lat"],
-            let longitude = coordinatesJSON["lng"],
-            let mealsJSON = json["meals"] as? [String]
-            else {
-                return nil
-        }
-        
-        var meals: Set<Meal> = []
-        for string in mealsJSON {
-            guard let meal = Meal(rawValue: string) else {
-                return nil
-            }
-            
-            meals.insert(meal)
-        }
-        
-        self.name = name
-        self.coordinates = (latitude, longitude)
-        self.meals = meals
-    }
-}
