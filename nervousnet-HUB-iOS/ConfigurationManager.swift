@@ -30,10 +30,15 @@
 
 import Foundation
 
+enum ConfigurationError: Error {
+    case noSuchConfiguration(sensorID: Int64)
+    case noStateSet(sensorID: Int64)
+}
+
 public class ConfigurationManager : iConfigurationManager {
     
     // This dictionary maps sensor ID into sensor's configuration.
-    var configDict : [Int64:GeneralSensorConfiguration]
+    var configDict : [Int64:Any] //GeneralSensorConfiguration and BasicSensorConfiguration types only
     
         
      // Database manager for sensors' configuration storing and for application state storing.
@@ -64,29 +69,51 @@ public class ConfigurationManager : iConfigurationManager {
     
     
     func getAllConfigurations() -> [GeneralSensorConfiguration] {
-        return Array(configDict.values)
+        return Array(configDict.values) as! [GeneralSensorConfiguration]
     }
     
     func getConfiguration(sensorID: Int64) throws -> GeneralSensorConfiguration {
-        return GeneralSensorConfiguration(sensorID: 5, sensorName: "a", parameterNames: ["hi"], parameterTypes: ["Double"])
+        
+        if let returnConfiguration = configDict[sensorID]{
+            return returnConfiguration as! GeneralSensorConfiguration
+        }
+        else{
+            throw ConfigurationError.noSuchConfiguration(sensorID: sensorID)
+        }
     }
     
     func getNervousnetState() -> Int {
-        return Int()
+        return stateDBManager.getNervousnetState()
     }
     
     func getSensorIDs() -> [Int64] {
-        return [Int64]()
+        return Array(configDict.keys)
     }
     
     func getSensorState(sensorID: Int64) throws -> Int {
-        return Int()
+        if let returnConfiguration = configDict[sensorID]{
+            if let returnState = (returnConfiguration as? BasicSensorConfiguration)?.state {
+                return returnState
+            }
+            else {throw ConfigurationError.noStateSet(sensorID: sensorID)}
+        }
+        else {throw ConfigurationError.noSuchConfiguration(sensorID: sensorID)}
     }
     
     func setNervousnetState(state: Int) {
+        stateDBManager.storeNervousNetState(state: state)
     }
     
     func setSensorState(sensorID: Int64, state: Int) throws {
+        if (configDict[sensorID] != nil){
+            if (configDict[sensorID] as? BasicSensorConfiguration) != nil{
+                stateDBManager.storeSensorState(sensorID: sensorID, state: state)
+                (configDict[sensorID] as! BasicSensorConfiguration).setState(state: state)
+            } else {
+                throw ConfigurationError.noStateSet(sensorID: sensorID)
+            }
+        } else {
+            throw ConfigurationError.noSuchConfiguration(sensorID: sensorID)
+        }
     }
-    
 }
