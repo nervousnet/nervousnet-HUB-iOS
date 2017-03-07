@@ -33,15 +33,15 @@ import Foundation
 
 
 
-class BaseSensor {
-    //parent class to all sensor implementations
-    
-    required init(config : BasicSensorConfiguration) {}
-    
-    func start() { }
-    
-    func stop() { }
-}
+//class BaseSensor {
+//    //parent class to all sensor implementations
+//    
+//    required init(config : BasicSensorConfiguration) {}
+//    
+//    func start() { }
+//    
+//    func stop() { }
+//}
 
 
 
