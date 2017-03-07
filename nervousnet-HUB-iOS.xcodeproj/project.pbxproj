@@ -27,6 +27,7 @@
 		075418321DE75A6B00327B41 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0754182B1DE75A6B00327B41 /* SettingsTableViewCell.swift */; };
 		075418331DE75A6B00327B41 /* FrequencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0754182C1DE75A6B00327B41 /* FrequencyTableViewCell.swift */; };
 		075418351DE75B2300327B41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 075418341DE75B2300327B41 /* Main.storyboard */; };
+		07CADB0C1E6EE32C002F1DCE /* CoreMotionSensors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CADB0B1E6EE32C002F1DCE /* CoreMotionSensors.swift */; };
 		22A68AF41D92DD9B00E75C04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A68AF31D92DD9B00E75C04 /* AppDelegate.swift */; };
 		22A68AFF1D92DD9B00E75C04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22A68AFE1D92DD9B00E75C04 /* Assets.xcassets */; };
 		22A68B021D92DD9B00E75C04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22A68B001D92DD9B00E75C04 /* LaunchScreen.storyboard */; };
@@ -82,6 +83,7 @@
 		0754182B1DE75A6B00327B41 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		0754182C1DE75A6B00327B41 /* FrequencyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrequencyTableViewCell.swift; sourceTree = "<group>"; };
 		075418341DE75B2300327B41 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		07CADB0B1E6EE32C002F1DCE /* CoreMotionSensors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreMotionSensors.swift; sourceTree = "<group>"; };
 		09683561BDEECD42E5A4EE5F /* Pods_nervousnet_HUB_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nervousnet_HUB_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		22A68AF01D92DD9B00E75C04 /* nervousnet-HUB-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "nervousnet-HUB-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22A68AF31D92DD9B00E75C04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				071844C51E2653B900FFF319 /* BaseSensor.swift */,
 				071844C71E2653CC00FFF319 /* BatterySensor.swift */,
 				071844C91E2653DB00FFF319 /* NoiseSensor.swift */,
+				07CADB0B1E6EE32C002F1DCE /* CoreMotionSensors.swift */,
 			);
 			name = sensors;
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 				22A68AF41D92DD9B00E75C04 /* AppDelegate.swift in Sources */,
 				3825C5581DE74238000FD8EE /* AxonStore.swift in Sources */,
 				071844CC1E2654ED00FFF319 /* SensorReading.swift in Sources */,
+				07CADB0C1E6EE32C002F1DCE /* CoreMotionSensors.swift in Sources */,
 				38B521411DEEE59E001015BF /* AxonServerController.swift in Sources */,
 				075418301DE75A6B00327B41 /* SettingsTableViewController.swift in Sources */,
 				071844C61E2653B900FFF319 /* BaseSensor.swift in Sources */,
