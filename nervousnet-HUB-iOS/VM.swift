@@ -80,7 +80,7 @@ public class VM {
         //source: http://thecache.trov.com/swift-2-create-an-instance-of-a-class-from-a-string-by-calling-a-custom-initializer/
         
         if let sensorType = NSClassFromString(config.getWrapperName()) as? BaseSensor.Type {
-            let newSensor = sensorType.init(config: config)
+            let newSensor = sensorType.init(conf:  config)
             sensorMap[config.sensorID] = newSensor //if sensorID already in the list we overwrite the sensor object
             
             return newSensor

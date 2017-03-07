@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
+    //This doesn't belong here
     private let axonServerController = AxonServerController()
 
     

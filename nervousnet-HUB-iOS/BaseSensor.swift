@@ -16,7 +16,7 @@ public class BaseSensor {
     private let dataBaseHandler : DBManager = DBManager.sharedInstance
   
     // Sensor configuration
-    public private(set) var configuration : BasicSensorConfiguration
+    public var configuration : BasicSensorConfiguration
     
     // Just a shortcut of configuration above and maybe more intuitive
     // representation
@@ -28,7 +28,7 @@ public class BaseSensor {
     
     // Constructor of an abstract class for basic sensor reading.
  
-    init (conf : BasicSensorConfiguration) {
+    required public init (conf : BasicSensorConfiguration) {
         self.configuration = conf
         do {
             try self.dataBaseHandler.createTableIfNotExists(config: conf)
