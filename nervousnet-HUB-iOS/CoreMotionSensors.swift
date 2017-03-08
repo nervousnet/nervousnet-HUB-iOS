@@ -13,26 +13,42 @@ class CoreMotionSensor : BaseSensor {
     
     //Move these to the VM as singletons
     let motionManager = CMMotionManager()
-    let operationQueue = OperationQueue.main //This needs to be different for actual update
+    let operationQueue = OperationQueue.init()
     
     required public init(conf: BasicSensorConfiguration) {
         super.init(conf: conf)
-        super.configuration = conf
-        guard motionManager.isDeviceMotionAvailable else {
-            fatalError("Device motion is not available")
-        }
         
         motionManager.deviceMotionUpdateInterval = TimeInterval(super.configuration.samplingrate)
-        
-        motionManager.deviceMotionUpdateInterval = TimeInterval(1)
 
         motionManager.startAccelerometerUpdates(to: operationQueue, withHandler: accHandler)
     }
 
     func accHandler (data : CMAccelerometerData?, error: Error?) -> Void {
-        print(data?.acceleration.x ?? 123)
+        print(data.debugDescription)
     }
-    
-    
-    
 }
+
+
+//For easier Testing
+
+//class CoreMotionSensor  {
+//    
+//    //Move these to the VM as singletons
+//    let motionManager = CMMotionManager()
+//    let operationQueue = OperationQueue.init()
+//    
+//    required public init(conf: Float) {
+//        
+//        //        motionManager.deviceMotionUpdateInterval = TimeInterval(super.configuration.samplingrate)
+//        motionManager.accelerometerUpdateInterval = TimeInterval(conf)
+//        
+//        motionManager.startAccelerometerUpdates(to: operationQueue, withHandler: accHandler)
+//    }
+//    
+//    func accHandler (data : CMAccelerometerData?, error: Error?) -> Void {
+//        print(data.debugDescription + "was actually measured")
+//    }
+//    
+//    
+//    
+//}
