@@ -14,7 +14,6 @@
 		071844BC1E26516200FFF319 /* StateDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071844BB1E26516200FFF319 /* StateDBManager.swift */; };
 		071844BE1E2651D300FFF319 /* iConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071844BD1E2651D300FFF319 /* iConfigurationManager.swift */; };
 		071844C01E26529C00FFF319 /* NNEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071844BF1E26529C00FFF319 /* NNEvent.swift */; };
-		071844C31E26530B00FFF319 /* AppleSensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071844C21E26530B00FFF319 /* AppleSensor.swift */; };
 		071844C61E2653B900FFF319 /* BaseSensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071844C51E2653B900FFF319 /* BaseSensor.swift */; };
 		071844C81E2653CC00FFF319 /* BatterySensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071844C71E2653CC00FFF319 /* BatterySensor.swift */; };
 		071844CA1E2653DB00FFF319 /* NoiseSensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071844C91E2653DB00FFF319 /* NoiseSensor.swift */; };
@@ -70,7 +69,6 @@
 		071844BB1E26516200FFF319 /* StateDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateDBManager.swift; sourceTree = "<group>"; };
 		071844BD1E2651D300FFF319 /* iConfigurationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iConfigurationManager.swift; sourceTree = "<group>"; };
 		071844BF1E26529C00FFF319 /* NNEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNEvent.swift; sourceTree = "<group>"; };
-		071844C21E26530B00FFF319 /* AppleSensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleSensor.swift; sourceTree = "<group>"; };
 		071844C51E2653B900FFF319 /* BaseSensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSensor.swift; sourceTree = "<group>"; };
 		071844C71E2653CC00FFF319 /* BatterySensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatterySensor.swift; sourceTree = "<group>"; };
 		071844C91E2653DB00FFF319 /* NoiseSensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoiseSensor.swift; sourceTree = "<group>"; };
@@ -177,7 +175,6 @@
 		071844C41E26531100FFF319 /* sensors */ = {
 			isa = PBXGroup;
 			children = (
-				071844C21E26530B00FFF319 /* AppleSensor.swift */,
 				071844C51E2653B900FFF319 /* BaseSensor.swift */,
 				071844C71E2653CC00FFF319 /* BatterySensor.swift */,
 				071844C91E2653DB00FFF319 /* NoiseSensor.swift */,
@@ -502,7 +499,6 @@
 				071844B61E26510900FFF319 /* ConfigurationManager.swift in Sources */,
 				071844C81E2653CC00FFF319 /* BatterySensor.swift in Sources */,
 				075418311DE75A6B00327B41 /* FrequencyTableViewController.swift in Sources */,
-				071844C31E26530B00FFF319 /* AppleSensor.swift in Sources */,
 				22A68AF41D92DD9B00E75C04 /* AppDelegate.swift in Sources */,
 				3825C5581DE74238000FD8EE /* AxonStore.swift in Sources */,
 				071844CC1E2654ED00FFF319 /* SensorReading.swift in Sources */,

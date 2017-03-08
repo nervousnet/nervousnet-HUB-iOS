@@ -57,6 +57,27 @@ public class SensorReading {
     }
     
     
+    //Lewin: added this because it makes sense to have in order to push sensorrreadings in one line
+    
+    public init (sensorID : Int64,
+                 sensorName : String,
+                 parameterNames : [String],
+                 values: [Any]){
+        
+        self.sensorID = sensorID
+        self.sensorName = sensorName
+        self.parameterNames = parameterNames
+
+        if (values.count == parameterNames.count){
+            self.values = values
+        }
+        else {
+            self.values = [Any?](repeating: nil, count: parameterNames.count)
+        }
+    
+    }
+    
+    
     
     public func setValue(paramName: String, value : Any) -> Bool {
         

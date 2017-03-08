@@ -17,15 +17,88 @@ class CoreMotionSensor : BaseSensor {
     
     required public init(conf: BasicSensorConfiguration) {
         super.init(conf: conf)
+        startListener()
+    }
+
+    func onConfChanged (){
+        stopListener()
+        startListener()
+    }
+    
+    override func startListener() -> Bool {
         
-        motionManager.deviceMotionUpdateInterval = TimeInterval(super.configuration.samplingrate)
+        switch (configuration.sensorName.lowercased()){
+        case "accelerometer" :
+            motionManager.accelerometerUpdateInterval = TimeInterval(self.configuration.samplingrate)
+            motionManager.startAccelerometerUpdates(to: operationQueue, withHandler: accHandler)
+            return motionManager.isAccelerometerActive
 
-        motionManager.startAccelerometerUpdates(to: operationQueue, withHandler: accHandler)
+        case "gyroscope":
+            motionManager.gyroUpdateInterval = TimeInterval(self.configuration.samplingrate)
+            motionManager.startGyroUpdates(to: operationQueue, withHandler: gyrHandler)
+            return motionManager.isGyroActive
+
+        case "magnetometer":
+            motionManager.magnetometerUpdateInterval = TimeInterval(self.configuration.samplingrate)
+            motionManager.startMagnetometerUpdates(to: operationQueue, withHandler: magHandler)
+            return motionManager.isMagnetometerActive
+
+        default:
+            return false
+        }
+
     }
+    
+    override func stopListener() -> Bool {
+        
+        switch (configuration.sensorName.lowercased()){
+        case "accelerometer" :
+            motionManager.stopAccelerometerUpdates()
+            return !motionManager.isAccelerometerActive
+        case "gyroscope":
+            motionManager.stopGyroUpdates()
+            return !motionManager.isGyroActive
+        case "magnetometer":
+            motionManager.stopMagnetometerUpdates()
+            return !motionManager.isMagnetometerActive
+        default:
+            return false
+        }
 
+    }
+    
     func accHandler (data : CMAccelerometerData?, error: Error?) -> Void {
-        print(data.debugDescription)
+        if data != nil {
+            super.push(reading: SensorReading(sensorID: configuration.sensorID, sensorName: configuration.sensorName, parameterNames: ["accX", "accY", "accZ"], values: [data!.acceleration.x, data!.acceleration.y, data!.acceleration.z]))
+            print(data.debugDescription)
+        }
+        else {
+            super.push(reading: SensorReading(sensorID: configuration.sensorID, sensorName: configuration.sensorName, parameterNames: ["accX", "accY", "accZ"]))
+        }
     }
+    
+    func gyrHandler (data : CMGyroData?, error: Error?) -> Void {
+        if data != nil {
+            super.push(reading: SensorReading(sensorID: configuration.sensorID, sensorName: configuration.sensorName, parameterNames: ["gyrX", "gyrY", "gyrZ"], values: [data!.rotationRate.x , data!.rotationRate.y , data!.rotationRate.z ]))
+            print(data.debugDescription)
+        }
+        else {
+            super.push(reading: SensorReading(sensorID: configuration.sensorID, sensorName: configuration.sensorName, parameterNames: ["magX", "magY", "magZ"]))
+        }
+    }
+    
+    func magHandler (data : CMMagnetometerData?, error: Error?) -> Void {
+        if data != nil {
+            super.push(reading: SensorReading(sensorID: configuration.sensorID, sensorName: configuration.sensorName, parameterNames: ["gyrX", "gyrY", "gyrZ"], values: [data!.magneticField.x, data!.magneticField.y , data!.magneticField ]))
+            print(data.debugDescription)
+        }
+        else {
+            super.push(reading: SensorReading(sensorID: configuration.sensorID, sensorName: configuration.sensorName, parameterNames: ["magX", "magY", "magZ"]))
+        }
+    }
+
+    
+    
 }
 
 

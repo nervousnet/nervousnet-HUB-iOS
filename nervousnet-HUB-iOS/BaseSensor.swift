@@ -46,6 +46,7 @@ public class BaseSensor {
             nextSampling = reading.timestampEpoch! + self.configuration.samplingrate
             dataBaseHandler.store(reading: reading)
         }
+        
    
     }
    
