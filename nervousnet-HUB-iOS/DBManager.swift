@@ -184,7 +184,7 @@ class DBManager {
                     
                     switch(type) { //TODO: change strings to enum type?
                     case "int":
-                        let column = DBConstants.COLUMN_TYPE_INTEGER(withName: name)
+                        let column = DBConstants.COLUMN_TYPE_INT64(withName: name)
                         success = reading.setValue(paramName: name, value: row[column])
                     case "double":
                         let column = DBConstants.COLUMN_TYPE_REAL(withName: name)
@@ -278,7 +278,7 @@ class DBManager {
                             //construct setters
                             let v = values[i]
                             if v is Int64 {
-                                setter = (DBConstants.COLUMN_TYPE_INTEGER(withName: names[i]) <- v as! Int64)
+                                setter = (DBConstants.COLUMN_TYPE_INT64(withName: names[i]) <- v as! Int64)
                             }
                             else if v is Double {
                                 setter = (DBConstants.COLUMN_TYPE_REAL(withName: names[i]) <- v as! Double)
@@ -369,7 +369,7 @@ class DBManager {
                     
                         switch(type) { //TODO: change strings to enum type?
                         case "int":
-                            t.column(DBConstants.COLUMN_TYPE_INTEGER(withName: name))
+                            t.column(DBConstants.COLUMN_TYPE_INT64(withName: name))
                         case "double":
                             t.column(DBConstants.COLUMN_TYPE_REAL(withName: name))
                         case "String":
