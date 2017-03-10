@@ -18,6 +18,7 @@
 		071844C81E2653CC00FFF319 /* BatterySensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071844C71E2653CC00FFF319 /* BatterySensor.swift */; };
 		071844CA1E2653DB00FFF319 /* NoiseSensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071844C91E2653DB00FFF319 /* NoiseSensor.swift */; };
 		071844CC1E2654ED00FFF319 /* SensorReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071844CB1E2654ED00FFF319 /* SensorReading.swift */; };
+		07409A651E72CBFB0055AB6E /* NervousnetSpaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07409A641E72CBFB0055AB6E /* NervousnetSpaceTableViewController.swift */; };
 		0754182D1DE75A6B00327B41 /* SensorPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075418261DE75A6B00327B41 /* SensorPageViewController.swift */; };
 		0754182E1DE75A6B00327B41 /* RootTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075418271DE75A6B00327B41 /* RootTableViewController.swift */; };
 		0754182F1DE75A6B00327B41 /* AnalyticsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075418281DE75A6B00327B41 /* AnalyticsTableViewController.swift */; };
@@ -73,6 +74,7 @@
 		071844C71E2653CC00FFF319 /* BatterySensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatterySensor.swift; sourceTree = "<group>"; };
 		071844C91E2653DB00FFF319 /* NoiseSensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoiseSensor.swift; sourceTree = "<group>"; };
 		071844CB1E2654ED00FFF319 /* SensorReading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorReading.swift; sourceTree = "<group>"; };
+		07409A641E72CBFB0055AB6E /* NervousnetSpaceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NervousnetSpaceTableViewController.swift; sourceTree = "<group>"; };
 		075418261DE75A6B00327B41 /* SensorPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorPageViewController.swift; sourceTree = "<group>"; };
 		075418271DE75A6B00327B41 /* RootTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTableViewController.swift; sourceTree = "<group>"; };
 		075418281DE75A6B00327B41 /* AnalyticsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsTableViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				0754182C1DE75A6B00327B41 /* FrequencyTableViewCell.swift */,
 				22A68B001D92DD9B00E75C04 /* LaunchScreen.storyboard */,
 				075418341DE75B2300327B41 /* Main.storyboard */,
+				07409A641E72CBFB0055AB6E /* NervousnetSpaceTableViewController.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 				38DA7DB91E01953100D34864 /* DBConstants.swift in Sources */,
 				071844C01E26529C00FFF319 /* NNEvent.swift in Sources */,
 				383CAC281E0AB8840053BECB /* ClassDummies.swift in Sources */,
+				07409A651E72CBFB0055AB6E /* NervousnetSpaceTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
