@@ -46,8 +46,20 @@ class nervousnet_HUB_iOSTests: XCTestCase {
     func testDB() { // test functions need to have prefix 'test', take no parameters, and return void
         let dbManager = DBManager.sharedInstance
         
-        let config = GeneralSensorConfiguration(sensorID: 0, sensorName: "testSensor", parameterNames: ["x", "y","z"], parameterTypes: ["String", "String","int"])
+        let sID : Int64 = 0
+        let sName = "testSensor"
+        let paramNames = ["x", "y","z"]
+        let paramTypes = ["String", "String","int"]
+        
+        
+        let config = GeneralSensorConfiguration(sensorID: sID, sensorName: sName, parameterNames: paramNames, parameterTypes: paramTypes)
         do { try dbManager.createTableIfNotExists(config: config) } catch _ { print("creating table failed") }
+        for i : Int64 in 1...10 {
+            let reading = SensorReading(sensorID: sID, sensorName: sName, parameterNames: paramNames, values: ["test", "test", i])
+            let ts : Int64 = i + 1000
+            reading.timestampEpoch = ts
+            dbManager.store(reading: reading)
+        }
     }
     
     func testAxonController() {

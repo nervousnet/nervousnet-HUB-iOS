@@ -33,7 +33,7 @@ public class VM {
         for config in configManager.getAllConfigurations() {
             //TODO: if possible provide type BasicSensorConfiguration directly instead of forcing
             do {
-                try self.initSensor(withConfig: config as! BasicSensorConfiguration)
+                _ = try self.initSensor(withConfig: config as! BasicSensorConfiguration)
             } catch _ {
                 log.error("Initialization error")
             }
@@ -60,7 +60,7 @@ public class VM {
      */
     private func initSensor(withConfig config : BasicSensorConfiguration) throws -> BaseSensor {
         if let sensor = sensorMap[config.sensorID] {
-            sensor.stop()
+            _ = sensor.stop()
         } //MARK: if the sensor existed already, why proceed here?
         
         do {
@@ -133,7 +133,7 @@ public class VM {
     
     public func stopSensor(withID id : Int64) {
         if let sensor = sensorMap[id] {
-            sensor.stop()
+            _ = sensor.stop()
         }
     }
     
