@@ -25,6 +25,7 @@ import XCTest
 
 class nervousnet_HUB_iOSTests: XCTestCase {
     
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -43,7 +44,14 @@ class nervousnet_HUB_iOSTests: XCTestCase {
     
     
     func testDB() { // test functions need to have prefix 'test', take no parameters, and return void
+        let dbManager = DBManager.sharedInstance
         
+        let config = GeneralSensorConfiguration(sensorID: 0, sensorName: "testSensor", parameterNames: ["x", "y","z"], parameterTypes: ["String", "String","int"])
+        do { try dbManager.createTableIfNotExists(config: config) } catch _ { print("creating table failed") }
+    }
+    
+    func testAxonController() {
+        let axonServerController = AxonServerController()
     }
     
     func testPerformanceExample() {
