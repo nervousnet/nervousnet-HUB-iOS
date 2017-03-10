@@ -48,7 +48,7 @@ public class ConfigurationManager : iConfigurationManager {
     init () {
         
         configDict = [Int64:GeneralSensorConfiguration]()
-        stateDBManager = StateDBManager()
+        stateDBManager = StateDBManager.sharedInstance
         
     // Load default configuration from configuration file
         let loader : JSONConfigurationLoader = JSONConfigurationLoader()
@@ -59,7 +59,7 @@ public class ConfigurationManager : iConfigurationManager {
     for  conf in  confList {
         configDict[conf.sensorID] = conf
         do {
-            let state : Int = stateDBManager.getSensorState(sensorID: conf.sensorID)
+            let state : Int = try stateDBManager.getSensorState(sensorID: conf.sensorID)
             conf.setState(state: state)
         } catch{(error.localizedDescription)}
         
@@ -83,7 +83,15 @@ public class ConfigurationManager : iConfigurationManager {
     }
     
     func getNervousnetState() -> Int {
-        return stateDBManager.getNervousnetState()
+        // if retrieving the state fails, what to do?
+        do {
+            return try stateDBManager.getNervousnetState()
+        } catch _ {
+            log.error("unable to retrieve the required state information")
+            //TODO: should never happen? or, how to handle this? some default state?
+            //or further propagate the error where instances retrieving the state can react properly
+            fatalError()
+        }
     }
     
     func getSensorIDs() -> [Int64] {
