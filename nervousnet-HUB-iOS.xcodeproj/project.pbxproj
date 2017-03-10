@@ -18,6 +18,9 @@
 		071844C81E2653CC00FFF319 /* BatterySensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071844C71E2653CC00FFF319 /* BatterySensor.swift */; };
 		071844CA1E2653DB00FFF319 /* NoiseSensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071844C91E2653DB00FFF319 /* NoiseSensor.swift */; };
 		071844CC1E2654ED00FFF319 /* SensorReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071844CB1E2654ED00FFF319 /* SensorReading.swift */; };
+		07409A651E72CBFB0055AB6E /* NervousnetSpaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07409A641E72CBFB0055AB6E /* NervousnetSpaceTableViewController.swift */; };
+		07409A671E72D0ED0055AB6E /* old.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07409A661E72D0ED0055AB6E /* old.storyboard */; };
+		07409A691E72D47F0055AB6E /* AxonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07409A681E72D47F0055AB6E /* AxonDetailViewController.swift */; };
 		0754182D1DE75A6B00327B41 /* SensorPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075418261DE75A6B00327B41 /* SensorPageViewController.swift */; };
 		0754182E1DE75A6B00327B41 /* RootTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075418271DE75A6B00327B41 /* RootTableViewController.swift */; };
 		0754182F1DE75A6B00327B41 /* AnalyticsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075418281DE75A6B00327B41 /* AnalyticsTableViewController.swift */; };
@@ -73,6 +76,9 @@
 		071844C71E2653CC00FFF319 /* BatterySensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatterySensor.swift; sourceTree = "<group>"; };
 		071844C91E2653DB00FFF319 /* NoiseSensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoiseSensor.swift; sourceTree = "<group>"; };
 		071844CB1E2654ED00FFF319 /* SensorReading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorReading.swift; sourceTree = "<group>"; };
+		07409A641E72CBFB0055AB6E /* NervousnetSpaceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NervousnetSpaceTableViewController.swift; sourceTree = "<group>"; };
+		07409A661E72D0ED0055AB6E /* old.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = old.storyboard; sourceTree = "<group>"; };
+		07409A681E72D47F0055AB6E /* AxonDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AxonDetailViewController.swift; sourceTree = "<group>"; };
 		075418261DE75A6B00327B41 /* SensorPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorPageViewController.swift; sourceTree = "<group>"; };
 		075418271DE75A6B00327B41 /* RootTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTableViewController.swift; sourceTree = "<group>"; };
 		075418281DE75A6B00327B41 /* AnalyticsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsTableViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +142,7 @@
 		071844B11E264FD300FFF319 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				07409A661E72D0ED0055AB6E /* old.storyboard */,
 				075418261DE75A6B00327B41 /* SensorPageViewController.swift */,
 				075418271DE75A6B00327B41 /* RootTableViewController.swift */,
 				075418281DE75A6B00327B41 /* AnalyticsTableViewController.swift */,
@@ -145,6 +152,8 @@
 				0754182C1DE75A6B00327B41 /* FrequencyTableViewCell.swift */,
 				22A68B001D92DD9B00E75C04 /* LaunchScreen.storyboard */,
 				075418341DE75B2300327B41 /* Main.storyboard */,
+				07409A641E72CBFB0055AB6E /* NervousnetSpaceTableViewController.swift */,
+				07409A681E72D47F0055AB6E /* AxonDetailViewController.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -409,6 +418,7 @@
 				38B5214E1DEEECF7001015BF /* Assets in Resources */,
 				22A68B021D92DD9B00E75C04 /* LaunchScreen.storyboard in Resources */,
 				22A68AFF1D92DD9B00E75C04 /* Assets.xcassets in Resources */,
+				07409A671E72D0ED0055AB6E /* old.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,6 +498,7 @@
 				38DA7DB71E017CE500D34864 /* GeneralSensorConfiguration.swift in Sources */,
 				071844BA1E26514B00FFF319 /* JSONConfigurationLoader.swift in Sources */,
 				071844CA1E2653DB00FFF319 /* NoiseSensor.swift in Sources */,
+				07409A691E72D47F0055AB6E /* AxonDetailViewController.swift in Sources */,
 				0754182E1DE75A6B00327B41 /* RootTableViewController.swift in Sources */,
 				383CAC2A1E0ACF920053BECB /* VMConstants.swift in Sources */,
 				0754182F1DE75A6B00327B41 /* AnalyticsTableViewController.swift in Sources */,
@@ -509,6 +520,7 @@
 				38DA7DB91E01953100D34864 /* DBConstants.swift in Sources */,
 				071844C01E26529C00FFF319 /* NNEvent.swift in Sources */,
 				383CAC281E0AB8840053BECB /* ClassDummies.swift in Sources */,
+				07409A651E72CBFB0055AB6E /* NervousnetSpaceTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

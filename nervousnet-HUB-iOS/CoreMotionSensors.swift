@@ -9,6 +9,8 @@
 import Foundation
 import CoreMotion
 
+//This is the raw data. Apple offers some processing to remove known sources of noise, which we should discuss
+
 class CoreMotionSensor : BaseSensor {
     
     //Move these to the VM as singletons
