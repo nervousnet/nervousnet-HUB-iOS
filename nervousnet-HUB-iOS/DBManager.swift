@@ -18,6 +18,7 @@ class DBManager {
         case NoSuchElementException
         case DBConnectionError
         case NoSuchColumnException
+        case InvalidSensorReading
     }
     
     //DB manager as a singleton
@@ -26,11 +27,7 @@ class DBManager {
     
     
     //scheduler to periodicaly store values from cache, check function specified in selector
-    private let scheduler = Timer.scheduledTimer(timeInterval: 10, //seconds
-                                                 target: sharedInstance,
-                                                 selector: #selector(run),
-                                                 userInfo: nil,
-                                                 repeats: true)
+    private var scheduler = Timer()
     
     
     //cache
@@ -52,6 +49,8 @@ class DBManager {
             .documentDirectory, .userDomainMask, true
             ).first!
         
+        log.debug("path to DB is \(path)")
+
         
         do {
             DBCON = try Connection("\(path)/\(DBConstants.DB_NAME)")
@@ -61,6 +60,15 @@ class DBManager {
             log.severe("Failed to connect to the database, trying to proceed without")
             DBCON = nil
         }
+        
+        scheduler = Timer.scheduledTimer(timeInterval: 10, //seconds
+                    target: self,
+                    selector: #selector(run),
+                    userInfo: nil,
+                    repeats: true)
+        
+        
+        DBCON?.trace{log.info($0)} //callback object that prints every executed SQL statement
     }
     
     
@@ -234,8 +242,8 @@ class DBManager {
         LATEST_SENSOR_DATA[id] = reading
         
         //store value in TEMP_STORAGE in the correct list
-        if var list = TEMPORARY_STORAGE[id] {
-            list.append(reading)
+        if TEMPORARY_STORAGE[id] != nil {
+            TEMPORARY_STORAGE[id]?.append(reading)
         } else {
             TEMPORARY_STORAGE[id] = [reading]
         }
@@ -264,7 +272,7 @@ class DBManager {
                     for reading in readingList {
                         guard let values = reading.values, let names = reading.parameterNames, let ts = reading.timestampEpoch else {
                             log.error("SensorReading not configured correctly, values, parameter names or timestamp is empty")
-                            return
+                            throw DBError.InvalidSensorReading
                         }
                         
                         var setters : [Setter] = []
@@ -363,27 +371,27 @@ class DBManager {
                 t.column(DBConstants.COLUMN_ID, primaryKey: .autoincrement)
                 t.column(DBConstants.COLUMN_TIMESTAMP)
                 
-                for name in config.parameterNames {
-                    for type in config.parameterTypes{
-                    
-                    
-                        switch(type) { //TODO: change strings to enum type?
-                        case "int":
-                            t.column(DBConstants.COLUMN_TYPE_INT64(withName: name))
-                        case "double":
-                            t.column(DBConstants.COLUMN_TYPE_REAL(withName: name))
-                        case "String":
-                            t.column(DBConstants.COLUMN_TYPE_TEXT(withName: name))
-                        default:
-                            log.error("unexpected DB type. skipping creation of column")
-                            continue
-                        }
+                for (name, type) in zip(config.parameterNames, config.parameterTypes) {
+
+                    switch(type) { //TODO: change strings to enum type?
+                    case "int":
+                        t.column(DBConstants.COLUMN_TYPE_INT64(withName: name))
+                    case "double":
+                        t.column(DBConstants.COLUMN_TYPE_REAL(withName: name))
+                    case "String":
+                        t.column(DBConstants.COLUMN_TYPE_TEXT(withName: name))
+                    default:
+                        log.error("unexpected DB type. skipping creation of column")
+                        continue
                     }
+                
                 }
+ 
 
             })
             log.info("DB Table \(self.getTableName(config.sensorID)) available.")
-        } catch _ {
+        } catch {
+            log.error(error.localizedDescription)
             log.error("No DB connection - could not create new table.")
             throw DBError.DBConnectionError
         }
