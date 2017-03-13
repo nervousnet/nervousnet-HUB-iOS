@@ -14,7 +14,6 @@ class WebTestViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        testWebView.loadRequest(URLRequest(url: URL(string: "google.ca")!))
 
         // Do any additional setup after loading the view.
     }
