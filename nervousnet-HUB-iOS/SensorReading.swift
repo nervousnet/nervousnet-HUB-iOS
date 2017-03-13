@@ -37,20 +37,13 @@ public class SensorReading {
     
     
     
-    
-    
-    public init() {}
-
-    
-    
     public init(sensorID : Int64,
                 sensorName : String,
                 parameterNames : [String]) {
         self.sensorID = sensorID
         self.sensorName = sensorName
         self.parameterNames = parameterNames
-        
-        
+
         //not very nice way to create fixed size array of generic type
         //but the best i found in swift so far
         self.values = [Any?](repeating: nil, count: parameterNames.count)
@@ -62,7 +55,8 @@ public class SensorReading {
     public init (sensorID : Int64,
                  sensorName : String,
                  parameterNames : [String],
-                 values: [Any]){
+                 values: [Any],
+                 timestamp: Int64){
         
         self.sensorID = sensorID
         self.sensorName = sensorName
@@ -74,7 +68,8 @@ public class SensorReading {
         else {
             self.values = [Any?](repeating: nil, count: parameterNames.count)
         }
-    
+        
+        self.timestampEpoch = timestamp
     }
     
     

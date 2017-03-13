@@ -90,6 +90,7 @@ public class ConfigurationManager : iConfigurationManager {
             log.error("unable to retrieve the required state information")
             //TODO: should never happen? or, how to handle this? some default state?
             //or further propagate the error where instances retrieving the state can react properly
+            
             fatalError()
         }
     }

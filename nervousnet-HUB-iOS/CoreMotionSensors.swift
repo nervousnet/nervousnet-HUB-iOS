@@ -70,9 +70,16 @@ class CoreMotionSensor : BaseSensor {
     }
     
     func accHandler (data : CMAccelerometerData?, error: Error?) -> Void {
+        print(data.debugDescription)
+        
+        let timestamp = getTimeStampMilliseconds()
+        
         if data != nil {
-            super.push(reading: SensorReading(sensorID: configuration.sensorID, sensorName: configuration.sensorName, parameterNames: ["accX", "accY", "accZ"], values: [data!.acceleration.x, data!.acceleration.y, data!.acceleration.z]))
-            print(data.debugDescription)
+            let x = data!.acceleration.x
+            let y = data!.acceleration.y
+            let z = data!.acceleration.z
+            
+            super.push(reading: SensorReading(sensorID: configuration.sensorID, sensorName: configuration.sensorName, parameterNames: ["accX", "accY", "accZ"], values: [x, y, z], timestamp: timestamp))
         }
         else {
             super.push(reading: SensorReading(sensorID: configuration.sensorID, sensorName: configuration.sensorName, parameterNames: ["accX", "accY", "accZ"]))
@@ -80,9 +87,11 @@ class CoreMotionSensor : BaseSensor {
     }
     
     func gyrHandler (data : CMGyroData?, error: Error?) -> Void {
+        
+        let timestamp = getTimeStampMilliseconds()
+        
         if data != nil {
-            super.push(reading: SensorReading(sensorID: configuration.sensorID, sensorName: configuration.sensorName, parameterNames: ["gyrX", "gyrY", "gyrZ"], values: [data!.rotationRate.x , data!.rotationRate.y , data!.rotationRate.z ]))
-            print(data.debugDescription)
+            super.push(reading: SensorReading(sensorID: configuration.sensorID, sensorName: configuration.sensorName, parameterNames: ["gyrX", "gyrY", "gyrZ"], values: [data!.rotationRate.x , data!.rotationRate.y , data!.rotationRate.z ], timestamp: timestamp))
         }
         else {
             super.push(reading: SensorReading(sensorID: configuration.sensorID, sensorName: configuration.sensorName, parameterNames: ["magX", "magY", "magZ"]))
@@ -90,15 +99,21 @@ class CoreMotionSensor : BaseSensor {
     }
     
     func magHandler (data : CMMagnetometerData?, error: Error?) -> Void {
+        
+        let timestamp = getTimeStampMilliseconds()
+        
+        
         if data != nil {
-            super.push(reading: SensorReading(sensorID: configuration.sensorID, sensorName: configuration.sensorName, parameterNames: ["gyrX", "gyrY", "gyrZ"], values: [data!.magneticField.x, data!.magneticField.y , data!.magneticField ]))
-            print(data.debugDescription)
+            super.push(reading: SensorReading(sensorID: configuration.sensorID, sensorName: configuration.sensorName, parameterNames: ["gyrX", "gyrY", "gyrZ"], values: [data!.magneticField.x, data!.magneticField.y , data!.magneticField ], timestamp: timestamp))
         }
         else {
             super.push(reading: SensorReading(sensorID: configuration.sensorID, sensorName: configuration.sensorName, parameterNames: ["magX", "magY", "magZ"]))
         }
     }
 
+    private func getTimeStampMilliseconds() -> Int64 {
+        return Int64((Date.timeIntervalBetween1970AndReferenceDate + Date.timeIntervalSinceReferenceDate) * 1000)
+    }
     
     
 }

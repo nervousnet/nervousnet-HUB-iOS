@@ -151,9 +151,9 @@ class DBManager {
     public func getReadings(with config : GeneralSensorConfiguration,
                             using query : Table,
                             columns : [String]? = nil) throws -> [SensorReading] {
-        
+
+        var resultList : [SensorReading] = []
         do {
-            var resultList : [SensorReading] = []
             
             guard let db = DBCON else {
                 log.error("No DB connection - could not fetch readings.")
@@ -201,7 +201,7 @@ class DBManager {
                         let column = DBConstants.COLUMN_TYPE_TEXT(withName: name)
                         success = reading.setValue(paramName: name, value: row[column])
                     default:
-                        log.error("unexpected DB type. skipping creation of column")
+                        log.error("unexpected DB type. unable to retrieve value")
                         continue
                     }
                     
@@ -214,12 +214,11 @@ class DBManager {
                 resultList.append(reading)
             }
             
-            log.info("Removed old entires in DB Table \(self.getTableName(config.sensorID)).")
         } catch {
             log.error("No DB connection - could not fetch readings.")
             throw DBError.DBConnectionError
         }
-        return []
+        return resultList
     }
 
     
@@ -330,7 +329,7 @@ class DBManager {
         
         do {
             try DBCON?.run(oldEntries.delete())
-            log.info("Removed old entires in DB Table \(self.getTableName(sensorID)).")
+            log.info("Removed old entries in DB Table \(self.getTableName(sensorID)).")
         } catch {
             log.error("No DB connection - could not drop old Readings.")
             throw DBError.DBConnectionError
