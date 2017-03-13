@@ -28,6 +28,7 @@
 		075418321DE75A6B00327B41 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0754182B1DE75A6B00327B41 /* SettingsTableViewCell.swift */; };
 		075418331DE75A6B00327B41 /* FrequencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0754182C1DE75A6B00327B41 /* FrequencyTableViewCell.swift */; };
 		075418351DE75B2300327B41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 075418341DE75B2300327B41 /* Main.storyboard */; };
+		0794371D1E76E3B5009DDBEF /* WebTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794371C1E76E3B5009DDBEF /* WebTestViewController.swift */; };
 		07CADB0C1E6EE32C002F1DCE /* CoreMotionSensors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CADB0B1E6EE32C002F1DCE /* CoreMotionSensors.swift */; };
 		22A68AF41D92DD9B00E75C04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A68AF31D92DD9B00E75C04 /* AppDelegate.swift */; };
 		22A68AFF1D92DD9B00E75C04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22A68AFE1D92DD9B00E75C04 /* Assets.xcassets */; };
@@ -85,6 +86,7 @@
 		0754182B1DE75A6B00327B41 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		0754182C1DE75A6B00327B41 /* FrequencyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrequencyTableViewCell.swift; sourceTree = "<group>"; };
 		075418341DE75B2300327B41 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		0794371C1E76E3B5009DDBEF /* WebTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebTestViewController.swift; sourceTree = "<group>"; };
 		07CADB0B1E6EE32C002F1DCE /* CoreMotionSensors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreMotionSensors.swift; sourceTree = "<group>"; };
 		09683561BDEECD42E5A4EE5F /* Pods_nervousnet_HUB_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nervousnet_HUB_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		22A68AF01D92DD9B00E75C04 /* nervousnet-HUB-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "nervousnet-HUB-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,6 +153,7 @@
 				075418341DE75B2300327B41 /* Main.storyboard */,
 				07409A641E72CBFB0055AB6E /* NervousnetSpaceTableViewController.swift */,
 				07409A681E72D47F0055AB6E /* AxonDetailViewController.swift */,
+				0794371C1E76E3B5009DDBEF /* WebTestViewController.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 				071844C61E2653B900FFF319 /* BaseSensor.swift in Sources */,
 				38DA7DB91E01953100D34864 /* DBConstants.swift in Sources */,
 				071844C01E26529C00FFF319 /* NNEvent.swift in Sources */,
+				0794371D1E76E3B5009DDBEF /* WebTestViewController.swift in Sources */,
 				383CAC281E0AB8840053BECB /* ClassDummies.swift in Sources */,
 				07409A651E72CBFB0055AB6E /* NervousnetSpaceTableViewController.swift in Sources */,
 			);
