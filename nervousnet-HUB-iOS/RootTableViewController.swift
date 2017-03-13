@@ -87,6 +87,27 @@ class RootTableViewController: UITableViewController {
     
     func titlePressed (sender: UIButton!){
         print("Hello, it worked")
+        
+        
+        
+        let dbManager = DBManager.sharedInstance
+        
+        let sID : Int64 = 6544654
+        let sName = "accelerometer"
+        let paramNames = ["accX", "accY","accZ"]
+        let paramTypes = ["double", "double", "double"]
+        
+        //let vm = VM() //TODO: initializing needs to handle DB connections (make sure they are available)
+        
+        let config = BasicSensorConfiguration(sensorID: sID, sensorName: sName, parameterNames: paramNames,
+                                              parameterTypes: paramTypes, samplingrates: [1, 2, 3], state: 1)
+        
+        
+        let list = try! dbManager.getReadings(with: config)
+        
+        for r in list {
+            log.debug("\(r.values?.debugDescription)")
+        }
     }
     
     /*

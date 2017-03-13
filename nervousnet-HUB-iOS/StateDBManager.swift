@@ -35,7 +35,8 @@ class StateDBManager {
             .documentDirectory, .userDomainMask, true
             ).first!
         
-        
+        log.debug("path to DB is \(path)")
+
         do {
             DBCON = try Connection("\(path)/\(DBConstants.CONFIG_DATABASE_NAME)")
             log.info("Database connection established")
@@ -44,6 +45,8 @@ class StateDBManager {
             log.severe("Failed to connect to the database, trying to proceed without")
             DBCON = nil
         }
+        
+        DBCON?.trace{log.info($0)} //callback object that prints every executed SQL statement
     }
     
     

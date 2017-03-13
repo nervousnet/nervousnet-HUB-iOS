@@ -164,7 +164,6 @@
 				071844B71E26512400FFF319 /* Constants.swift */,
 				38DA7DB61E017CE500D34864 /* GeneralSensorConfiguration.swift */,
 				071844B91E26514B00FFF319 /* JSONConfigurationLoader.swift */,
-				071844BB1E26516200FFF319 /* StateDBManager.swift */,
 				071844BD1E2651D300FFF319 /* iConfigurationManager.swift */,
 			);
 			name = configuration;
@@ -277,6 +276,7 @@
 		38DA7DB51E0172FC00D34864 /* database */ = {
 			isa = PBXGroup;
 			children = (
+				071844BB1E26516200FFF319 /* StateDBManager.swift */,
 				38DA7DB21E0172F000D34864 /* DBManager.swift */,
 				38DA7DB81E01953100D34864 /* DBConstants.swift */,
 			);
