@@ -28,10 +28,10 @@ public class JSONConfigurationLoader {
         var list = [BasicSensorConfiguration]()
         do{
             if let json = try JSONSerialization.jsonObject(with: data, options: []) as Any?{
-                //print(json)
+                //log.debug(json)
                 if let dictionary = json as? [String: Any] {
                     
-                    //print(dictionary["sensors_configurations"] as! [Any])
+                    //log.debug(dictionary["sensors_configurations"] as! [Any])
                     
                     if let sensorConfList = dictionary["sensors_configurations"] as? [Any] {
                         
@@ -42,64 +42,64 @@ public class JSONConfigurationLoader {
                             
                             
                             if let sensorID = sensorConf ["sensorID"] as? Int64{
-                                print("sensorID is", sensorID)
+                                log.debug("sensorID is \(sensorID)")
                                 values["sensorID"] = sensorID
                             }
                             else {
-                                print("no ID")
+                                log.debug("no ID")
                                 values["sensorID"] = -1 as! Int64
                             }
                             
                             if let sensorName = sensorConf["sensorName"] as? String{
-                                print("sensorName is", sensorName)
+                                log.debug("sensorName is \(sensorName)")
                                 values["sensorName"] = sensorName
                             }
                             else {
-                                print("no Name")
+                                log.debug("no Name")
                                 values["sensorName"] = "-1"
                             }
                             
                             if let parameterNames = sensorConf["parametersNames"] as? [String] {
-                                print("parameterNames are", parameterNames)
+                                log.debug("parameterNames are \(parameterNames)")
                                 values["parameterNames"] = parameterNames
                             }
                             else {
-                                print("no parameterNames")
+                                log.debug("no parameterNames")
                                 values["parameterNames"] = ["-1"]
                             }
                             
                             if let parameterTypes = sensorConf["parametersTypes"] as? [String]{
-                                print("parameterTypes are", parameterTypes)
+                                log.debug("parameterTypes are \(parameterTypes)")
                                 values["parameterTypes"] = parameterTypes
                             }
                                 
                             else {
-                                print("no parameterTypes")
+                                log.debug("no parameterTypes")
                                 values["parameterTypes"] = ["-1"]
                             }
                             
                             if let samplingrates = sensorConf["samplingRates"] as? [Int64]{
-                                print("samplingRates are", samplingrates)
+                                log.debug("samplingRates are \(samplingrates)")
                                 values["samplingRates"] = samplingrates
                             }
                             else {
-                                print("no samplingrates")
+                                log.debug("no samplingrates")
                                 values["samplingRates"] = [-1] as! [Int64]
                             }
                             
                             if let state = sensorConf["initialState"] as? Int {
-                                print("state is", state)
+                                log.debug("state is \(state)")
                                 values["state"] = state
                             }
                                 
                             else {
-                                print("no state")
+                                log.debug("no state")
                                 values["state"] = -1 as! Int
                             }
                             
                             
                             
-                            print("creating Object")
+                            log.debug("creating Object")
                             
                             list.append(BasicSensorConfiguration(sensorID: values["sensorID"] as! Int64, sensorName: values["sensorName"] as! String, parameterNames: values["parameterNames"] as! [String], parameterTypes: values["parameterTypes"] as! [String], samplingrates: values["samplingRates"] as! [Int64], state: values["state"] as! Int))
                         }
@@ -107,7 +107,7 @@ public class JSONConfigurationLoader {
                 }
             }
             else {
-                print("not a valid format")
+                log.debug("not a valid format")
             }
         }catch{(error.localizedDescription)}
         
@@ -123,11 +123,11 @@ public class JSONConfigurationLoader {
             if let file = Bundle.main.url(forResource: CONF_FILE_NAME, withExtension: "json") {
                 let data = try Data(contentsOf: file)
                 list = self.load(data: data)
-                //print(json)
+                //log.debug(json)
                
             }
             else {
-                print("no file")
+                log.debug("no file")
             }
         }catch{(error.localizedDescription)}
         
@@ -142,11 +142,11 @@ public class JSONConfigurationLoader {
             if let data = try Data(base64Encoded: strJson) {
                 
                 list = self.load(data : data)
-                //print(json)
+                //log.debug(json)
                 
             }
             else {
-                print("not a Valid Data Format")
+                log.debug("not a Valid Data Format")
             }
         }catch{(error.localizedDescription)}
         

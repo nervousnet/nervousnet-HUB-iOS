@@ -76,7 +76,7 @@ class FrequencyTableViewController: UITableViewController {
 //    }
     
     func titlePressed (sender: UIButton!){
-        print("Hello, it worked")
+        log.debug("Hello, it worked")
     }
     
     /*

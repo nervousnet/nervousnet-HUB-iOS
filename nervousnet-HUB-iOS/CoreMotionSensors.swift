@@ -70,7 +70,7 @@ class CoreMotionSensor : BaseSensor {
     }
     
     func accHandler (data : CMAccelerometerData?, error: Error?) -> Void {
-        print(data.debugDescription)
+        log.debug(data.debugDescription)
         
         let timestamp = getTimeStampMilliseconds()
         
@@ -136,7 +136,7 @@ class CoreMotionSensor : BaseSensor {
 //    }
 //    
 //    func accHandler (data : CMAccelerometerData?, error: Error?) -> Void {
-//        print(data.debugDescription + "was actually measured")
+//        log.debug(data.debugDescription + "was actually measured")
 //    }
 //    
 //    
