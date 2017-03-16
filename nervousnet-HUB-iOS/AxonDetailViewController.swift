@@ -25,8 +25,8 @@ class AxonDetailViewController: UIViewController {
         super.viewDidLoad()
         
         
-        print("opened details of: ")
-        print(axon[0])
+        log.debug("opened details of: ")
+        log.debug(self.axon[0])
         
         //let arrayOfStrings: [String] = [axon["name"].stringValue, axon["title"].stringValue, axon["description"].stringValue, axon["icon"].stringValue, axon["repository"]["url"].stringValue, axon["author"].stringValue]
         
@@ -67,7 +67,7 @@ class AxonDetailViewController: UIViewController {
      */
 
     @IBAction func downloadPressed(_ sender: UIButton) {
-        print("downloadPressed")
+        log.debug("downloadPressed")
 //        switch (sender.titleLabel!.text!) {
 //            
 //            case "download":
@@ -78,9 +78,9 @@ class AxonDetailViewController: UIViewController {
 //            dispatch_async(dispatch_get_global_queue(priority, 0)) {
 //                
 //                if(AxonStore.downloadAndInstall(AxonStore.getRemoteAxonIndexByName(self.axon[0]))){
-//                    print("installed successfully")
+//                    log.debug("installed successfully")
 //                }else{
-//                    print("couldn't install")
+//                    log.debug("couldn't install")
 //                }
 //                
 //                dispatch_async(dispatch_get_main_queue()) {
@@ -91,7 +91,7 @@ class AxonDetailViewController: UIViewController {
 //            
 //            break;
 //        case PKDownloadButtonState.Downloading:
-//            print("cancelling download not yet implemented")
+//            log.debug("cancelling download not yet implemented")
 //            break;
 //            
 //            
@@ -100,8 +100,8 @@ class AxonDetailViewController: UIViewController {
 //            
 //            //remove the axon from device
 //            if(AxonStore.removeLocalAxon(axon[0])){
-//                print("removed axon:")
-//                print(axon[0])
+//                log.debug("removed axon:")
+//                log.debug(axon[0])
 //            }
 //            
 //            

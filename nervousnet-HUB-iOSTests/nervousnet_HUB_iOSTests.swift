@@ -62,18 +62,19 @@ class nervousnet_HUB_iOSTests: XCTestCase {
         XCTAssertEqual(0, x1.count)
 
         
-        var reading = SensorReading()
+        var reading : SensorReading?
         for i : Int64 in 1...10 {
-            reading = SensorReading(sensorID: sID, sensorName: sName, parameterNames: paramNames, values: ["test", "test", i])
             let ts : Int64 = i + 1000
-            reading.timestampEpoch = ts
-            dbManager.store(reading: reading)
+            
+            reading = SensorReading(sensorID: sID, sensorName: sName, parameterNames: paramNames, values: ["test", "test", i], timestamp: ts)
+
+            dbManager.store(reading: reading!)
         }
         
         
         
         let latest = try! dbManager.getLatestReading(sensorID: sID)
-        XCTAssertEqual(latest.values![2] as! Int64, reading.values![2] as! Int64)
+        XCTAssertEqual(latest.values![2] as! Int64, reading!.values![2] as! Int64)
         
         
         let x2 = try! dbManager.getReadings(with: config)
