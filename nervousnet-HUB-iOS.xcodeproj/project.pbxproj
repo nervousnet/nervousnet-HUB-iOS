@@ -30,6 +30,7 @@
 		075418351DE75B2300327B41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 075418341DE75B2300327B41 /* Main.storyboard */; };
 		0794371D1E76E3B5009DDBEF /* WebTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794371C1E76E3B5009DDBEF /* WebTestViewController.swift */; };
 		07CADB0C1E6EE32C002F1DCE /* CoreMotionSensors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CADB0B1E6EE32C002F1DCE /* CoreMotionSensors.swift */; };
+		07DB50991E7AEA76002936FE /* CoreLocationSensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DB50981E7AEA76002936FE /* CoreLocationSensor.swift */; };
 		22A68AF41D92DD9B00E75C04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A68AF31D92DD9B00E75C04 /* AppDelegate.swift */; };
 		22A68AFF1D92DD9B00E75C04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22A68AFE1D92DD9B00E75C04 /* Assets.xcassets */; };
 		22A68B021D92DD9B00E75C04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22A68B001D92DD9B00E75C04 /* LaunchScreen.storyboard */; };
@@ -88,6 +89,7 @@
 		075418341DE75B2300327B41 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		0794371C1E76E3B5009DDBEF /* WebTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebTestViewController.swift; sourceTree = "<group>"; };
 		07CADB0B1E6EE32C002F1DCE /* CoreMotionSensors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreMotionSensors.swift; sourceTree = "<group>"; };
+		07DB50981E7AEA76002936FE /* CoreLocationSensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreLocationSensor.swift; sourceTree = "<group>"; };
 		09683561BDEECD42E5A4EE5F /* Pods_nervousnet_HUB_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nervousnet_HUB_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		22A68AF01D92DD9B00E75C04 /* nervousnet-HUB-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "nervousnet-HUB-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22A68AF31D92DD9B00E75C04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				071844C71E2653CC00FFF319 /* BatterySensor.swift */,
 				071844C91E2653DB00FFF319 /* NoiseSensor.swift */,
 				07CADB0B1E6EE32C002F1DCE /* CoreMotionSensors.swift */,
+				07DB50981E7AEA76002936FE /* CoreLocationSensor.swift */,
 			);
 			name = sensors;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 				071844BE1E2651D300FFF319 /* iConfigurationManager.swift in Sources */,
 				071844BC1E26516200FFF319 /* StateDBManager.swift in Sources */,
 				075418321DE75A6B00327B41 /* SettingsTableViewCell.swift in Sources */,
+				07DB50991E7AEA76002936FE /* CoreLocationSensor.swift in Sources */,
 				38DA7DB31E0172F000D34864 /* DBManager.swift in Sources */,
 				071844B61E26510900FFF319 /* ConfigurationManager.swift in Sources */,
 				071844C81E2653CC00FFF319 /* BatterySensor.swift in Sources */,

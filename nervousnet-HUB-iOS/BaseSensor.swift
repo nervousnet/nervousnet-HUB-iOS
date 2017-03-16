@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class BaseSensor {
+public class BaseSensor : NSObject {
     
     let LOG_TAG = String(describing: type(of: BaseSensor.self))
 

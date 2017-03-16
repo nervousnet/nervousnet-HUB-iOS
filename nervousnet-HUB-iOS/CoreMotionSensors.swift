@@ -13,7 +13,7 @@ import CoreMotion
 
 class CoreMotionSensor : BaseSensor {
     
-    //Move these to the VM as singletons
+    //TODO: Move these to the VM as singletons
     let motionManager = CMMotionManager()
     let operationQueue = OperationQueue.init()
     
