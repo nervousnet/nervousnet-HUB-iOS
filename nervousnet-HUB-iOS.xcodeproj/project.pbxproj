@@ -28,6 +28,7 @@
 		075418321DE75A6B00327B41 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0754182B1DE75A6B00327B41 /* SettingsTableViewCell.swift */; };
 		075418331DE75A6B00327B41 /* FrequencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0754182C1DE75A6B00327B41 /* FrequencyTableViewCell.swift */; };
 		075418351DE75B2300327B41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 075418341DE75B2300327B41 /* Main.storyboard */; };
+		07604C711E7ED4AD004CDFCA /* locationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07604C701E7ED4AD004CDFCA /* locationTest.swift */; };
 		0794371D1E76E3B5009DDBEF /* WebTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794371C1E76E3B5009DDBEF /* WebTestViewController.swift */; };
 		07CADB0C1E6EE32C002F1DCE /* CoreMotionSensors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CADB0B1E6EE32C002F1DCE /* CoreMotionSensors.swift */; };
 		07DB50991E7AEA76002936FE /* CoreLocationSensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DB50981E7AEA76002936FE /* CoreLocationSensor.swift */; };
@@ -87,6 +88,7 @@
 		0754182B1DE75A6B00327B41 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		0754182C1DE75A6B00327B41 /* FrequencyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrequencyTableViewCell.swift; sourceTree = "<group>"; };
 		075418341DE75B2300327B41 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		07604C701E7ED4AD004CDFCA /* locationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = locationTest.swift; sourceTree = "<group>"; };
 		0794371C1E76E3B5009DDBEF /* WebTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebTestViewController.swift; sourceTree = "<group>"; };
 		07CADB0B1E6EE32C002F1DCE /* CoreMotionSensors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreMotionSensors.swift; sourceTree = "<group>"; };
 		07DB50981E7AEA76002936FE /* CoreLocationSensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreLocationSensor.swift; sourceTree = "<group>"; };
@@ -144,8 +146,8 @@
 		071844B11E264FD300FFF319 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				075418261DE75A6B00327B41 /* SensorPageViewController.swift */,
 				075418271DE75A6B00327B41 /* RootTableViewController.swift */,
+				075418261DE75A6B00327B41 /* SensorPageViewController.swift */,
 				075418281DE75A6B00327B41 /* AnalyticsTableViewController.swift */,
 				075418291DE75A6B00327B41 /* SettingsTableViewController.swift */,
 				0754182A1DE75A6B00327B41 /* FrequencyTableViewController.swift */,
@@ -238,6 +240,7 @@
 		22A68B0B1D92DD9B00E75C04 /* nervousnet-HUB-iOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				07604C701E7ED4AD004CDFCA /* locationTest.swift */,
 				22A68B0C1D92DD9B00E75C04 /* nervousnet_HUB_iOSTests.swift */,
 				22A68B0E1D92DD9B00E75C04 /* Info.plist */,
 			);
@@ -532,6 +535,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07604C711E7ED4AD004CDFCA /* locationTest.swift in Sources */,
 				22A68B0D1D92DD9B00E75C04 /* nervousnet_HUB_iOSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -607,7 +611,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -646,7 +650,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -662,7 +666,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "nervousnet-HUB-iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ch.ethz.coss.nervousnet-HUB-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -679,7 +683,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "nervousnet-HUB-iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ch.ethz.coss.nervousnet-HUB-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";

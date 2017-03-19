@@ -15,6 +15,7 @@ enum CoreLocationError : Error {
 
 //This is the raw data. Apple offers some processing to remove known sources of noise, which we should discuss
 
+@available(iOS 10.0, *)
 class CoreLocationSensor : BaseSensor, CLLocationManagerDelegate {
     
     //TODO: Move these to the VM as singletons
@@ -22,7 +23,10 @@ class CoreLocationSensor : BaseSensor, CLLocationManagerDelegate {
     
     let operationQueue = OperationQueue.init()
     
-    var authorizationStatus : CLAuthorizationStatus
+    var authorizationStatus : CLAuthorizationStatus = CLAuthorizationStatus.notDetermined
+    
+    var timer : Timer = Timer.init()
+    
     
     required public init (conf: BasicSensorConfiguration) {
         super.init(conf: conf)
@@ -46,32 +50,30 @@ class CoreLocationSensor : BaseSensor, CLLocationManagerDelegate {
         locationManager.delegate? = self
         if authorizationStatus == CLAuthorizationStatus.notDetermined{
             locationManager.requestAlwaysAuthorization()
+                locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+                timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(super.configuration.samplingrate), repeats: true, block: {timer in self.locationManager.requestLocation()})
             
         }
-                
+        return false
     }
     
     override func stopListener() -> Bool {
         
-        switch (configuration.sensorName.lowercased()){
-        
-        default:
-            return false
-        }
-    
+        timer.invalidate()
+        return false
     }
     
-    func locHandler (data : CLLocation?, error: Error?) -> Void {
+    func locHandler (data : CLLocation?, time : Date, error: Error?) -> Void {
         log.debug(data.debugDescription)
         
-        let timestamp = getTimeStampMilliseconds()
+        let timestamp = time.timeIntervalSince1970 * 1000
         
         if data != nil {
-            let lat = data!
-            let long = data!
-            let speed = data!
-            
-            super.push(reading: SensorReading(sensorID: configuration.sensorID, sensorName: configuration.sensorName, parameterNames: ["latitude", "longitude", "speed"], values: [lat, long, speed], timestamp: timestamp))
+            let lat = data!.coordinate.latitude
+            let long = data!.coordinate.longitude
+            let speed = data!.speed
+            print(lat, long, speed)
+            super.push(reading: SensorReading(sensorID: configuration.sensorID, sensorName: configuration.sensorName, parameterNames: ["latitude", "longitude", "speed"], values: [lat, long, speed], timestamp: Int64(timestamp)))
         }
         else {
             super.push(reading: SensorReading(sensorID: configuration.sensorID, sensorName: configuration.sensorName, parameterNames: ["latitude", "longitude", "speed"]))
@@ -80,55 +82,57 @@ class CoreLocationSensor : BaseSensor, CLLocationManagerDelegate {
     
   
     
-    private func getTimeStampMilliseconds() -> Int64 {
-        return Int64((Date.timeIntervalBetween1970AndReferenceDate + Date.timeIntervalSinceReferenceDate) * 1000)
-    }
     
     //Delegate
     
+    func locationManager (didupdateLocations : [CLLocation]){
+        print("wtf is this?")
+    }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
+        for location in locations {
+            locHandler(data: location, time : location.timestamp, error: nil)
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        <#code#>
+        locHandler(data: nil, time: Date.init(), error: error)
     }
     
     func locationManager(_ manager: CLLocationManager, didFinishDeferredUpdatesWithError error: Error?) {
-        <#code#>
+        
     }
     
     func locationManagerDidPauseLocationUpdates(_ manager: CLLocationManager, didUPdateTo: CLLocation, from: CLLocation) {
-        <#code#>
+        
     }
     
     func locationManagerDidPauseLocationUpdates(_ manager: CLLocationManager) {
-        <#code#>
+        
     }
     
     func locationManagerDidResumeLocationUpdates(_ manager: CLLocationManager) {
-        <#code#>
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-        <#code#>
+     
     }
     
     func locationManagerShouldDisplayHeadingCalibration(_ manager: CLLocationManager) -> Bool {
-        <#code#>
+         return false
     }
     
     func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for region: CLRegion) {
-        <#code#>
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        <#code#>
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-        <#code#>
+        
     }
     
     
@@ -136,27 +140,27 @@ class CoreLocationSensor : BaseSensor, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, monitoringDidFailFor region: CLRegion?, withError error: Error) {
-        <#code#>
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
-        <#code#>
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
-        <#code#>
+        
     }
     
     func locationManager(_ manager: CLLocationManager, rangingBeaconsDidFailFor region: CLBeaconRegion, withError error: Error) {
-        <#code#>
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didVisit visit: CLVisit) {
-        <#code#>
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        <#code#>
+        
     }
     
     
