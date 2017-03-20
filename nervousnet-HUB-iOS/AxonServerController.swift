@@ -64,8 +64,9 @@ class AxonServerController {
      * /PATH_AXON_API/historic-sensor-data  serves sensor data from a timespan (check below for more info)
      */
     
-    let PATH_AXON_API = "axon-api"
-    let PATH_AXON_RES = "axon-res"
+    
+    //TODO: new path mapping, implement in axons?
+    let PATH_AXON_API = "nervousnet-api"
     
     private func mapAxonHTTPServerRoutes(){
         
@@ -83,7 +84,8 @@ class AxonServerController {
         
         
         // route to get static resources like JS, HTML or assets provided by nervous
-        self.server.GET["/\(PATH_AXON_RES)/static/:resource"] = { request in
+        self.server.GET["/nervousnet-axon-resources/:resource"] = { request in
+            //want: axon-res/static/:resource
             
             if let filename = request.params[":resource"] {
                 return self.returnRawResponse("\(self.axonResourceDir)\(filename)");
@@ -94,7 +96,8 @@ class AxonServerController {
         
         
         // route to get any axon resource
-        self.server.GET["/\(PATH_AXON_RES)/:axonname/:resource"] = { request in
+        self.server.GET["/axon-res/:axonname/:resource"] = { request in
+            //want: axon-res/:axonname/:resource
             if let filename = request.params[":resource"], let axonname = request.params[":axonname"] {
                 return self.returnRawResponse("\(self.axonDir)/\(axonname)/\(axonname)-master/\(filename)");
             }
@@ -110,8 +113,20 @@ class AxonServerController {
         /// query parameter:    axon (String)
         /// e.g.: localhost:8080/axon-api/raw-sensor-data?axon=gps
         ///
-        self.server.GET["/\(PATH_AXON_API)/raw-sensor-data"] = { request in
+        self.server.GET["/\(PATH_AXON_API)/raw-sensor-data/:name"] = { request in
+            //want: axon-api/raw-sensor-data/
             
+            
+            if let axon = request.params[":name"] {
+                
+                let dataDict = self.getSensorDataFor(axon: axon)
+                
+                log.info("serving request from axon \(axon)")
+                return .ok(.json(dataDict))
+                
+            }
+            
+            /*
             if let axon = self.parseRawRequest(queryParams: request.queryParams) {
                 
                 let dataDict = self.getSensorDataFor(axon: axon)
@@ -119,6 +134,7 @@ class AxonServerController {
                 return .ok(.json(dataDict))
 
             }
+            */
             
             return .badRequest(.text("Querry parameters badly formated"))
             
@@ -234,9 +250,12 @@ class AxonServerController {
             
         }
         
+        /* MARK: how do we know the expected data format, tied to the requested sensor?? load from config??
+         config does unfortunately not easily map axon-name to config */
         //TODO connect above if clause to actual sensor layer, convert to json
         pseudoSensorData += 1
         return ["data": pseudoSensorData]
+        //return ["data": ["lat": 47.3779847, "long": 8.5486214]]
     }
     
     

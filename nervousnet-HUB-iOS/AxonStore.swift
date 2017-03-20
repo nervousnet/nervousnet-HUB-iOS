@@ -67,7 +67,11 @@ class AxonStore : NSObject {
         //Get documents directory URL
         let fileManager = FileManager.default
         let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
-        let sourceUrl = NSURL(string: "\(axon.repository_url)/\(remoteAxonRepoZipSuffix)")!
+        
+        
+        let urlPath = axon.repository_url! + remoteAxonRepoZipSuffix //TODO: handle missing repo_url
+        
+        let sourceUrl = NSURL(string: urlPath)!
         
         
         //Get the file name and create a LOCAL destination URL

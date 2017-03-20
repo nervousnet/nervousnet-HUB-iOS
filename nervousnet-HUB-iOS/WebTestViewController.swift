@@ -14,7 +14,13 @@ class WebTestViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
+        let req = URLRequest(url: URL(string: "http://localhost:8080/axon-res/axon-one/axon.html")!)
+        
+      
+        
+        testWebView.loadRequest(req)
         // Do any additional setup after loading the view.
     }
 
