@@ -120,7 +120,7 @@ public class JSONConfigurationLoader {
     internal func load () -> [BasicSensorConfiguration] {
         var list = [BasicSensorConfiguration]()
         do{
-            if let file = Bundle.main.url(forResource: CONF_FILE_NAME, withExtension: "json") {
+            if let file = Bundle.main.url(forResource: CONF_FILE_NAME, withExtension: "json", subdirectory: "Assets") {
                 let data = try Data(contentsOf: file)
                 list = self.load(data: data)
                 //log.debug(json)
