@@ -118,11 +118,16 @@ class AxonServerController {
             
             
             if let axon = request.params[":name"] {
-                
-                let dataDict = self.getSensorDataFor(axon: axon)
-                
-                log.info("serving request from axon \(axon)")
-                return .ok(.json(dataDict))
+
+                do {
+                    let dataDict = try self.getSensorDataFor(axon: axon)
+                    
+                    log.info("serving request from axon \(axon)")
+                    return .ok(.json(dataDict))
+                } catch {
+                    log.error(error.localizedDescription)
+                    return .internalServerError
+                }
                 
             }
             
@@ -153,10 +158,16 @@ class AxonServerController {
             
             if let paramValues = self.parseHistoricRequest(queryParams: request.queryParams) {
                 
-                let dataDict = self.getSensorDataFor(axon: paramValues.axon, start: paramValues.start, end: paramValues.end)
+                do {
+                    let dataDict = try self.getSensorDataFor(axon: paramValues.axon, start: paramValues.start, end: paramValues.end)
 
-                return .ok(.json(dataDict))
-
+                    return .ok(.json(dataDict))
+                } catch ASCError.UnknownSensorName {
+                    return .badRequest(.text("The requested sensor Name is not available"))
+                } catch {
+                    log.error(error.localizedDescription)
+                    return .internalServerError
+                }
             }
             
             return .badRequest(.text("Querry parameters badly formated"))
@@ -202,7 +213,7 @@ class AxonServerController {
     
     
     
-    private func parseHistoricRequest(queryParams : [(String, String)] ) -> (axon: String, start: UInt64, end: UInt64)? {
+    private func parseHistoricRequest(queryParams : [(String, String)] ) -> (axon: String, start: Int64, end: Int64)? {
 
         if queryParams.count != 3 {
             log.error("Bad historic request with no parameters")
@@ -225,7 +236,7 @@ class AxonServerController {
             }
         }
         
-        if let start = UInt64(s, radix: 10), let end = UInt64(e, radix: 10) {
+        if let start = Int64(s, radix: 10), let end = Int64(e, radix: 10) {
             if(start > end) {
                 log.error("Start time is after end time")
                 return nil
@@ -242,22 +253,50 @@ class AxonServerController {
     
     
     
-    private func getSensorDataFor(axon: String, start: UInt64 = 0, end: UInt64 = 0) -> NSDictionary {
+    private func getSensorDataFor(axon: String, start: Int64 = 0, end: Int64 = 0) throws -> NSArray {
+        
+        var result = [NSDictionary]()
+        
+        guard let sensorID = nVM.sensorNameToID[axon] else {
+            log.error("Error. The sensor \"\(axon)\" seems to have no configuration and therefore sensorID is unknown. Cannot retrieve data.")
+            throw ASCError.UnknownSensorName
+        }
+
         
         if(start == end) {// get current sensor data
+            var singleReadingResult = [String : Any]()
+
+            let reading = try nVM.getLatestReading(sensorID: sensorID)
             
+            for (name, value) in zip(reading.parameterNames!, reading.values!) {
+                singleReadingResult[name] = value
+            }
+            
+            result.append(singleReadingResult as NSDictionary)
+            
+            //transform to NSDict
         } else { //we made sure previously that start < end, safely retrieve historic sensor data
+            let readingList = try nVM.getReadings(sensorID: sensorID, start: start, end: end)
             
+            var singleReadingResult = [String : Any]()
+            
+            for reading in readingList {
+                for (name, value) in zip(reading.parameterNames!, reading.values!) {
+                    singleReadingResult[name] = value
+                }
+                result.append(singleReadingResult as NSDictionary)
+            }
+            
+            //transform to NSDict
         }
         
-        /* MARK: how do we know the expected data format, tied to the requested sensor?? load from config??
-         config does unfortunately not easily map axon-name to config */
-        //TODO connect above if clause to actual sensor layer, convert to json
-        pseudoSensorData += 1
-        return ["data": pseudoSensorData]
-        //return ["data": ["lat": 47.3779847, "long": 8.5486214]]
+        return result as NSArray
     }
     
+    
+    enum ASCError : Error {
+        case UnknownSensorName
+    }
     
 }
 

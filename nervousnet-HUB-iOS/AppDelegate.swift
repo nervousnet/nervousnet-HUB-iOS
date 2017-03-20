@@ -11,6 +11,8 @@ import XCGLogger
 
 let log = XCGLogger.default
 
+let nVM = VM.sharedInstance
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
