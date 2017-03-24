@@ -143,6 +143,7 @@ class AxonStore : NSObject {
 
 
     class func getRemoteAxon(axonIndex: Int) -> AxonDetails {
+        //FIXME: handle invalid index
         fetchRemoteAxonList()
         return remoteAxonList[axonIndex]
     }
@@ -194,6 +195,14 @@ class AxonStore : NSObject {
         }
         
         let endpoint = NSURL(string: remoteAxonTestingRepo)
+        
+        var rE : NSError?
+        guard (endpoint?.checkResourceIsReachableAndReturnError(&rE))! else {
+            log.error("fetching file from \(endpoint) failed")
+            log.error(rE?.localizedDescription)
+            return
+        }
+        
         var resultList = Array<AxonDetails>()
 
         if let data = NSData(contentsOf: endpoint! as URL) {
