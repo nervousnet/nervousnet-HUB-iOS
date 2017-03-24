@@ -46,6 +46,9 @@ class StateDBManager {
         }
         
         DBCON?.trace{log.info($0)} //callback object that prints every executed SQL statement
+        
+        createConfigTableIfNotExists()
+        createNervousnetConfigTableIfNotExists()
     }
     
     
