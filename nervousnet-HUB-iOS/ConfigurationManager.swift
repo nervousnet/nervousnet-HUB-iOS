@@ -40,6 +40,11 @@ public class ConfigurationManager : iConfigurationManager {
     // This dictionary maps sensor ID into sensor's configuration.
     var configDict : [Int64:Any] //GeneralSensorConfiguration and BasicSensorConfiguration types only
     
+    
+    // This mapping makes finding the sensorID easy, given the name. Main purpose is the WebAxons where
+    // the sensors are identified by name. Carefull, requires that the names are unique.
+    public private(set) var sensorNameToID = [String : Int64]()
+    
         
      // Database manager for sensors' configuration storing and for application state storing.
     let stateDBManager : StateDBManager
@@ -57,7 +62,19 @@ public class ConfigurationManager : iConfigurationManager {
     // Check database if there are some stored states and overwrite default states from
     // the configuration file.
     for  conf in  confList {
+        
+        
+        guard sensorNameToID[conf.sensorName] == nil else {
+            //sensor names should be unique, otherwise webaxons have a problem since sensors there are addressed by name
+            //this clause is just here to make absolutely sure that this never silently happens
+            log.error("Fatal Error. There are two sensors with the same name in the configuration!!!")
+            fatalError()
+        }
+        
+        sensorNameToID[conf.sensorName] = conf.sensorID
+        
         configDict[conf.sensorID] = conf
+        
         do {
             let state : Int = try stateDBManager.getSensorState(sensorID: conf.sensorID)
             conf.setState(state: state)

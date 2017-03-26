@@ -164,6 +164,23 @@
         "double"
       ],
       "initialState" : 0
-    }
-  ]
+    }, {
+        "sensorID" : 132,
+        "sensorName" : "GPS",
+        "parametersNames" :
+        [
+         "testX",
+         "testY",
+         "testZ"
+         ],
+        "parametersTypes" :
+        [
+         "int",
+         "int",
+         "int"
+         ],
+        "samplingRates" : [2000, 250, 60],
+        "initialState" : 1
+   }
+   ]
 }

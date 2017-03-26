@@ -67,7 +67,11 @@ class AxonStore : NSObject {
         //Get documents directory URL
         let fileManager = FileManager.default
         let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
-        let sourceUrl = NSURL(string: "\(axon.repository_url)/\(remoteAxonRepoZipSuffix)")!
+        
+        
+        let urlPath = axon.repository_url! + remoteAxonRepoZipSuffix //TODO: handle missing repo_url
+        
+        let sourceUrl = NSURL(string: urlPath)!
         
         
         //Get the file name and create a LOCAL destination URL
@@ -139,6 +143,7 @@ class AxonStore : NSObject {
 
 
     class func getRemoteAxon(axonIndex: Int) -> AxonDetails {
+        //FIXME: handle invalid index
         fetchRemoteAxonList()
         return remoteAxonList[axonIndex]
     }
@@ -190,6 +195,14 @@ class AxonStore : NSObject {
         }
         
         let endpoint = NSURL(string: remoteAxonTestingRepo)
+        
+        var rE : NSError?
+        guard (endpoint?.checkResourceIsReachableAndReturnError(&rE))! else {
+            log.error("fetching file from \(endpoint) failed")
+            log.error(rE?.localizedDescription)
+            return
+        }
+        
         var resultList = Array<AxonDetails>()
 
         if let data = NSData(contentsOf: endpoint! as URL) {

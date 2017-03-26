@@ -15,7 +15,6 @@ class StateDBManager {
     enum DBError : Error {
         case NoSuchElementException
         case DBConnectionError
-        case NoSuchColumnException
     }
     
     //DB manager as a singleton
@@ -47,6 +46,9 @@ class StateDBManager {
         }
         
         DBCON?.trace{log.info($0)} //callback object that prints every executed SQL statement
+        
+        createConfigTableIfNotExists()
+        createNervousnetConfigTableIfNotExists()
     }
     
     
@@ -109,7 +111,7 @@ class StateDBManager {
     private static let nervousnet_row_id : Int64 = 0
     
     
-    
+    /* create the global nervousnet config table and initialize default values */
     public func createNervousnetConfigTableIfNotExists() {
         
         let table = Table(DBConstants.NERVOUSNET_CONFIG_TABLENAME)
@@ -120,6 +122,16 @@ class StateDBManager {
                 t.column(DBConstants.COLUMN_STATE)
                 
             })
+            
+            /* If the above query did indeed create a new table, we also need to initialize 
+             * the state values. Done by trying to get state info and storing default upon cought error
+             */
+            do { _ = try getNervousnetState() } catch DBError.NoSuchElementException {
+                storeNervousNetState(state: VMConstants.STATE_RUNNING)
+            }
+            
+            
+            
             log.info("DB Table \(DBConstants.NERVOUSNET_CONFIG_TABLENAME) available.")
         } catch _ {
             log.error("No DB connection - could not create new table.")
@@ -171,8 +183,8 @@ class StateDBManager {
             return row[stateColumn]
         }
         
-        //error only reached if the statement returns no elements
-        throw DBError.NoSuchColumnException
+        //error only reached if the statement returns no elements (invalid sql OR empty table)
+        throw DBError.NoSuchElementException
     }
     
     

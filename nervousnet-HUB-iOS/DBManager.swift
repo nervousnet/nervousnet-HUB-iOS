@@ -287,6 +287,9 @@ class DBManager {
                             if v is Int64 {
                                 setter = (DBConstants.COLUMN_TYPE_INT64(withName: names[i]) <- v as! Int64)
                             }
+                            else if v is Int {
+                                setter = (DBConstants.COLUMN_TYPE_INT(withName: names[i]) <- v as! Int)
+                            }
                             else if v is Double {
                                 setter = (DBConstants.COLUMN_TYPE_REAL(withName: names[i]) <- v as! Double)
                             }

@@ -11,37 +11,22 @@ import XCGLogger
 
 let log = XCGLogger.default
 
+let nVM = VM.sharedInstance
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    let axonController = AxonServerController()
+    
 
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         log.setup(level: .debug, showThreadName: true, showLevel: true, showFileNames: true, showLineNumbers: true, fileLevel: .debug)
-
         
-        
-        let sID : Int64 = 6544654
-        let sName = "accelerometer"
-        let paramNames = ["accX", "accY","accZ"]
-        let paramTypes = ["double", "double", "double"]
-        
-        //let vm = VM() //TODO: initializing needs to handle DB connections (make sure they are available)
-        
-        let config = BasicSensorConfiguration(sensorID: sID, sensorName: sName, parameterNames: paramNames,
-                                              parameterTypes: paramTypes, samplingrates: [1, 2, 3], state: 1)
-        
-        let sensor = CoreMotionSensor(conf: config)
-        
-        let dbManager = DBManager.sharedInstance
-        try! dbManager.createTableIfNotExists(config: config)
-        sensor.start()
-        
-        
- 
+        AxonStore.downloadAndInstall(axonIndex: 3)
         
         return true
     }

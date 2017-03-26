@@ -22,13 +22,20 @@ public class VM {
     //map of sensors
     private var sensorMap = [Int64 : BaseSensor]()
     
+    public static let sharedInstance = VM()
+    
+    public var sensorNameToID : [String : Int64] {
+        get {
+            return configManager.sensorNameToID
+        }
+    }
+    
     
     
     /* Start the sensors according to a given configuration and connect to DB,
        let the VM listen to Sensor state changes */
-    public init() {
+    private init() {
         configManager = ConfigurationManager()
-        
      
         for config in configManager.getAllConfigurations() {
             //TODO: if possible provide type BasicSensorConfiguration directly instead of forcing

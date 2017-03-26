@@ -10,6 +10,8 @@ import Foundation
 
 protocol iConfigurationManager {
     
+    var sensorNameToID : [String : Int64] { get }
+    
     func getAllConfigurations() -> [GeneralSensorConfiguration]
     
     func getSensorIDs () -> [Int64]
