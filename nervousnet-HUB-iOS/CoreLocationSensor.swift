@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import XCGLogger
+
 import CoreLocation
 
 enum CoreLocationError : Error {
@@ -47,13 +49,20 @@ class CoreLocationSensor : BaseSensor, CLLocationManagerDelegate {
     
     //TODO: add NSLocationAlwaysUSageDescription key to Info.plist
     override func startListener() -> Bool {
-        locationManager.delegate? = self
+        locationManager.delegate = self
+        print("startinglistener")
         if authorizationStatus == CLAuthorizationStatus.notDetermined{
             locationManager.requestAlwaysAuthorization()
-                locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-                timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(super.configuration.samplingrate), repeats: true, block: {timer in self.locationManager.requestLocation()})
-            
         }
+        
+        if  authorizationStatus  != CLAuthorizationStatus.restricted && authorizationStatus != CLAuthorizationStatus.denied {
+            locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+            timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(super.configuration.samplingrate), repeats: true, block: {timer in self.locationManager.requestLocation()})
+            return true
+        }
+
+        print("failed")
+
         return false
     }
     
