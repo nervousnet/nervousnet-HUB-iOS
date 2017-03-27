@@ -16,7 +16,7 @@ class WebTestViewController: UIViewController {
         super.viewDidLoad()
         
         
-        let req = URLRequest(url: URL(string: "http://localhost:8080/axon-res/axon-one/axon.html")!)
+        let req = URLRequest(url: URL(string: "http://localhost:8080/axon-res/axon-acctest/axon.html")!)
         
       
         

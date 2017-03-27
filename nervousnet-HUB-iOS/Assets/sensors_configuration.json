@@ -17,8 +17,8 @@
         "double"
       ],
       "androidParametersPositions" : [ 0, 1, 2 ],
-      "samplingRates" : [2000, 250, 60],
-      "initialState" : 1
+      "samplingRates" : [2000, 250, 1],
+      "initialState" : 3
     },
     {
       "sensorID" : 2,

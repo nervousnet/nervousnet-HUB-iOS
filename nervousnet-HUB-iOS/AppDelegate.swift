@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         log.setup(level: .debug, showThreadName: true, showLevel: true, showFileNames: true, showLineNumbers: true, fileLevel: .debug)
         
-        AxonStore.downloadAndInstall(axonIndex: 3)
+        AxonStore.downloadAndInstall(axonIndex: 0)
         
         return true
     }
