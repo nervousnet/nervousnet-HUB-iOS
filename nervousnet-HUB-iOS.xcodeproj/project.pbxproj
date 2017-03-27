@@ -39,7 +39,6 @@
 		22A68B181D92DD9B00E75C04 /* nervousnet_HUB_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A68B171D92DD9B00E75C04 /* nervousnet_HUB_iOSUITests.swift */; };
 		3825C5581DE74238000FD8EE /* AxonStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3825C5571DE74238000FD8EE /* AxonStore.swift */; };
 		383CAC1E1E0AB0B10053BECB /* VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383CAC1D1E0AB0B10053BECB /* VM.swift */; };
-		383CAC281E0AB8840053BECB /* ClassDummies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383CAC271E0AB8840053BECB /* ClassDummies.swift */; };
 		383CAC2A1E0ACF920053BECB /* VMConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383CAC291E0ACF920053BECB /* VMConstants.swift */; };
 		38B521411DEEE59E001015BF /* AxonServerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B521401DEEE59E001015BF /* AxonServerController.swift */; };
 		38B5214E1DEEECF7001015BF /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 38B5214D1DEEECF7001015BF /* Assets */; };
@@ -106,7 +105,6 @@
 		22A68B191D92DD9B00E75C04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3825C5571DE74238000FD8EE /* AxonStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AxonStore.swift; sourceTree = "<group>"; };
 		383CAC1D1E0AB0B10053BECB /* VM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VM.swift; sourceTree = "<group>"; };
-		383CAC271E0AB8840053BECB /* ClassDummies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassDummies.swift; sourceTree = "<group>"; };
 		383CAC291E0ACF920053BECB /* VMConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VMConstants.swift; sourceTree = "<group>"; };
 		38B521401DEEE59E001015BF /* AxonServerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AxonServerController.swift; sourceTree = "<group>"; };
 		38B5214D1DEEECF7001015BF /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
@@ -223,7 +221,6 @@
 			children = (
 				22A68AFE1D92DD9B00E75C04 /* Assets.xcassets */,
 				38B5214D1DEEECF7001015BF /* Assets */,
-				383CAC221E0AB4A20053BECB /* classdummies */,
 				38BBB3BF1DE5ECB600BDD178 /* webaxons */,
 				071844B21E26507100FFF319 /* configuration */,
 				38DA7DB51E0172FC00D34864 /* database */,
@@ -263,14 +260,6 @@
 				383CAC291E0ACF920053BECB /* VMConstants.swift */,
 			);
 			name = vm;
-			sourceTree = "<group>";
-		};
-		383CAC221E0AB4A20053BECB /* classdummies */ = {
-			isa = PBXGroup;
-			children = (
-				383CAC271E0AB8840053BECB /* ClassDummies.swift */,
-			);
-			name = classdummies;
 			sourceTree = "<group>";
 		};
 		38BBB3BF1DE5ECB600BDD178 /* webaxons */ = {
@@ -526,7 +515,6 @@
 				38DA7DB91E01953100D34864 /* DBConstants.swift in Sources */,
 				071844C01E26529C00FFF319 /* NNEvent.swift in Sources */,
 				0794371D1E76E3B5009DDBEF /* WebTestViewController.swift in Sources */,
-				383CAC281E0AB8840053BECB /* ClassDummies.swift in Sources */,
 				07409A651E72CBFB0055AB6E /* NervousnetSpaceTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
