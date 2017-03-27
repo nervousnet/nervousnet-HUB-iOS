@@ -122,7 +122,7 @@ class AxonServerController {
                 do {
                     let dataDict = try self.getSensorDataFor(axon: axon)
                     
-                    log.info("serving request from axon \(axon)")
+                    //log.info("serving request from axon \(axon)")
                     return .ok(.json(dataDict))
                 } catch {
                     log.error(error.localizedDescription)

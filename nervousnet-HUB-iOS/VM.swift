@@ -83,6 +83,25 @@ public class VM {
         }
         
 
+        
+        //Switch case is a bit unnecessary, but shortens the string value check syntax
+        switch(config.sensorName) {
+        case "Accelerometer", "Gyroscope", "Magnetometer":
+            let newSensor : BaseSensor = CoreMotionSensor(conf: config)
+            sensorMap[config.sensorID] = newSensor //if sensorID already in the list we overwrite the sensor object
+            return newSensor
+        default:
+            if #available(iOS 10.0, *), config.sensorName == "GPS" {
+                let newSensor : BaseSensor = CoreLocationSensor(conf: config)
+                sensorMap[config.sensorID] = newSensor //if sensorID already in the list we overwrite the sensor object
+                return newSensor
+            }
+            
+            throw VMErrors.InstantiationException
+        }
+        
+        
+        /* FIXME: implement better sensor creation with less hardcoding? see below as a starting point
         //create the correct Sensor dynamically according to its name
         //source: http://thecache.trov.com/swift-2-create-an-instance-of-a-class-from-a-string-by-calling-a-custom-initializer/
         
@@ -95,6 +114,7 @@ public class VM {
             log.error("unable to infer sensor type from given wrapper name: \(config.getWrapperName())")
             throw VMErrors.InstantiationException
         }
+        */
     }
     
     
