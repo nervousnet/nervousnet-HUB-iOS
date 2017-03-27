@@ -113,7 +113,7 @@ class AxonStore : NSObject {
 
             }
             
-            
+            log.info("succesfully installed \(axonName) axon")
             return true
             
         }
@@ -195,13 +195,6 @@ class AxonStore : NSObject {
         }
         
         let endpoint = NSURL(string: remoteAxonTestingRepo)
-        
-        var rE : NSError?
-        guard (endpoint?.checkResourceIsReachableAndReturnError(&rE))! else {
-            log.error("fetching file from \(endpoint) failed")
-            log.error(rE?.localizedDescription)
-            return
-        }
         
         var resultList = Array<AxonDetails>()
 
