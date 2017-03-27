@@ -74,12 +74,21 @@ class NervousnetSpaceTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        navigationController!.performSegue(withIdentifier: "axonDetailViewControllerSegue", sender: TableData[indexPath.row])
-
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        log.info("preparing for segue")
+        
+        if segue.identifier == "axonDetailViewControllerSegue" {
+            let idxPath = self.tableView.indexPathForSelectedRow
+            if let idx = idxPath?.row, let nextVC = segue.destination as? AxonDetailViewController {
+                nextVC.axonDetails = TableData[idx]
+            } else {
+                log.error("Error. Cannot send information to segue receiver")
+            }
+        }
     }
+
     
     
         
