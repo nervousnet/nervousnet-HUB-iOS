@@ -53,6 +53,7 @@ class SettingsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : SettingsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "setting", for: indexPath) as! SettingsTableViewCell
+        cell.parentViewController = self
         cell.label.text = subSettings[indexPath.row]
         cell.imageLeft.image = subImages[indexPath.row]
         return cell
