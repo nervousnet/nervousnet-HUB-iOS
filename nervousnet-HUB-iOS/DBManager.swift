@@ -61,12 +61,19 @@ class DBManager {
             DBCON = nil
         }
         
-        scheduler = Timer.scheduledTimer(timeInterval: 10, //seconds
+        /*
+        * We need to add timer to the main runloop. otherwise the scheduled events do not call
+        * the 'run' method properly. 
+        * TODO: does the db transaction run on the main thread now? or does SQLite handle this on
+        * a different thread?
+        */
+        scheduler = Timer(timeInterval: 10, //seconds
                     target: self,
                     selector: #selector(run),
                     userInfo: nil,
                     repeats: true)
         
+        RunLoop.main.add(scheduler, forMode: .defaultRunLoopMode)
         
         //DBCON?.trace{log.debug($0)} //callback object that prints every executed SQL statement
     }

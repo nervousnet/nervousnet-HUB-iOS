@@ -54,8 +54,14 @@ public class VM {
         
     
     }
+
     
-    
+    public func run() {
+        //TODO: could do more setup based on nervous state:
+        // - starting sensors depending on state
+        // - starting db store task
+        log.info("VM is a go!")
+    }
     
     
     //////////////////////////////

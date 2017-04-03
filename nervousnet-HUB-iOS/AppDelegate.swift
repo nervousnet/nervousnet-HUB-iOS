@@ -28,6 +28,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         AxonStore.downloadAndInstall(axonIndex: 0)
         
+        //The nVM.run is only a dummy method there to ensure that nVM is initialzed asap
+        //Since nVM.sharedInstance is a static variable and swift lazily initializes static variables
+        //this would not happen if we do not trigger lazy initialization with a call to run()
+        //This could be changed by a better initialization of VM()
+        nVM.run()
+        
         return true
     }
 
