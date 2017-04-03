@@ -10,88 +10,81 @@ import Foundation
 
 public class SensorReading {
     
-    public var sensorID : Int64? // get and set public
-    public private(set) var sensorName : String? //get public, set private
-    public var timestampEpoch : Int64? //get and set public
-    private var pNames : [String]? // private field to access for computed variable parameterNames
-    public var parameterNames : [String]? {//get and set public
+    public let timestampEpoch : Int64 //get and set public
+    
+    public let sensorConfig : GeneralSensorConfiguration
+
+    public private(set) var values = [String : Any?]()
+    
+    public var parameterNameToType : [String : String] {
         get {
-            return pNames
-        }
-        set(parameterNames){
-            self.pNames = parameterNames
-            if let list = parameterNames {
-                if values == nil ||
-                list.count != values?.count {
-                
-                values = [Any?](repeating: nil, count: list.count)
-                }
-            }
-            else {
-                values = nil
-            }
+            return sensorConfig.parameterNameToType
         }
     }
-    
-    public var values : [Any?]?
-    
-    
-    
-    public init(sensorID : Int64,
-                sensorName : String,
-                parameterNames : [String]) {
-        self.sensorID = sensorID
-        self.sensorName = sensorName
-        self.parameterNames = parameterNames
 
-        //not very nice way to create fixed size array of generic type
-        //but the best i found in swift so far
-        self.values = [Any?](repeating: nil, count: parameterNames.count)
-    }
+
     
-    
-    //Lewin: added this because it makes sense to have in order to push sensorrreadings in one line
-    
-    public init (sensorID : Int64,
-                 sensorName : String,
-                 parameterNames : [String],
+    //initializer with values known
+    /**
+     * Return a new SensorReading object, representing a measurement at a certain time
+     * configured according to 'config'
+     * - Throws: if the 'values' list count does not match config.paramDim
+     */
+    public init (config: GeneralSensorConfiguration,
                  values: [Any],
-                 timestamp: Int64){
+                 timestamp: Int64) throws {
         
-        self.sensorID = sensorID
-        self.sensorName = sensorName
-        self.parameterNames = parameterNames
-
-        if (values.count == parameterNames.count){
-            self.values = values
-        }
-        else {
-            self.values = [Any?](repeating: nil, count: parameterNames.count)
-        }
-        
+        self.sensorConfig = config
         self.timestampEpoch = timestamp
+        
+        //TODO: maybe the following can be improved by a 'value builder' in sensorconfig for example
+        // to make sure correct value for specific parameter (and not e.g. switched the values for param )
+        guard values.count == config.parameterDim else { // wrong value count provided, throw error
+            throw SRError.InvalidValueCount("size of values needs to match config parameter dimension")
+        }
+        
+        //construct map with appropriate values
+        var i = 0
+        for idx in config.parameterNameToType.keys {
+            self.values[idx] = values[i]
+            i += 1
+        }
     }
     
     
+    //initializer with unknown values
+    public init (config: GeneralSensorConfiguration,
+                 timestamp: Int64) {
+        
+        self.sensorConfig = config
+        self.timestampEpoch = timestamp
+
+        
+        var i = 0
+        for idx in config.parameterNameToType.keys {
+            self.values[idx] = nil
+            i += 1
+        }
+    }
+    
+    //setter and getter for values depending on paramName
     
     public func setValue(paramName: String, value : Any) -> Bool {
-        
-        // check if we can retrieve the index of the parameter Name
-        guard let names = self.parameterNames ,
-            let index = names.index(of: paramName) else {
-            return false
+        //overwrites value priviously in the map under 'paramName'
+        //if the paramName is actually in the sensorConfig
+        if let _ = sensorConfig.parameterNameToType.index(forKey: paramName) {
+            self.values.updateValue(values, forKey: paramName)
+            return true
         }
+        return false
+    }
+    
+    public func getValue(paramName: String) -> Any? {
+        return values[paramName] ?? nil
+    }
 
-        //check if the index is not out of bounds
-        guard let c = values?.count, c > index else {
-            return false
-        }
-        
-        //if values == nil this does nothing
-        //but we already tested 'values' for nil in previous guard
-        //MARK: could be a problem if we are doing multithreading
-        values?[index] = value
-        
-        return true
+    
+    enum SRError : Error {
+        case InvalidValueCount(String)
     }
 }

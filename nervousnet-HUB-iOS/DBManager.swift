@@ -169,55 +169,43 @@ class DBManager {
             
             for row in try db.prepare(query) {
                 
-                let reading = SensorReading(sensorID: config.sensorID,
-                                            sensorName: config.sensorName,
-                                            parameterNames: config.parameterNames)
                 
-                var columnNames : [String], columnTypes : [String] = []
+                let timeStamp = row[DBConstants.COLUMN_TIMESTAMP]
                 
-                //TODO: the following weird conversion could be made easier if we use a map for paramNames & types
-                if columns == nil {
-                    columnNames = config.parameterNames
-                    columnTypes = config.parameterTypes
-                } else {
-                    columnNames = columns!
-                    let allTypes = config.parameterTypes
+                let reading = SensorReading(config: config, timestamp: timeStamp)
+                
+                
+                // iterate over all possible param names of this sensor config, load value from DB
+                // if the param name is in the 'columns' list
+                // this loop essentially implements a: SELECT <column with param name> ...
+                for (name, type) in config.parameterNameToType {
                     
-                    for name in columnNames {
-                        if let idx = config.parameterNames.index(of: name) {
-                            columnTypes.append(allTypes[idx])
-                        } else {
-                            throw DBError.NoSuchColumnException
+                    if let _ = columns?.contains(name) {
+                    
+                        var success = true
+                        switch(type) { //TODO: change strings to enum type?
+                        case "int":
+                            let column = DBConstants.COLUMN_TYPE_INT64(withName: name)
+                            success = reading.setValue(paramName: name, value: row[column])
+                        case "double":
+                            let column = DBConstants.COLUMN_TYPE_REAL(withName: name)
+                            success = reading.setValue(paramName: name, value: row[column])
+                        case "String":
+                            let column = DBConstants.COLUMN_TYPE_TEXT(withName: name)
+                            success = reading.setValue(paramName: name, value: row[column])
+                        default:
+                            log.error("unexpected DB type. unable to retrieve value")
+                            continue
+                        }
+                        
+                        if !success {
+                            log.error("unable to set value of parameter \(name) ... skipping")
+                            continue
                         }
                     }
                 }
+
                 
-                
-                for (name, type) in zip(columnNames, columnTypes) {
-                    
-                    var success = true
-                    
-                    switch(type) { //TODO: change strings to enum type?
-                    case "int":
-                        let column = DBConstants.COLUMN_TYPE_INT64(withName: name)
-                        success = reading.setValue(paramName: name, value: row[column])
-                    case "double":
-                        let column = DBConstants.COLUMN_TYPE_REAL(withName: name)
-                        success = reading.setValue(paramName: name, value: row[column])
-                    case "String":
-                        let column = DBConstants.COLUMN_TYPE_TEXT(withName: name)
-                        success = reading.setValue(paramName: name, value: row[column])
-                    default:
-                        log.error("unexpected DB type. unable to retrieve value")
-                        continue
-                    }
-                    
-                    if !success {
-                        log.error("unable to set value of parameter \(name) ... skipping")
-                        continue
-                    }
-                }
-                reading.timestampEpoch = row[DBConstants.COLUMN_TIMESTAMP]
                 resultList.append(reading)
             }
             
@@ -240,10 +228,7 @@ class DBManager {
      */
     public func store(reading : SensorReading) {
         
-        guard let id = reading.sensorID else {
-            log.error("Cannot store Reading without sensor ID, dropping readings");
-            return
-        }
+        let id = reading.sensorConfig.sensorID
         
         LATEST_SENSOR_DATA[id] = reading
         
@@ -276,42 +261,39 @@ class DBManager {
                     let table = Table(self.getTableName(sensorID))
                     
                     for reading in readingList {
-                        guard let values = reading.values, let names = reading.parameterNames, let ts = reading.timestampEpoch else {
-                            log.error("SensorReading not configured correctly, values, parameter names or timestamp is empty")
-                            throw DBError.InvalidSensorReading
-                        }
+                        let parameters = reading.parameterNameToType
+                        let ts = reading.timestampEpoch
                         
-                        var setters : [Setter] = []
+                        var setterList : [Setter] = []
                         
-                        let rowSize = values.count - 1
                         var setter : Setter
                         
-                        setters.append(DBConstants.COLUMN_TIMESTAMP <- ts)
-                        
-                        for i in 0...rowSize {
+                        setterList.append(DBConstants.COLUMN_TIMESTAMP <- ts)
+ 
+                        for (name, _) in parameters {
                             //construct setters
-                            let v = values[i]
+                            let v = reading.getValue(paramName: name)
                             if v is Int64 {
-                                setter = (DBConstants.COLUMN_TYPE_INT64(withName: names[i]) <- v as! Int64)
+                                setter = (DBConstants.COLUMN_TYPE_INT64(withName: name) <- v as! Int64)
                             }
                             else if v is Int {
-                                setter = (DBConstants.COLUMN_TYPE_INT(withName: names[i]) <- v as! Int)
+                                setter = (DBConstants.COLUMN_TYPE_INT(withName: name) <- v as! Int)
                             }
                             else if v is Double {
-                                setter = (DBConstants.COLUMN_TYPE_REAL(withName: names[i]) <- v as! Double)
+                                setter = (DBConstants.COLUMN_TYPE_REAL(withName: name) <- v as! Double)
                             }
                             else if v is String {
-                                setter = (DBConstants.COLUMN_TYPE_TEXT(withName: names[i]) <- v as! String)
+                                setter = (DBConstants.COLUMN_TYPE_TEXT(withName: name) <- v as! String)
                             }
                             else {
                                 log.error("unknown DB type (could be prevented by using enum and checking type earlier) ... skipping value")
                                 continue
                             }
-                            setters.append(setter)
+                            setterList.append(setter)
                         }
                         
                         
-                        try self.DBCON?.run(table.insert(setters))
+                        try self.DBCON?.run(table.insert(setterList))
                     }
                 }
                 
@@ -380,7 +362,7 @@ class DBManager {
                 t.column(DBConstants.COLUMN_ID, primaryKey: .autoincrement)
                 t.column(DBConstants.COLUMN_TIMESTAMP)
                 
-                for (name, type) in zip(config.parameterNames, config.parameterTypes) {
+                for (name, type) in config.parameterNameToType {
 
                     switch(type) { //TODO: change strings to enum type?
                     case "int":
@@ -393,7 +375,7 @@ class DBManager {
                         log.error("unexpected DB type. skipping creation of column")
                         continue
                     }
-                
+                    
                 }
  
 
@@ -413,7 +395,7 @@ class DBManager {
     private func getTableName(_ sensorID : Int64) -> String {
         return "ID\(sensorID)"
     }
-
+    
     
     /// SCHEDULER
     

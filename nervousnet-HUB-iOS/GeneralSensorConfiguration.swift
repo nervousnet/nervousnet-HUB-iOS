@@ -19,19 +19,17 @@ public class GeneralSensorConfiguration {
     
     public private(set) var sensorID : Int64 //getter: public, setter: private
     public private(set) var sensorName : String
-    public private(set) var parameterNames : [String]
-    public private(set) var parameterTypes : [String] //Maybe change later, but needs operators properly working
+    public private(set) var parameterNameToType : [String : String] //map: name -> type (TODO: type as enum)
     
-    init(sensorID : Int64, sensorName : String, parameterNames : [String], parameterTypes : [String] ) {
+    init(sensorID : Int64, sensorName : String, parameterDef nameToType : [String : String]) {
         self.sensorID = sensorID
         self.sensorName = sensorName
-        self.parameterNames = parameterNames
-        self.parameterTypes = parameterTypes
+        self.parameterNameToType = nameToType
     }
     
     public var parameterDim : Int {
         get {
-            return parameterNames.count
+            return parameterNameToType.count
         }
     }
     
@@ -40,8 +38,8 @@ public class GeneralSensorConfiguration {
             "ConfigurationClass{" +
                 "sensorName=" + self.sensorName +
                 "\\" +
-                ", parametersNames=" + self.parameterNames.joined(separator: ", ") +
-                ", parametersTypes=" + self.parameterTypes.joined(separator: ", ") +
+                ", parametersNames=" + self.parameterNameToType.keys.elements.joined(separator: ", ") +
+                ", parametersTypes=" + self.parameterNameToType.values.elements.joined(separator: ", ") +
         "}"
         return returnString
     }

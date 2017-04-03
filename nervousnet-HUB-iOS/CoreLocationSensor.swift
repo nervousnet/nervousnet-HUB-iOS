@@ -31,6 +31,7 @@ class CoreLocationSensor : BaseSensor, CLLocationManagerDelegate {
     
     
     required public init (conf: BasicSensorConfiguration) {
+        //TODO: check if parameter Dimension is as required 3
         super.init(conf: conf)
         authorizationStatus = CLLocationManager.authorizationStatus()
         if  authorizationStatus  != CLAuthorizationStatus.restricted && authorizationStatus != CLAuthorizationStatus.denied {
@@ -75,17 +76,22 @@ class CoreLocationSensor : BaseSensor, CLLocationManagerDelegate {
     func locHandler (data : CLLocation?, time : Date, error: Error?) -> Void {
         log.debug(data.debugDescription)
         
-        let timestamp = time.timeIntervalSince1970 * 1000
+        let timestamp = Int64(time.timeIntervalSince1970 * 1000)
         
         if data != nil {
             let lat = data!.coordinate.latitude
             let long = data!.coordinate.longitude
             let speed = data!.speed
             print(lat, long, speed)
-            super.push(reading: SensorReading(sensorID: configuration.sensorID, sensorName: configuration.sensorName, parameterNames: ["latitude", "longitude", "speed"], values: [lat, long, speed], timestamp: Int64(timestamp)))
+            do {
+                super.push(reading: try SensorReading(config: super.configuration, values: [lat, long, speed], timestamp: timestamp))
+            } catch _ {
+                log.error("This should not happen. 'values' count does not match param dimension. Pushing empty 'SensorReading'")
+                super.push(reading: SensorReading(config: super.configuration, timestamp: timestamp))
+            }
         }
         else {
-            super.push(reading: SensorReading(sensorID: configuration.sensorID, sensorName: configuration.sensorName, parameterNames: ["latitude", "longitude", "speed"]))
+            super.push(reading: SensorReading(config: super.configuration, timestamp: timestamp))
         }
     }
     

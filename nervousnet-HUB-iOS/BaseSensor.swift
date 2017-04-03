@@ -42,8 +42,8 @@ public class BaseSensor : NSObject {
     // readings further for storing.
     
     func push(reading : SensorReading)  {
-        if (reading.timestampEpoch! >= nextSampling && configuration.samplingrate >= 0) {
-            nextSampling = reading.timestampEpoch! + self.configuration.samplingrate
+        if (reading.timestampEpoch >= nextSampling && configuration.samplingrate >= 0) {
+            nextSampling = reading.timestampEpoch + self.configuration.samplingrate
             dataBaseHandler.store(reading: reading)
         }
         

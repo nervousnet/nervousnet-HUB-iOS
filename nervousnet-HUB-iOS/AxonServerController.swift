@@ -268,8 +268,8 @@ class AxonServerController {
 
             let reading = try nVM.getLatestReading(sensorID: sensorID)
             
-            for (name, value) in zip(reading.parameterNames!, reading.values!) {
-                singleReadingResult[name] = value
+            for (name, _) in reading.parameterNameToType {
+                singleReadingResult[name] = reading.getValue(paramName: name)
             }
             
             result.append(singleReadingResult as NSDictionary)
@@ -281,8 +281,8 @@ class AxonServerController {
             var singleReadingResult = [String : Any]()
             
             for reading in readingList {
-                for (name, value) in zip(reading.parameterNames!, reading.values!) {
-                    singleReadingResult[name] = value
+                for (name, _) in reading.parameterNameToType {
+                    singleReadingResult[name] = reading.getValue(paramName: name)
                 }
                 result.append(singleReadingResult as NSDictionary)
             }
