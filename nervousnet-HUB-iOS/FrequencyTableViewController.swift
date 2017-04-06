@@ -12,7 +12,7 @@ class FrequencyTableViewController: UITableViewController {
     
     var subSettings : [String] = []
     
-    let subImages: [UIImage] = [#imageLiteral(resourceName: "ic_accel"), #imageLiteral(resourceName: "ic_batt"), #imageLiteral(resourceName: "ic_accel"), #imageLiteral(resourceName: "ic_conn"), #imageLiteral(resourceName: "ic_light"), #imageLiteral(resourceName: "ic_noise"), #imageLiteral(resourceName: "proximity_orange")]
+    let subImages: [String : UIImage] = ["Accelerometer" : #imageLiteral(resourceName: "ic_accel"), "Battery" : #imageLiteral(resourceName: "ic_batt"), "Location" : #imageLiteral(resourceName: "ic_conn"), "Magnetometer" : #imageLiteral(resourceName: "ic_light"), "Noise" : #imageLiteral(resourceName: "ic_noise"), "Proximity" : #imageLiteral(resourceName: "proximity_orange"), "Gyroscope" : #imageLiteral(resourceName: "ic_accel")]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +59,7 @@ class FrequencyTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : FrequencyTableViewCell = tableView.dequeueReusableCell(withIdentifier: "frequencySetting", for: indexPath) as! FrequencyTableViewCell
         cell.rightLabel.text = subSettings[indexPath.row]
-        cell.leftImage.image = subImages[indexPath.row]
+        cell.leftImage.image = subImages[subSettings[indexPath.row]]
         return cell
     }
     
