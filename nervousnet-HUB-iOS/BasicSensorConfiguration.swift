@@ -16,11 +16,11 @@ public class BasicSensorConfiguration : GeneralSensorConfiguration {
     
     
     
-    init(sensorID : Int64, sensorName : String, parameterNames : [String], parameterTypes: [String], samplingrates : [Int64], state: Int) {
+    init(sensorID : Int64, sensorName : String, parameterDef : [String : String], samplingrates : [Int64], state: Int) {
         self.samplingrate = 0
         self.state = state
         self.samplingrates = samplingrates
-        super.init(sensorID: sensorID, sensorName: sensorName, parameterNames: parameterNames, parameterTypes: parameterTypes)
+        super.init(sensorID: sensorID, sensorName: sensorName, parameterDef: parameterDef)
         self.setState(state: state)
         
     }
@@ -57,8 +57,8 @@ public class BasicSensorConfiguration : GeneralSensorConfiguration {
         var returnString : String = "ConfigurationClass{"
             returnString +=         ("sensorName=" + self.sensorName)
             returnString +=         ("\\" + ", parametersNames=")
-            returnString +=         self.parameterNames.joined(separator: ", ")
-            returnString +=         (", parametersTypes=" + self.parameterTypes.joined(separator: ", "))
+            returnString +=         (", parametersNames=" + self.parameterNameToType.keys.elements.joined(separator: ", "))
+            returnString +=         (", parametersTypes=" + self.parameterNameToType.values.elements.joined(separator: ", "))
             returnString +=         (", samplingPeriod="  + String(self.samplingrate))
             returnString +=         "}"
        

@@ -79,10 +79,15 @@ class CoreMotionSensor : BaseSensor {
             let y = data!.acceleration.y
             let z = data!.acceleration.z
             
-            super.push(reading: SensorReading(sensorID: configuration.sensorID, sensorName: configuration.sensorName, parameterNames: ["accX", "accY", "accZ"], values: [x, y, z], timestamp: timestamp))
+            do {
+                super.push(reading: try SensorReading(config: super.configuration, values: [x, y, z], timestamp: timestamp))
+            } catch _ {
+                log.error("This should not happen. 'values' count does not match param dimension. Pushing empty 'SensorReading'")
+                super.push(reading: SensorReading(config: super.configuration, timestamp: timestamp))
+            }
         }
         else {
-            super.push(reading: SensorReading(sensorID: configuration.sensorID, sensorName: configuration.sensorName, parameterNames: ["accX", "accY", "accZ"]))
+            super.push(reading: SensorReading(config: super.configuration, timestamp: timestamp))
         }
     }
     
@@ -91,10 +96,16 @@ class CoreMotionSensor : BaseSensor {
         let timestamp = getTimeStampMilliseconds()
         
         if data != nil {
-            super.push(reading: SensorReading(sensorID: configuration.sensorID, sensorName: configuration.sensorName, parameterNames: ["gyrX", "gyrY", "gyrZ"], values: [data!.rotationRate.x , data!.rotationRate.y , data!.rotationRate.z ], timestamp: timestamp))
+            
+            do {
+                super.push(reading: try SensorReading(config: super.configuration, values: [data!.rotationRate.x, data!.rotationRate.y, data!.rotationRate.z], timestamp: timestamp))
+            } catch _ {
+                log.error("This should not happen. 'values' count does not match param dimension. Pushing empty 'SensorReading'")
+                super.push(reading: SensorReading(config: super.configuration, timestamp: timestamp))
+            }
         }
         else {
-            super.push(reading: SensorReading(sensorID: configuration.sensorID, sensorName: configuration.sensorName, parameterNames: ["magX", "magY", "magZ"]))
+            super.push(reading: SensorReading(config: super.configuration, timestamp: timestamp))
         }
     }
     
@@ -104,10 +115,16 @@ class CoreMotionSensor : BaseSensor {
         
         
         if data != nil {
-            super.push(reading: SensorReading(sensorID: configuration.sensorID, sensorName: configuration.sensorName, parameterNames: ["gyrX", "gyrY", "gyrZ"], values: [data!.magneticField.x, data!.magneticField.y , data!.magneticField ], timestamp: timestamp))
+            
+            do {
+                super.push(reading: try SensorReading(config: super.configuration, values: [data!.magneticField.x, data!.magneticField.y, data!.magneticField.z], timestamp: timestamp))
+            } catch _ {
+                log.error("This should not happen. 'values' count does not match param dimension. Pushing empty 'SensorReading'")
+                super.push(reading: SensorReading(config: super.configuration, timestamp: timestamp))
+            }
         }
         else {
-            super.push(reading: SensorReading(sensorID: configuration.sensorID, sensorName: configuration.sensorName, parameterNames: ["magX", "magY", "magZ"]))
+            super.push(reading: SensorReading(config: super.configuration, timestamp: timestamp))
         }
     }
 

@@ -94,19 +94,19 @@ class RootTableViewController: UITableViewController {
         
         let sID : Int64 = 6544654
         let sName = "accelerometer"
-        let paramNames = ["accX", "accY","accZ"]
-        let paramTypes = ["double", "double", "double"]
+        let paramDef = ["accX" : "double",
+                        "accY" : "double",
+                        "accZ" : "double"]
         
         //let vm = VM() //TODO: initializing needs to handle DB connections (make sure they are available)
         
-        let config = BasicSensorConfiguration(sensorID: sID, sensorName: sName, parameterNames: paramNames,
-                                              parameterTypes: paramTypes, samplingrates: [1, 2, 3], state: 1)
+        let config = BasicSensorConfiguration(sensorID: sID, sensorName: sName, parameterDef: paramDef, samplingrates: [1, 2, 3], state: 1)
         
         
         let list = try! dbManager.getReadings(with: config)
         
         for r in list {
-            log.debug("\(r.values?.debugDescription)")
+            log.debug("\(r.values.debugDescription)")
         }
     }
     

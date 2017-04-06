@@ -100,8 +100,13 @@ public class JSONConfigurationLoader {
                             
                             
                             log.debug("creating Object")
+                            //create parameter definition map
+                            var parameterDef = [String : String]()
+                            for (name, type) in zip(values["parameterNames"] as! [String], values["parameterTypes"] as! [String]) {
+                                parameterDef[name] = type
+                            }
                             
-                            list.append(BasicSensorConfiguration(sensorID: values["sensorID"] as! Int64, sensorName: values["sensorName"] as! String, parameterNames: values["parameterNames"] as! [String], parameterTypes: values["parameterTypes"] as! [String], samplingrates: values["samplingRates"] as! [Int64], state: values["state"] as! Int))
+                            list.append(BasicSensorConfiguration(sensorID: values["sensorID"] as! Int64, sensorName: values["sensorName"] as! String, parameterDef: parameterDef, samplingrates: values["samplingRates"] as! [Int64], state: values["state"] as! Int))
                         }
                     }
                 }
