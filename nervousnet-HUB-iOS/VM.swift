@@ -22,6 +22,9 @@ public class VM {
     //map of sensors
     private var sensorMap = [Int64 : BaseSensor]()
     
+    //TODO: list of registered Sensors
+    public var sensorList : [String] = ["Accelerometer", "Gyroscope", "Location", "Magnetometer"]
+    
     public static let sharedInstance = VM()
     
     public var sensorNameToID : [String : Int64] {
@@ -342,6 +345,16 @@ public class VM {
     }
     
     
+    //TODO: Set sensor Frequency
+    public func setSensorFrequency(for : String, to: Int){
+        
+    }
+    
+    //TODO: Get sensor Frequency
+    
+    public func getFrequencySettings (forSensor : String) -> [Int] {
+        return [0]
+    }
     
     
     ////////////////////

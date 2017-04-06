@@ -23,7 +23,6 @@ class CoreLocationSensor : BaseSensor, CLLocationManagerDelegate {
     //TODO: Move these to the VM as singletons
     let locationManager = CLLocationManager()
     
-    let operationQueue = OperationQueue.init()
     
     var authorizationStatus : CLAuthorizationStatus = CLAuthorizationStatus.notDetermined
     

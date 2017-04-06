@@ -10,14 +10,17 @@ import UIKit
 
 class FrequencyTableViewController: UITableViewController {
     
-    let subSettings : [String] = ["Accelerometer", "Battery", "Gyroscope", "Location", "Light", "Noise", "Proximity"]
+    var subSettings : [String] = []
+    
     let subImages: [UIImage] = [#imageLiteral(resourceName: "ic_accel"), #imageLiteral(resourceName: "ic_batt"), #imageLiteral(resourceName: "ic_accel"), #imageLiteral(resourceName: "ic_conn"), #imageLiteral(resourceName: "ic_light"), #imageLiteral(resourceName: "ic_noise"), #imageLiteral(resourceName: "proximity_orange")]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        //TestButton
         self.navigationController?.navigationBar.tintColor = UIColor.orange
-        var barButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 32))
+        let barButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 32))
         barButton.setTitle(self.restorationIdentifier!, for: .normal)
         barButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 20.0)
         barButton.setTitleColor(UIColor.orange, for: .normal)
@@ -25,6 +28,8 @@ class FrequencyTableViewController: UITableViewController {
         self.navigationItem.titleView = barButton
         
         
+        self.subSettings = VM.sharedInstance.sensorList
+            
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

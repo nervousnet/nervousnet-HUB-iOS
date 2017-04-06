@@ -13,7 +13,9 @@ class FrequencyTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerVie
     @IBOutlet weak var rightLabel: UILabel!
     @IBOutlet weak var leftImage: UIImageView!
     @IBOutlet weak var spinnerRight: UIPickerView!
-    let frequencies : [String] = ["None", "Low", "Medium", "High", "Max"]
+    var frequencies : [String] = ["None", "Low", "Medium", "High", "Max"]
+    var frequencySettings: [Int] = [0,1,2,3,4]
+    var currentState = 0
    
     override func awakeFromNib() {
         
@@ -21,6 +23,7 @@ class FrequencyTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerVie
         spinnerRight.delegate = self
         spinnerRight.dataSource = self
         // Initialization code
+        frequencySettings = VM.sharedInstance.getFrequencySettings(forSensor: rightLabel.text!)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -34,19 +37,24 @@ class FrequencyTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerVie
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
-        return frequencies.count
+        return frequencySettings.count
     }
     
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{
-//        return frequencies[row]
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{
+        return String(frequencySettings[currentState])
+    }
+    
+//    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UILabel {
+//        
+//        var label = UILabel.init()
+//        label.font = UIFont(name: "HelveticaNeue", size: 14)
+//        label.text = "trial"
+//        return label
 //    }
     
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UILabel {
-        
-        var label = UILabel.init()
-        label.font = UIFont(name: "HelveticaNeue", size: 14)
-        label.text = "trial"
-        return label
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        //TODO: doesnt make sense yet
+        VM.sharedInstance.setSensorFrequency(for: String(row), to: row)
     }
 
 }
