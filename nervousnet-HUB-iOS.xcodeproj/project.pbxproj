@@ -149,13 +149,8 @@
 				075418271DE75A6B00327B41 /* RootTableViewController.swift */,
 				075418261DE75A6B00327B41 /* SensorPageViewController.swift */,
 				075418281DE75A6B00327B41 /* AnalyticsTableViewController.swift */,
-				075418291DE75A6B00327B41 /* SettingsTableViewController.swift */,
-				0754182B1DE75A6B00327B41 /* SettingsTableViewCell.swift */,
-				0754182A1DE75A6B00327B41 /* FrequencyTableViewController.swift */,
-				0754182C1DE75A6B00327B41 /* FrequencyTableViewCell.swift */,
-				07409A641E72CBFB0055AB6E /* NervousnetSpaceTableViewController.swift */,
-				07409A681E72D47F0055AB6E /* AxonDetailViewController.swift */,
-				0781DE4A1E9B94F800C25BE8 /* AxonDownloadButton.swift */,
+				0781DE4C1E9BA73C00C25BE8 /* Settings */,
+				0781DE4E1E9BA76600C25BE8 /* NervousnetSpace */,
 				0794371C1E76E3B5009DDBEF /* WebTestViewController.swift */,
 				22A68B001D92DD9B00E75C04 /* LaunchScreen.storyboard */,
 				075418341DE75B2300327B41 /* Main.storyboard */,
@@ -195,6 +190,35 @@
 				07DB50981E7AEA76002936FE /* CoreLocationSensor.swift */,
 			);
 			name = sensors;
+			sourceTree = "<group>";
+		};
+		0781DE4C1E9BA73C00C25BE8 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				0781DE4D1E9BA74700C25BE8 /* Frequency */,
+				075418291DE75A6B00327B41 /* SettingsTableViewController.swift */,
+				0754182B1DE75A6B00327B41 /* SettingsTableViewCell.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		0781DE4D1E9BA74700C25BE8 /* Frequency */ = {
+			isa = PBXGroup;
+			children = (
+				0754182A1DE75A6B00327B41 /* FrequencyTableViewController.swift */,
+				0754182C1DE75A6B00327B41 /* FrequencyTableViewCell.swift */,
+			);
+			name = Frequency;
+			sourceTree = "<group>";
+		};
+		0781DE4E1E9BA76600C25BE8 /* NervousnetSpace */ = {
+			isa = PBXGroup;
+			children = (
+				07409A641E72CBFB0055AB6E /* NervousnetSpaceTableViewController.swift */,
+				07409A681E72D47F0055AB6E /* AxonDetailViewController.swift */,
+				0781DE4A1E9B94F800C25BE8 /* AxonDownloadButton.swift */,
+			);
+			name = NervousnetSpace;
 			sourceTree = "<group>";
 		};
 		22A68AE71D92DD9B00E75C04 = {
