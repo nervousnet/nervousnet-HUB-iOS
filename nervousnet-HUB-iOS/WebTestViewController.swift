@@ -11,17 +11,20 @@ import UIKit
 class WebTestViewController: UIViewController {
 
     @IBOutlet weak var testWebView: UIWebView!
+    var req = URLRequest(url: URL(string: "http://www.google.com")!)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        let req = URLRequest(url: URL(string: "http://localhost:8080/axon-res/axon-acctest/axon.html")!)
-        
       
         
-        testWebView.loadRequest(req)
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        log.debug(self.req.debugDescription)
+        testWebView.loadRequest(req)
+
     }
 
     override func didReceiveMemoryWarning() {

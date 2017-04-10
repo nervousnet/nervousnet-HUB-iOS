@@ -26,6 +26,7 @@ class NervousnetSpaceTableViewController: UITableViewController {
         
         // download app store listing in the background and hide progress bar
         operationQueue.addOperation {
+            
             self.TableData = AxonStore.getRemoteAxonList()
 
         }
@@ -87,6 +88,13 @@ class NervousnetSpaceTableViewController: UITableViewController {
             } else {
                 log.error("Error. Cannot send information to segue receiver")
             }
+        }
+        
+        if segue.identifier == "testWebViewControllerSegue" {
+            let urlHandler = segue.destination as! WebTestViewController
+            urlHandler.req = URLRequest(url: URL(string: "http://localhost:8080/axon-res/axon-lewin/axon.html")!)
+                //url: AxonStore.getLocalAxonURL(axonName: "axon-acctest") as! URL)
+        
         }
     }
 

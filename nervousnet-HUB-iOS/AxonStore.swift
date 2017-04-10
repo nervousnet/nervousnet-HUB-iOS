@@ -186,7 +186,7 @@ class AxonStore : NSObject {
     
     //blocking task
     private class func fetchRemoteAxonList() {
-        
+        log.debug("DOWNLOADING")
         let current_ts = NSDate().timeIntervalSince1970
         let valid_until_ts = lastFetched + updateInterval
         
@@ -222,6 +222,7 @@ class AxonStore : NSObject {
         
         lastFetched = current_ts
         remoteAxonList = resultList
+        log.debug("DOWNLOADED")
     }
 
 }

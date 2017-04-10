@@ -770,13 +770,15 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xam-Y6-U4i">
-                                            <rect key="frame" x="335" y="40" width="22" height="22"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xam-Y6-U4i">
+                                            <rect key="frame" x="319" y="36" width="38" height="30"/>
                                             <color key="tintColor" red="0.91372549020000005" green="0.28235294119999998" blue="0.078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <state key="normal">
-                                                <color key="titleColor" red="0.91372549020000005" green="0.28235294119999998" blue="0.078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <color key="titleShadowColor" red="0.91372549020000005" green="0.28235294119999998" blue="0.078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <state key="normal" title="Open">
+                                                <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
+                                            <connections>
+                                                <segue destination="dVE-t5-M9T" kind="show" identifier="testWebViewControllerSegue" id="246-Ci-PnZ"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -908,4 +910,7 @@
         <image name="ic_settings" width="512" height="512"/>
         <image name="second" width="16" height="16"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="246-Ci-PnZ"/>
+    </inferredMetricsTieBreakers>
 </document>
