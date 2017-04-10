@@ -50,7 +50,7 @@ class AxonDownloadButton: UIButton {
                         log.debug("couldn't install")
                     }
             case DownloadState.downloaded:
-                break
+                AxonStore.removeLocalAxon(axonName: axonDetail!.name)
             default:
                 break
         }

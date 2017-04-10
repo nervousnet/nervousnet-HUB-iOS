@@ -79,9 +79,9 @@
       "androidSensorType" : 4,
       "parametersNames" :
       [
-        "gyroX",
-        "gyroY",
-        "gyroZ"
+        "x",
+        "y",
+        "z"
       ],
       "parametersTypes" :
       [
@@ -90,8 +90,8 @@
         "double"
       ],
       "androidParametersPositions" : [ 0, 1, 2 ],
-      "samplingRates" : [2000, 250, 60],
-      "initialState" : 0
+      "samplingRates" : [2000, 250, 1],
+      "initialState" : 3
     },
     {
       "sensorID" : 5,
@@ -169,18 +169,18 @@
         "sensorName" : "GPS",
         "parametersNames" :
         [
-         "testX",
-         "testY",
-         "testZ"
+         "lat",
+         "speed",
+         "long"
          ],
         "parametersTypes" :
         [
-         "int",
-         "int",
-         "int"
+         "double",
+         "double",
+         "double"
          ],
-        "samplingRates" : [2000, 250, 60],
-        "initialState" : 1
+        "samplingRates" : [2000, 250, 1],
+        "initialState" : 3
    }
    ]
 }

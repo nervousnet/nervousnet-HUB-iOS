@@ -253,7 +253,7 @@ class AxonServerController {
     
     
     
-    private func getSensorDataFor(axon: String, start: Int64 = 0, end: Int64 = 0) throws -> NSArray {
+    private func getSensorDataFor(axon: String, start: Int64, end: Int64) throws -> NSArray {
         
         var result = [NSDictionary]()
         
@@ -262,36 +262,40 @@ class AxonServerController {
             throw ASCError.UnknownSensorName
         }
 
+        //we made sure previously that start < end, safely retrieve historic sensor data
+        let readingList = try nVM.getReadings(sensorID: sensorID, start: start, end: end)
         
-        if(start == end) {// get current sensor data
-            var singleReadingResult = [String : Any]()
-
-            let reading = try nVM.getLatestReading(sensorID: sensorID)
-            
+        var singleReadingResult = [String : Any]()
+        
+        for reading in readingList {
             for (name, _) in reading.parameterNameToType {
                 singleReadingResult[name] = reading.getValue(paramName: name)
             }
-            
             result.append(singleReadingResult as NSDictionary)
-            
-            //transform to NSDict
-        } else { //we made sure previously that start < end, safely retrieve historic sensor data
-            let readingList = try nVM.getReadings(sensorID: sensorID, start: start, end: end)
-            
-            var singleReadingResult = [String : Any]()
-            
-            for reading in readingList {
-                for (name, _) in reading.parameterNameToType {
-                    singleReadingResult[name] = reading.getValue(paramName: name)
-                }
-                result.append(singleReadingResult as NSDictionary)
-            }
-            
-            //transform to NSDict
         }
         
         return result as NSArray
     }
+    
+    private func getSensorDataFor(axon: String) throws -> NSDictionary {
+        
+        var singleReadingResult = [String : Any]()
+
+        guard let sensorID = nVM.sensorNameToID[axon] else {
+            log.error("Error. The sensor \"\(axon)\" seems to have no configuration and therefore sensorID is unknown. Cannot retrieve data.")
+            throw ASCError.UnknownSensorName
+        }
+        
+        
+        let reading = try nVM.getLatestReading(sensorID: sensorID)
+        
+        for (name, _) in reading.parameterNameToType {
+            singleReadingResult[name] = reading.getValue(paramName: name)
+        }
+        
+        return singleReadingResult as NSDictionary
+    }
+    
     
     
     enum ASCError : Error {

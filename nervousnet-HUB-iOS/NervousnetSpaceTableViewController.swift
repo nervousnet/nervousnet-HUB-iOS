@@ -91,10 +91,24 @@ class NervousnetSpaceTableViewController: UITableViewController {
         }
         
         if segue.identifier == "testWebViewControllerSegue" {
+            
+            var idxPath : IndexPath?
+            
+            if let senderButton = sender as? UIButton {
+                if let superview = senderButton.superview {
+                    if let cell = superview.superview as? UITableViewCell {
+                        idxPath = self.tableView.indexPath(for: cell)!
+                    }
+                }
+            }
+            
             let urlHandler = segue.destination as! WebTestViewController
-            urlHandler.req = URLRequest(url: URL(string: "http://localhost:8080/axon-res/axon-lewin/axon.html")!)
+            
+            if let idx = idxPath?.row {
+                urlHandler.req = URLRequest(url: URL(string: "http://localhost:8080/axon-res/\(TableData[idx].name)/axon.html")!)
                 //url: AxonStore.getLocalAxonURL(axonName: "axon-acctest") as! URL)
-        
+            }
+            else {log.debug("STOP ABUSING OPTIONALS U MORONS")}
         }
     }
 

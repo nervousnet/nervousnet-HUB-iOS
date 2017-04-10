@@ -50,7 +50,7 @@ class AxonStore : NSObject {
         return installedAxons
     }
     
-    
+    //TODO: func isAxonInstalled(axonName) -> Bool
     
     class func downladAndInstall(axonName: String) -> Bool {
         let index = self.getRemoteAxonIndexByName(axonName: axonName)
