@@ -19,11 +19,12 @@ class NervousnetSpaceTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.viewWithTag(97)?.isHidden = true
+
+        //self.navigationController?.navigationBar.viewWithTag(97)?.isHidden = true
         
         //MRProgressOverlayView.showOverlayAddedTo(self.view, title: "Getting Axons..", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
         
-            // download app store listing in the background and hide progress bar
+        // download app store listing in the background and hide progress bar
         operationQueue.addOperation {
             self.TableData = AxonStore.getRemoteAxonList()
 

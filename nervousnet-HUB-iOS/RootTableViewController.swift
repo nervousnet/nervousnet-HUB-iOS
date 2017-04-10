@@ -26,6 +26,8 @@ class RootTableViewController: UITableViewController {
         barButton.addTarget(self, action: #selector(titlePressed(sender:)), for: .touchUpInside)
         self.navigationItem.titleView = barButton
         
+        self.navigationController?.navigationBar.tintColor=UIColor.orange
+        
         
 
         // Uncomment the following line to preserve selection between presentations

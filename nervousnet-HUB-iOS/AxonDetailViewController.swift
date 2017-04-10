@@ -13,7 +13,7 @@ class AxonDetailViewController: UIViewController {
     var axonDetails : AxonDetails?
     
     @IBOutlet weak var axonImageView: UIImageView!
-    @IBOutlet weak var downloadButton: UIButton!
+    @IBOutlet weak var downloadButton: AxonDownloadButton!
     
     @IBOutlet weak var axonTextView: UITextView!
     @IBOutlet weak var axonSubtitle: UILabel!
@@ -38,16 +38,9 @@ class AxonDetailViewController: UIViewController {
         }
         
         axonImageView.image = UIImage(data: NSData(base64Encoded: axon.icon, options: NSData.Base64DecodingOptions(rawValue: 0))! as Data)
-        
-        
-        for localaxon in AxonStore.getInstalledAxonsList() {
-            
-            if(localaxon.title == axon.title){
-                downloadButton.titleLabel?.text = "downloaded"
-                
-            }
-            
-        }
+      
+        downloadButton.axonDetail = axon
+        downloadButton.updateState()
         
     }
     
@@ -56,11 +49,11 @@ class AxonDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+}
     
-    
-
-    @IBAction func downloadPressed(_ sender: UIButton) {
-        log.debug("downloadPressed")
+//      THIS WAS REWRiTTEN IN NEW BUTTONCLASS
+//    @IBAction func downloadPressed(_ sender: UIButton) {
+//        log.debug("downloadPressed")
 //        switch (sender.titleLabel!.text!) {
 //            
 //            case "download":
@@ -104,11 +97,11 @@ class AxonDetailViewController: UIViewController {
 //            break;
 //        }
 
-    }
-    
+//    }
+
    
    
     
-}
+
 
 
