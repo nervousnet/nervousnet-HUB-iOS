@@ -25,7 +25,7 @@ class AxonStore : NSObject {
 
     private static var remoteAxonList = Array<AxonDetails>()
     private static let localDefaultAxons = Constants.PREINSTALLED_AXON_NAMES
-    static private var lastFetched = NSDate().timeIntervalSince1970 //TODO: apparently in seconds, check
+    static private var lastFetched = NSDate().timeIntervalSince1970
     static private let updateInterval = 3600.0 //seconds
     
     
@@ -52,7 +52,11 @@ class AxonStore : NSObject {
     }
     
 
-    //TODO: func isAxonInstalled(axonName) -> Bool
+    class func isAxonInstalled(axonName: String) -> Bool {
+        return getInstalledAxonsList().contains(where: { axon -> Bool in
+            return axon.name == axonName
+        })
+    }
 
     
     //Need to copy the default axons from the app bundle into the appropriate install location

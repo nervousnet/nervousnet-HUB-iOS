@@ -26,7 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         log.setup(level: .debug, showThreadName: true, showLevel: true, showFileNames: true, showLineNumbers: true, fileLevel: .debug)
 
-        AxonStore.downloadAndInstall(axonIndex: 0) //just here as an example 
         AxonStore.installLocalIncludedAxons()
         
         //The nVM.run is only a dummy method there to ensure that nVM is initialzed asap

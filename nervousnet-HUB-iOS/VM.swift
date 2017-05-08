@@ -63,6 +63,7 @@ public class VM {
         //TODO: could do more setup based on nervous state:
         // - starting sensors depending on state
         // - starting db store task
+        // CAREFUL: this is needed because otherwies layz eval would instantiate VM at the wrong time
         log.info("VM is a go!")
     }
     
@@ -161,7 +162,7 @@ public class VM {
     
     public func stopAllSensors() {
         for sensorID in configManager.getSensorIDs() {
-            startSensor(withID: sensorID)
+            stopSensor(withID: sensorID)
         }
     }
     
@@ -276,11 +277,37 @@ public class VM {
                 try configManager.setSensorState(sensorID: sensorID, state: state)                                  //update state
                 if state == VMConstants.SENSOR_STATE_AVAILABLE_BUT_OFF { stopSensor(withID: sensorID) }             //turn off
                 else if oldState == VMConstants.SENSOR_STATE_AVAILABLE_BUT_OFF { startSensor(withID: sensorID) }    //turn on
+                else { //frequency change, restart sensor with new ID
+                    stopSensor(withID: sensorID)
+                    startSensor(withID: sensorID)
+                }
             }
         } catch _ {
             log.error("Sensor state could not be updated properly")
         }
     }
+    
+    
+
+    public func setSensorFrequency(for sensor: String, to state: Int) throws {
+        if let id = sensorNameToID[sensor] {
+            updateSensorState(sensorID: id, state: state)
+        } else {
+            throw VMErrors.UnkownSensorException
+        }
+    }
+    
+    
+
+    public func getFrequencySettings (for sensor : String) throws -> [Int64] {
+        if let id = sensorNameToID[sensor] {
+            let config = try configManager.getConfiguration(sensorID: id) as! BasicSensorConfiguration
+            return config.samplingrates
+        } else {
+            throw VMErrors.UnkownSensorException
+        }
+    }
+    
     
     
     
@@ -350,18 +377,7 @@ public class VM {
         }
     }
     
-    
-    //TODO: Set sensor Frequency
-    public func setSensorFrequency(for : String, to: Int){
-        
-    }
-    
-    //TODO: Get sensor Frequency
-    
-    public func getFrequencySettings (forSensor : String) -> [Int] {
-        return [0]
-    }
-    
+
     
     ////////////////////
     /// UUID METHODS ///
@@ -384,6 +400,7 @@ public class VM {
         case SensorIsOffException       //
         case DBConnectionError          // dbManager was unable to connect to the DB
         case InstantiationException     // unable to create class from string
+        case UnkownSensorException
     }
     
     
