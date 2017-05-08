@@ -22,7 +22,7 @@ public class VM {
     //map of sensors
     private var sensorMap = [Int64 : BaseSensor]()
     
-    //TODO: list of registered Sensors
+    //TODO: list of registered Sensors (to be used in init)
     public var sensorList : [String] = ["Accelerometer", "Gyroscope", "Location", "Magnetometer"]
     
     public static let sharedInstance = VM()

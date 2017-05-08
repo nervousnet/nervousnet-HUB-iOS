@@ -181,6 +181,24 @@
          ],
         "samplingRates" : [2000, 250, 1],
         "initialState" : 3
+   },
+   {
+   "sensorID" : 99,
+   "sensorName" : "Magnetometer",
+   "parametersNames" :
+   [
+    "x",
+    "y",
+    "z"
+    ],
+   "parametersTypes" :
+   [
+    "double",
+    "double",
+    "double"
+    ],
+   "samplingRates" : [2000, 250, 1],
+   "initialState" : 3
    }
    ]
 }

@@ -11,13 +11,17 @@ import UIKit
 class SensorPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
     
-    let sensorPageNames = ["Accelerometer", "Gyroscope", "Magnetometer"]
-    var sensorPageCache : [UIViewController?] = [nil, nil, nil] //needs to match length of sensorPageNames
+    let sensorPageNames = Constants.PREINSTALLED_AXON_NAMES
+    let numberOfPreinstalledAxons = Constants.PREINSTALLED_AXON_NAMES.count
+    var sensorPageCache = [UIViewController?](repeating: nil, count: Constants.PREINSTALLED_AXON_NAMES.count)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataSource = self
         self.delegate = self
+        
+        //needed to make sure the webview is not hidden behinde navigation bar
+        self.edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
         
         self.setViewControllers([pageAtIndex(index: 0)!], direction: .forward, animated: true, completion: nil)
         
@@ -49,10 +53,10 @@ class SensorPageViewController: UIPageViewController, UIPageViewControllerDataSo
                             viewControllerBefore viewController: UIViewController) -> UIViewController?{
         
         if let index = sensorPageNames.index(of: viewController.restorationIdentifier!) {
-            if index == 0 {return pageAtIndex(index:1)}
-            else if index == 1 {return pageAtIndex(index:2)}
-            else if index == 2 {return pageAtIndex(index:0)}
-
+            if index >= 0 && index < numberOfPreinstalledAxons {
+                let targetIndex = (index + 1) % numberOfPreinstalledAxons
+                return pageAtIndex(index: targetIndex)
+            }
         }
         return nil
     }
@@ -61,9 +65,10 @@ class SensorPageViewController: UIPageViewController, UIPageViewControllerDataSo
                             viewControllerAfter viewController: UIViewController) -> UIViewController?{
         
         if let index = sensorPageNames.index(of: viewController.restorationIdentifier!) {
-            if index == 0 {return pageAtIndex(index:2)}
-            else if index == 1 {return pageAtIndex(index:0)}
-            else if index == 2 {return pageAtIndex(index:1)}
+            if index >= 0 && index < numberOfPreinstalledAxons {
+                let targetIndex = (index + 1) % numberOfPreinstalledAxons
+                return pageAtIndex(index: targetIndex)
+            }
         }
         return nil
     }

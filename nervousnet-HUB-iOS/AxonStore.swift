@@ -24,7 +24,7 @@ class AxonStore : NSObject {
     private static let axonIndexFile = "axon.html"
 
     private static var remoteAxonList = Array<AxonDetails>()
-    private static let localDefaultAxons = ["Accelerometer", "Gyroscope", "Magnetometer"]
+    private static let localDefaultAxons = Constants.PREINSTALLED_AXON_NAMES
     static private var lastFetched = NSDate().timeIntervalSince1970 //TODO: apparently in seconds, check
     static private let updateInterval = 3600.0 //seconds
     
@@ -59,13 +59,20 @@ class AxonStore : NSObject {
     class func installLocalIncludedAxons() {
         
         for name in localDefaultAxons {
+            // the '-master' postfix is required due to the AxonServer expecting this naming convention
             let sourcePath = "\(self.includedAxonDir)\(name)-master"
-            log.debug(sourcePath)
-            
-            let destPath = "\(self.installedAxonsDir)/\(name)/\(name)"
+            let destPath = "\(self.installedAxonsDir)/\(name)"
+
             do {
-                try FileManager.default.copyItem(atPath: sourcePath, toPath: destPath)
-                log.info("Local axon \(name) successfully installed")
+                if !FileManager.default.fileExists(atPath: destPath) {
+                    try FileManager.default.createDirectory(at: URL(fileURLWithPath: destPath), withIntermediateDirectories: true, attributes: nil)
+                    log.debug("creating dest directory was successful")
+                    
+                    
+                    let destDirectory = "\(destPath)/\(name)-master"
+                    try FileManager.default.copyItem(atPath: sourcePath, toPath: destDirectory)
+                    log.info("Local axon \(name) successfully installed")
+                }
             }
             catch { log.error("Unable to install local default axon because of \(error.localizedDescription)")}
             
