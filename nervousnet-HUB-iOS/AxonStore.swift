@@ -16,7 +16,7 @@ import Zip
 ///
 class AxonStore : NSObject {
 
-    private static let includedAxonDir = "\(Bundle.main.resourcePath)/Assets/included-axons/"
+    private static let includedAxonDir = "\(Bundle.main.resourcePath!)/Assets/included-axons/"
     private static let remoteAxonTestingRepo = "https://api.github.com/repos/nervousnet/nervousnet-axons/contents/testing?ref=master"
     private static let remoteAxonRepoZipSuffix = "/archive/master.zip"
     private static let installedAxonsDir = "\(NSHomeDirectory())/Documents/nervousnet-installed-axons"
@@ -24,6 +24,7 @@ class AxonStore : NSObject {
     private static let axonIndexFile = "axon.html"
 
     private static var remoteAxonList = Array<AxonDetails>()
+    private static let localDefaultAxons = ["Accelerometer", "Gyroscope", "Magnetometer"]
     static private var lastFetched = NSDate().timeIntervalSince1970 //TODO: apparently in seconds, check
     static private let updateInterval = 3600.0 //seconds
     
@@ -50,7 +51,28 @@ class AxonStore : NSObject {
         return installedAxons
     }
     
+
     //TODO: func isAxonInstalled(axonName) -> Bool
+
+    
+    //Need to copy the default axons from the app bundle into the appropriate install location
+    class func installLocalIncludedAxons() {
+        
+        for name in localDefaultAxons {
+            let sourcePath = "\(self.includedAxonDir)\(name)-master"
+            log.debug(sourcePath)
+            
+            let destPath = "\(self.installedAxonsDir)/\(name)/\(name)"
+            do {
+                try FileManager.default.copyItem(atPath: sourcePath, toPath: destPath)
+                log.info("Local axon \(name) successfully installed")
+            }
+            catch { log.error("Unable to install local default axon because of \(error.localizedDescription)")}
+            
+        }
+    }
+    
+    
     
     class func downladAndInstall(axonName: String) -> Bool {
         let index = self.getRemoteAxonIndexByName(axonName: axonName)

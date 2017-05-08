@@ -10,7 +10,9 @@ import UIKit
 
 class SensorPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
-    let sensorPageNames = ["page1", "page2", "page3"]
+    
+    let sensorPageNames = ["Accelerometer", "Gyroscope", "Magnetometer"]
+    var sensorPageCache : [UIViewController?] = [nil, nil, nil] //needs to match length of sensorPageNames
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,8 +69,28 @@ class SensorPageViewController: UIPageViewController, UIPageViewControllerDataSo
     }
     
     func pageAtIndex (index : Int) -> UIViewController?{
-        let retVC = storyboard?.instantiateViewController(withIdentifier: sensorPageNames[index])
-        return retVC
+        
+        if let sensorPage = sensorPageCache[index] {
+            return sensorPage //cached result
+        } else {
+            let retVC = storyboard?.instantiateViewController(withIdentifier: sensorPageNames[index])
+            
+            
+            //WEBVIEW
+            let myWebView : UIWebView = UIWebView(frame: CGRect(x:0, y:0, width: UIScreen.main.bounds.width, height:UIScreen.main.bounds.height))
+            
+            retVC?.view.addSubview(myWebView)
+            
+            //1. Load web site into my web view
+            let req = URLRequest(url: URL(string: "http://localhost:8080/axon-res/\(sensorPageNames[index])/axon.html")!)
+
+            myWebView.loadRequest(req)
+            
+            
+            self.sensorPageCache[index] = retVC
+            return retVC
+        }
+
     }
     
     //MARK: Delegate

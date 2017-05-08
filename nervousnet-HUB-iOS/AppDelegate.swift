@@ -25,8 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         log.setup(level: .debug, showThreadName: true, showLevel: true, showFileNames: true, showLineNumbers: true, fileLevel: .debug)
-        
-//        AxonStore.downloadAndInstall(axonIndex: 0)
+
+        AxonStore.downloadAndInstall(axonIndex: 0) //just here as an example 
+        AxonStore.installLocalIncludedAxons()
         
         //The nVM.run is only a dummy method there to ensure that nVM is initialzed asap
         //Since nVM.sharedInstance is a static variable and swift lazily initializes static variables

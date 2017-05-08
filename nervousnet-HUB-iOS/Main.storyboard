@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mlY-cD-Y48">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mlY-cD-Y48">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -15,7 +15,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="page2" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="nervousnet_HUB_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Gyroscope" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="nervousnet_HUB_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -370,7 +370,7 @@
         <!--Sensors-->
         <scene sceneID="F97-2W-4pd">
             <objects>
-                <pageViewController storyboardIdentifier="Sensors" autoresizesArchivedViewToFullSize="NO" title="Sensors" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="u4A-Q6-agM" customClass="SensorPageViewController" customModule="nervousnet_HUB_iOS" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="Sensors" autoresizesArchivedViewToFullSize="NO" title="Sensors" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="none" id="u4A-Q6-agM" customClass="SensorPageViewController" customModule="nervousnet_HUB_iOS" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ezn-iQ-nRJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2630" y="-269"/>
@@ -681,7 +681,7 @@
         <!--View Controller-->
         <scene sceneID="86B-UH-Fnq">
             <objects>
-                <viewController storyboardIdentifier="page1" useStoryboardIdentifierAsRestorationIdentifier="YES" id="h0B-4q-Ps8" customClass="ViewController" customModule="nervousnet_HUB_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Accelerometer" useStoryboardIdentifierAsRestorationIdentifier="YES" id="h0B-4q-Ps8" customClass="ViewController" customModule="nervousnet_HUB_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YtV-Uu-5wt"/>
                         <viewControllerLayoutGuide type="bottom" id="xOg-Hp-Bwm"/>
@@ -715,7 +715,7 @@
         <!--View Controller-->
         <scene sceneID="Q7w-Kl-iAY">
             <objects>
-                <viewController storyboardIdentifier="page3" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rfb-90-kBK" customClass="ViewController" customModule="nervousnet_HUB_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Magnetometer" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rfb-90-kBK" customClass="ViewController" customModule="nervousnet_HUB_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Xex-R7-3ML"/>
                         <viewControllerLayoutGuide type="bottom" id="LQa-Ao-Yb6"/>
