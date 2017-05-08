@@ -370,7 +370,7 @@
         <!--Sensors-->
         <scene sceneID="F97-2W-4pd">
             <objects>
-                <pageViewController storyboardIdentifier="Sensors" autoresizesArchivedViewToFullSize="NO" title="Sensors" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="none" id="u4A-Q6-agM" customClass="SensorPageViewController" customModule="nervousnet_HUB_iOS" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="Sensors" autoresizesArchivedViewToFullSize="NO" title="Sensors" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="u4A-Q6-agM" customClass="SensorPageViewController" customModule="nervousnet_HUB_iOS" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ezn-iQ-nRJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2630" y="-269"/>
