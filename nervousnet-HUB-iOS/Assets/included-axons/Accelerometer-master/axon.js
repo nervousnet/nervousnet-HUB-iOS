@@ -8,9 +8,9 @@
 		$.getJSON( "http://localhost:8080/nervousnet-api/raw-sensor-data/Accelerometer", function( data ) {
                   
                   //the data field names need to match those given in the sensors?configration.json config
-                  $("#first-row-value").html(truncate(data.x));
-                  $("#second-row-value").html(truncate(data.y));
-                  $("#third-row-value").html(truncate(data.z));
+                  $("#first-row-value").html(truncate(data.accX));
+                  $("#second-row-value").html(truncate(data.accY));
+                  $("#third-row-value").html(truncate(data.accZ));
                   });
                 
                 
