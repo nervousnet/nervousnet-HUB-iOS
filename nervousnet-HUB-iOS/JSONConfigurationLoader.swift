@@ -14,6 +14,8 @@ public class JSONConfigurationLoader {
     
     private var CONF_FILE_NAME : String = "sensors_configuration"
     private let LOG_TAG : String = String(describing: JSONConfigurationLoader.self)
+    private let defaultStoreID : Int64 = -1
+    private let defaultStoreFrequencies  : [Int64] = [-1]
     
     init (){
     }
@@ -47,7 +49,7 @@ public class JSONConfigurationLoader {
                             }
                             else {
                                 log.debug("no ID")
-                                values["sensorID"] = -1 as! Int64
+                                values["sensorID"] = defaultStoreID
                             }
                             
                             if let sensorName = sensorConf["sensorName"] as? String{
@@ -84,7 +86,7 @@ public class JSONConfigurationLoader {
                             }
                             else {
                                 log.debug("no samplingrates")
-                                values["samplingRates"] = [-1] as! [Int64]
+                                values["samplingRates"] = defaultStoreFrequencies
                             }
                             
                             if let state = sensorConf["initialState"] as? Int {
@@ -94,7 +96,7 @@ public class JSONConfigurationLoader {
                                 
                             else {
                                 log.debug("no state")
-                                values["state"] = -1 as! Int
+                                values["state"] = defaultStoreID
                             }
                             
                             

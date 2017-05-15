@@ -36,6 +36,10 @@ class RootTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    @IBAction func killSwitchPressed(_ sender: Any) {
+
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
