@@ -8,14 +8,18 @@
 		$.getJSON( "http://localhost:8080/nervousnet-api/raw-sensor-data/Accelerometer", function( data ) {
                   
                   //the data field names need to match those given in the sensors?configration.json config
-                  $("#first-row-value").html(data.accX);
-                  $("#second-row-value").html(data.accY);
-                  $("#third-row-value").html(data.accZ);
-			
-		});
-		
-		
-	}, 1000);
+                  $("#first-row-value").html(truncate(data.accX));
+                  $("#second-row-value").html(truncate(data.accY));
+                  $("#third-row-value").html(truncate(data.accZ));
+                  });
+                
+                
+                }, 1000);
 	
-
-})();
+ 
+ })();
+ 
+ function truncate( stringFloat ) {
+    var num = parseFloat(stringFloat);
+    return num.toFixed(8);
+}
