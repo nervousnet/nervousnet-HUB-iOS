@@ -37,8 +37,9 @@ class RootTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    @IBAction func killSwitchPressed(_ sender: Any) {
-
+    @IBAction func killSwitchPressed(_ sender: UISegmentedControl) {
+            log.debug(sender.selectedSegmentIndex)
+        
     }
 
     override func didReceiveMemoryWarning() {
