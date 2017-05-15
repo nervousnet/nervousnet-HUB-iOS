@@ -8,15 +8,18 @@
 		$.getJSON( "http://localhost:8080/nervousnet-api/raw-sensor-data/Gyroscope", function( data ) {
 			
                   //the data field names need to match those given in the sensors?configration.json config
-                  $("#first-row-value").html(data.x);
-                  $("#second-row-value").html(data.y);
-                  $("#third-row-value").html(data.z);
-                  
-			
-		});
-		
-		
-	}, 1000);
+                  $("#first-row-value").html(truncate(data.x));
+                  $("#second-row-value").html(truncate(data.y));
+                  $("#third-row-value").html(truncate(data.z));
+                  });
+                
+                
+                }, 1000);
 	
-
-})();
+ 
+ })();
+ 
+ function truncate( stringFloat ) {
+    var num = parseFloat(stringFloat);
+    return num.toFixed(8);
+}
