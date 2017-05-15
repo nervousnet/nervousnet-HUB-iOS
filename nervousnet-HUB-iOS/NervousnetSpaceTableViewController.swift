@@ -30,6 +30,7 @@ class NervousnetSpaceTableViewController: UITableViewController {
             self.TableData = AxonStore.getRemoteAxonList()
 
         }
+
         
     }
         

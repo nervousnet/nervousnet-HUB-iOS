@@ -25,18 +25,7 @@ class SensorPageViewController: UIPageViewController, UIPageViewControllerDataSo
         
         self.setViewControllers([pageAtIndex(index: 0)!], direction: .forward, animated: true, completion: nil)
         
-        self.navigationController?.navigationBar.tintColor = UIColor.orange
         
-        
-        var barButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 32))
-        barButton.setTitle(self.restorationIdentifier!, for: .normal)
-        barButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 20.0)
-        barButton.setTitleColor(UIColor.orange, for: .normal)
-        self.navigationItem.titleView = barButton
-        self.navigationItem.backBarButtonItem?.tintColor = UIColor.orange
-        self.navigationController?.navigationItem.titleView = barButton
-        
-
         
         //self.didMove(toParentViewController: <#T##UIViewController?#>)
         

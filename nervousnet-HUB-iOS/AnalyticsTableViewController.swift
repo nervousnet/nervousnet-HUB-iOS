@@ -16,14 +16,6 @@ class AnalyticsTableViewController: UITableViewController {
         super.viewDidLoad()
         
 
-        self.navigationController?.navigationBar.tintColor = UIColor.orange
-        var barButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 32))
-        barButton.setTitle(self.restorationIdentifier!, for: .normal)
-        barButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 20.0)
-        barButton.setTitleColor(UIColor.orange, for: .normal)
-        barButton.addTarget(self, action: #selector(titlePressed(sender:)), for: .touchUpInside)
-        self.navigationItem.titleView = barButton
-        
         
 
         // Uncomment the following line to preserve selection between presentations

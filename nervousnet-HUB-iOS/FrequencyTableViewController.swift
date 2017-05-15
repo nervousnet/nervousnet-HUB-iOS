@@ -18,18 +18,10 @@ class FrequencyTableViewController: UITableViewController {
         super.viewDidLoad()
         
         
-        //TestButton
-        self.navigationController?.navigationBar.tintColor = UIColor.orange
-        let barButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 32))
-        barButton.setTitle(self.restorationIdentifier!, for: .normal)
-        barButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 20.0)
-        barButton.setTitleColor(UIColor.orange, for: .normal)
-        barButton.addTarget(self, action: #selector(titlePressed(sender:)), for: .touchUpInside)
-        self.navigationItem.titleView = barButton
+       
         
         
         self.subSettings = VM.sharedInstance.sensorList
-            
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -80,9 +72,6 @@ class FrequencyTableViewController: UITableViewController {
 //        return (tableView.bounds.height - navigationController!.navigationBar.bounds.height)/10.0
 //    }
     
-    func titlePressed (sender: UIButton!){
-        log.debug("Hello, it worked")
-    }
     
     /*
     // Override to support conditional editing of the table view.

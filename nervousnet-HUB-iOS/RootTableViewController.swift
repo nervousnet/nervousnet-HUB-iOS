@@ -13,22 +13,18 @@ class RootTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var barButtonItem: UIBarButtonItem = UIBarButtonItem(title: "nervousnet",
-                                                         style: .plain,
-                                                         target: self,
-                                                         action: nil)
-
         
-        var barButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 32))
-        barButton.setTitle("Home", for: .normal)
-        barButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 26.0)
-        barButton.setTitleColor(UIColor.orange, for: .normal)
-        barButton.addTarget(self, action: #selector(titlePressed(sender:)), for: .touchUpInside)
-        self.navigationItem.titleView = barButton
+        
+//        var barButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 32))
+//        barButton.setTitle(self.restorationIdentifier!, for: .normal)
+//        barButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 36.0)
+//        barButton.setTitleColor(UIColor.orange, for: .normal)
+//        barButton.addTarget(self, action: #selector(titlePressed(sender:)), for: .touchUpInside)
+//        self.navigationItem.titleView = barButton
         
         self.navigationController?.navigationBar.tintColor=UIColor.orange
         
-        
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName: UIColor.orange]
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

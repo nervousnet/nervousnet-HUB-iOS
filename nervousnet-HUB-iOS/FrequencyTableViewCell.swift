@@ -25,13 +25,15 @@ class FrequencyTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerVie
         // Initialization code
         do {
             try frequencySettings = VM.sharedInstance.getFrequencySettings(for: rightLabel.text!)
+            
         }
         catch {}
     }
+    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
@@ -44,7 +46,7 @@ class FrequencyTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerVie
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{
-        return String(frequencySettings[currentState])
+        return String(frequencySettings[row])
     }
     
 //    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UILabel {
@@ -57,6 +59,8 @@ class FrequencyTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerVie
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         //TODO: doesnt make sense yet
+        log.debug(self.rightLabel.text.debugDescription)
+
         do {
             try VM.sharedInstance.setSensorFrequency(for: String(row), to: row)
         }
