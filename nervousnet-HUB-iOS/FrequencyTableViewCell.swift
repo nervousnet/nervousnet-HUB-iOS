@@ -13,21 +13,32 @@ class FrequencyTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerVie
     @IBOutlet weak var rightLabel: UILabel!
     @IBOutlet weak var leftImage: UIImageView!
     @IBOutlet weak var spinnerRight: UIPickerView!
-    var frequencies : [String] = ["None", "Low", "Medium", "High", "Max"]
+    var frequencies : [String] = VMConstants.sensor_freq_labels
     var frequencySettings: [Int64] = [0,1,2,3,4]
     var currentState = 0
    
+    func properInit(label: String, image: UIImage?) {
+        self.rightLabel.text = label
+        do {
+            try frequencySettings = nVM.getFrequencySettings(for: rightLabel.text!)
+            
+        }
+        catch {}
+        if let image = image {
+                self.leftImage.image = image
+        }
+        self.spinnerRight.reloadAllComponents()
+        
+    }
+    
+    
     override func awakeFromNib() {
         
         super.awakeFromNib()
         spinnerRight.delegate = self
         spinnerRight.dataSource = self
         // Initialization code
-        do {
-            try frequencySettings = VM.sharedInstance.getFrequencySettings(for: rightLabel.text!)
-            
-        }
-        catch {}
+        
     }
     
 
@@ -42,11 +53,11 @@ class FrequencyTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerVie
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
-        return frequencySettings.count
+        return frequencies.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{
-        return String(frequencySettings[row])
+        return String(frequencies[row])
     }
     
 //    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UILabel {
@@ -59,10 +70,10 @@ class FrequencyTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerVie
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         //TODO: doesnt make sense yet
-        log.debug(self.rightLabel.text.debugDescription)
+        log.debug(self.rightLabel.text.debugDescription + row.description)
 
         do {
-            try VM.sharedInstance.setSensorFrequency(for: String(row), to: row)
+            try VM.sharedInstance.setSensorFrequency(for: self.rightLabel.text!, to: row)
         }
         catch {}
     }

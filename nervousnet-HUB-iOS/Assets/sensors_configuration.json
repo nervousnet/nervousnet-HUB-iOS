@@ -17,7 +17,7 @@
         "double"
       ],
       "androidParametersPositions" : [ 0, 1, 2 ],
-      "samplingRates" : [2000, 250, 1],
+      "samplingRates" : [3, 2, 1],
       "initialState" : 3
     },
     {

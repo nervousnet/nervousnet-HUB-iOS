@@ -429,7 +429,7 @@ class DBManager {
 
         
         let duration = Double(finish.uptimeNanoseconds - start.uptimeNanoseconds) / 1_000_000.0
-        log.info("Storing the cached values to DB took \(duration) ms")
+//        log.info("Storing the cached values to DB took \(duration) ms")
     }
     
     

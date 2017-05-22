@@ -73,7 +73,7 @@ class CoreLocationSensor : BaseSensor, CLLocationManagerDelegate {
     }
     
     func locHandler (data : CLLocation?, time : Date, error: Error?) -> Void {
-        log.debug(data.debugDescription)
+//        log.debug(data.debugDescription)
         
         let timestamp = Int64(time.timeIntervalSince1970 * 1000)
         
