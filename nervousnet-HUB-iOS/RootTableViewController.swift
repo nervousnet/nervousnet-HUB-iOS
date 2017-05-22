@@ -34,8 +34,20 @@ class RootTableViewController: UITableViewController {
     }
     
     @IBAction func killSwitchPressed(_ sender: UISegmentedControl) {
-            log.debug(sender.selectedSegmentIndex)
-        
+        let switchState = sender.selectedSegmentIndex
+        if switchState == 0 { //toggle ON
+            log.info("Sensor service toggled ON.")
+            let event = NNEvent(eventType: VMConstants.EVENT_START_NERVOUSNET_REQUEST)
+            
+            NotificationCenter.default.post(name: NNEvent.name, object: nil, userInfo: event.info)
+        } else if switchState == 1 { //toggle OFF
+            log.info("Sensor service toggled OFF.")
+            let event = NNEvent(eventType: VMConstants.EVENT_PAUSE_NERVOUSNET_REQUEST)
+            
+            NotificationCenter.default.post(name: NNEvent.name, object: nil, userInfo: event.info)
+        } else {
+            log.warning("Unhandled toggle state: There is something seriously wrong with the on off toggle.")
+        }
     }
 
     override func didReceiveMemoryWarning() {
