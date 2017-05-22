@@ -25,6 +25,8 @@ class DBManager {
     public static let sharedInstance = DBManager()
     private let DBCON : Connection?
     
+    //Time interval of the background DB task
+    private let SCHEDULE_INTERVAL = 10.0 //seconds
     
     //scheduler to periodicaly store values from cache, check function specified in selector
     private var scheduler = Timer()
@@ -67,13 +69,7 @@ class DBManager {
         * TODO: does the db transaction run on the main thread now? or does SQLite handle this on
         * a different thread?
         */
-        scheduler = Timer(timeInterval: 10, //seconds
-                    target: self,
-                    selector: #selector(run),
-                    userInfo: nil,
-                    repeats: true)
-        
-        RunLoop.main.add(scheduler, forMode: .defaultRunLoopMode)
+        scheduler = initDBScheduler()
         
         //DBCON?.trace{log.debug($0)} //callback object that prints every executed SQL statement
     }
@@ -399,11 +395,24 @@ class DBManager {
     
     /// SCHEDULER
     
+    //Init the scheduler
+    private func initDBScheduler() -> Timer {
+        scheduler = Timer(timeInterval: SCHEDULE_INTERVAL, //seconds
+            target: self,
+            selector: #selector(doScheduledTask),
+            userInfo: nil,
+            repeats: true)
+        
+        RunLoop.main.add(scheduler, forMode: .defaultRunLoopMode)
+        
+        return scheduler
+    }
+    
     /*
      * Start periodic storage of readings. If run method is not called, readings will not be
      * stored into database but will be kept only in cache.
      */
-    @objc func run() {
+    @objc private func doScheduledTask() {
         let start = DispatchTime.now()
         //FIXME: lock the cache until all values are stored (or another mechanism to prevent loss of values through multithreading)
         objc_sync_enter(TEMPORARY_STORAGE);
@@ -422,6 +431,27 @@ class DBManager {
         let duration = Double(finish.uptimeNanoseconds - start.uptimeNanoseconds) / 1_000_000.0
         log.info("Storing the cached values to DB took \(duration) ms")
     }
+    
+    
+    /*
+     * Start and Stop the scheduler, clear latest reading
+     */
+    
+    // It is assumed that sensors are not sending values to the DB cache if the scheduler ist stopped.
+    // If sensors are still running and the DB does not store and clear cached values, the cache will grow forever
+    public func stopScheduledTask() {
+        //stop scheduler
+        scheduler.invalidate()
+        //make sure all values are stored and cache cleared
+        doScheduledTask()
+        //empty latest reading cache
+        LATEST_SENSOR_DATA = [:]
+    }
+    
+    public func startScheduledTask() {
+        scheduler = initDBScheduler()
+    }
+    
     
     
 }

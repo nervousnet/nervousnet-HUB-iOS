@@ -352,6 +352,9 @@ public class VM {
                     storeNervousnetState(state: VMConstants.STATE_PAUSED)
                     stopAllSensors()
                     
+                    dbManager.stopScheduledTask()
+                    
+                    
                     let event = NNEvent(eventType: VMConstants.EVENT_NERVOUSNET_STATE_UPDATED)
                     
                     NotificationCenter.default.post(name: NNEvent.name, object: nil, userInfo: event.info)
@@ -359,6 +362,9 @@ public class VM {
                 case VMConstants.EVENT_START_NERVOUSNET_REQUEST:
                     /* start all sensors */
                     storeNervousnetState(state: VMConstants.STATE_RUNNING)
+                    
+                    dbManager.startScheduledTask()
+                    
                     startAllSensors()
                     
                     let event = NNEvent(eventType: VMConstants.EVENT_NERVOUSNET_STATE_UPDATED)
