@@ -50,13 +50,13 @@ class CoreLocationSensor : BaseSensor, CLLocationManagerDelegate {
     //TODO: add NSLocationAlwaysUSageDescription key to Info.plist
     override func startListener() -> Bool {
         locationManager.delegate = self
-        print("startinglistener")
         if authorizationStatus == CLAuthorizationStatus.notDetermined{
             locationManager.requestAlwaysAuthorization()
         }
         
         if  authorizationStatus  != CLAuthorizationStatus.restricted && authorizationStatus != CLAuthorizationStatus.denied {
             locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
             timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(super.configuration.samplingrate), repeats: true, block: {timer in self.locationManager.requestLocation()})
             return true
         }
@@ -73,7 +73,7 @@ class CoreLocationSensor : BaseSensor, CLLocationManagerDelegate {
     }
     
     func locHandler (data : CLLocation?, time : Date, error: Error?) -> Void {
-//        log.debug(data.debugDescription)
+        log.debug(data.debugDescription)
         
         let timestamp = Int64(time.timeIntervalSince1970 * 1000)
         
@@ -81,7 +81,7 @@ class CoreLocationSensor : BaseSensor, CLLocationManagerDelegate {
             let lat = data!.coordinate.latitude
             let long = data!.coordinate.longitude
             let speed = data!.speed
-            print(lat, long, speed)
+//            print(lat, long, speed)
             do {
                 super.push(reading: try SensorReading(config: super.configuration, values: [lat, long, speed], timestamp: timestamp))
             } catch _ {

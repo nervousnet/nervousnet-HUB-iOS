@@ -10,9 +10,9 @@ import UIKit
 
 class FrequencyTableViewController: UITableViewController {
     
-    var subSettings : [String] = []
+    var subSettings : [Int64 : String] = [:]
     
-    let subImages: [String : UIImage] = ["Accelerometer" : #imageLiteral(resourceName: "ic_accel"), "Battery" : #imageLiteral(resourceName: "ic_batt"), "GPS" : #imageLiteral(resourceName: "ic_conn"), "Magnetometer" : #imageLiteral(resourceName: "ic_light"), "Noise" : #imageLiteral(resourceName: "ic_noise"), "Proximity" : #imageLiteral(resourceName: "proximity_orange"), "Gyroscope" : #imageLiteral(resourceName: "ic_accel")]
+    let subImages: [Int64 : UIImage] = [1000 : #imageLiteral(resourceName: "ic_accel"), 2001 : #imageLiteral(resourceName: "ic_batt"), 1003 : #imageLiteral(resourceName: "ic_conn"), 1002 : #imageLiteral(resourceName: "ic_light"), 2002 : #imageLiteral(resourceName: "ic_noise"), -1 : #imageLiteral(resourceName: "proximity_orange"), 1001 : #imageLiteral(resourceName: "ic_accel")]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +21,7 @@ class FrequencyTableViewController: UITableViewController {
        
         
         
-        self.subSettings = VM.sharedInstance.sensorList
+        self.subSettings = VM.sharedInstance.hardwareSensorList
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -50,7 +50,11 @@ class FrequencyTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : FrequencyTableViewCell = tableView.dequeueReusableCell(withIdentifier: "frequencySetting", for: indexPath) as! FrequencyTableViewCell
-        cell.properInit(label: subSettings[indexPath.row], image: subImages[subSettings[indexPath.row]])        
+        if let image = subImages[Array(subSettings.keys)[indexPath.row]] { cell.properInit(ID: Array(subSettings.keys)[indexPath.row], image: image)
+        }
+        else{
+            cell.properInit(ID: Array(subSettings.keys)[indexPath.row], image: subImages[-1])
+        }
         return cell
     }
     

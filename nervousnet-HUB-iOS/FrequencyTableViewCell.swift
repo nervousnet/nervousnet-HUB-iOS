@@ -13,12 +13,14 @@ class FrequencyTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerVie
     @IBOutlet weak var rightLabel: UILabel!
     @IBOutlet weak var leftImage: UIImageView!
     @IBOutlet weak var spinnerRight: UIPickerView!
+    var ID : Int64 = -1
     var frequencies : [String] = VMConstants.sensor_freq_labels
     var frequencySettings: [Int64] = [0,1,2,3,4]
     var currentState = 0
    
-    func properInit(label: String, image: UIImage?) {
-        self.rightLabel.text = label
+    func properInit(ID: Int64, image: UIImage?) {
+        self.rightLabel.text = nVM.hardwareSensorList[ID]
+        self.ID = ID
         do {
             try frequencySettings = nVM.getFrequencySettings(for: rightLabel.text!)
             
@@ -28,6 +30,9 @@ class FrequencyTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerVie
                 self.leftImage.image = image
         }
         self.spinnerRight.reloadAllComponents()
+        self.spinnerRight.selectRow(nVM.getSensorState(sensorID: ID), inComponent: 0, animated: true)
+        log.debug(self.ID)
+
         
     }
     
@@ -73,7 +78,8 @@ class FrequencyTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerVie
         log.debug(self.rightLabel.text.debugDescription + row.description)
 
         do {
-            try VM.sharedInstance.setSensorFrequency(for: self.rightLabel.text!, to: row)
+//            try VM..setSensorFrequency(for: self.rightLabel.text!, to: row)
+            nVM.updateSensorState(sensorID: self.ID, state: row)
         }
         catch {}
     }

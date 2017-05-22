@@ -33,17 +33,18 @@ public class BasicSensorConfiguration : GeneralSensorConfiguration {
             
         case VMConstants.SENSOR_STATE_AVAILABLE_BUT_OFF:
             self.samplingrate = -1
-            
+            self.state = state
         case VMConstants.SENSOR_STATE_AVAILABLE_DELAY_LOW:
             self.samplingrate = samplingrates[0]
-            
+            self.state = state
         case VMConstants.SENSOR_STATE_AVAILABLE_DELAY_MED:
             self.samplingrate = samplingrates[1]
-            
+            self.state = state
         case VMConstants.SENSOR_STATE_AVAILABLE_DELAY_HIGH:
             self.samplingrate = samplingrates[2]
-            
+            self.state = state
         default:
+            self.state = VMConstants.SENSOR_STATE_AVAILABLE_BUT_OFF
             self.samplingrate = -1
             
         }

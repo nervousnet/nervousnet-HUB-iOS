@@ -92,7 +92,8 @@ class CoreMotionSensor : BaseSensor {
     }
     
     func gyrHandler (data : CMGyroData?, error: Error?) -> Void {
-        
+        log.debug(data.debugDescription)
+
         let timestamp = getTimeStampMilliseconds()
         
         if data != nil {
@@ -110,7 +111,8 @@ class CoreMotionSensor : BaseSensor {
     }
     
     func magHandler (data : CMMagnetometerData?, error: Error?) -> Void {
-        
+        log.debug(data.debugDescription)
+
         let timestamp = getTimeStampMilliseconds()
         
         

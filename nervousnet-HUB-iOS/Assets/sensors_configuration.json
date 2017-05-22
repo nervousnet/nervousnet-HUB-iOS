@@ -1,7 +1,7 @@
 {  "sensors_configurations" :
   [
     {
-      "sensorID" : 1,
+      "sensorID" : 1000,
       "sensorName" : "Accelerometer",
       "androidSensorType" : 1,
       "parametersNames" :
@@ -53,7 +53,7 @@
         "String",
         "float"
       ],
-      "samplingRates" : [2000, 250, 60],
+      "samplingRates" : [3, 2, 1],
       "initialState" : 0,
       "wrapperName" : "BatterySensor"
     },
@@ -70,11 +70,11 @@
         "double"
       ],
       "androidParametersPositions" : [ 0 ],
-      "samplingRates" : [2000, 250, 60],
+      "samplingRates" : [3, 2, 1],
       "initialState" : 0
     },
     {
-      "sensorID" : 4,
+      "sensorID" : 1001,
       "sensorName" : "Gyroscope",
       "androidSensorType" : 4,
       "parametersNames" :
@@ -90,7 +90,7 @@
         "double"
       ],
       "androidParametersPositions" : [ 0, 1, 2 ],
-      "samplingRates" : [2000, 250, 1],
+      "samplingRates" : [3, 2, 1],
       "initialState" : 3
     },
     {
@@ -104,7 +104,7 @@
       [
         "int"
       ],
-      "samplingRates" : [2000, 250, 60],
+      "samplingRates" : [3, 2, 1],
       "initialState" : 0,
       "wrapperName" : "NoiseSensor"
     },{
@@ -120,7 +120,7 @@
     [
       "int"
     ],
-    "samplingRates" : [2000, 250, 60],
+    "samplingRates" : [3, 2, 1],
     "initialState" : 0
   }, {
     "sensorID" : 7,
@@ -165,7 +165,7 @@
       ],
       "initialState" : 0
     }, {
-        "sensorID" : 132,
+        "sensorID" : 1003,
         "sensorName" : "GPS",
         "parametersNames" :
         [
@@ -179,11 +179,11 @@
          "double",
          "double"
          ],
-        "samplingRates" : [2000, 250, 1],
+        "samplingRates" : [30, 20, 15],
         "initialState" : 3
    },
    {
-   "sensorID" : 99,
+   "sensorID" : 1002,
    "sensorName" : "Magnetometer",
    "parametersNames" :
    [
@@ -197,7 +197,7 @@
     "double",
     "double"
     ],
-   "samplingRates" : [2000, 250, 1],
+   "samplingRates" : [3, 2, 1],
    "initialState" : 3
    }
    ]
