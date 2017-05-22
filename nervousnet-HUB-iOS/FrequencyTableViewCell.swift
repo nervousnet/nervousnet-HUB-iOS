@@ -31,6 +31,7 @@ class FrequencyTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerVie
         }
         self.spinnerRight.reloadAllComponents()
         self.spinnerRight.selectRow(nVM.getSensorState(sensorID: ID), inComponent: 0, animated: true)
+
         log.debug(self.ID)
 
         
@@ -63,6 +64,11 @@ class FrequencyTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerVie
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{
         return String(frequencies[row])
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let attributedString = NSAttributedString(string: frequencies[row], attributes: [NSForegroundColorAttributeName : UIColor.darkGray, NSFontAttributeName : "Helvetica Neue Light 18.0"])
+        return attributedString
     }
     
 //    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UILabel {

@@ -53,7 +53,7 @@ class SettingsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return (tableView.frame.height - navigationController!.navigationBar.frame.height) / 7.0
+            return (tableView.frame.height - navigationController!.navigationBar.frame.height - UIApplication.shared.statusBarFrame.height) / CGFloat(subSettings.count)
         }
         return (tableView.frame.height - navigationController!.navigationBar.frame.height) / 5.0
 
@@ -68,9 +68,6 @@ class SettingsTableViewController: UITableViewController {
 //        return (tableView.bounds.height - navigationController!.navigationBar.bounds.height)/10.0
 //    }
     
-    func titlePressed (sender: UIButton!){
-        log.debug("Hello, it worked")
-    }
     
     /*
     // Override to support conditional editing of the table view.
