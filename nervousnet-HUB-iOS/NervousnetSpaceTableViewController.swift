@@ -26,11 +26,17 @@ class NervousnetSpaceTableViewController: UITableViewController {
         
         // download app store listing in the background and hide progress bar
         operationQueue.addOperation {
-            
             self.TableData = AxonStore.getRemoteAxonList()
-
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.tableView.reloadRows(at: self.tableView.indexPathsForVisibleRows!, with: UITableViewRowAnimation.right)
+            }
+//            let refreshCell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0))
+//            let refreshLabel = refreshCell?.viewWithTag(47) as! UILabel
+//            log.debug(refreshLabel.text.debugDescription)
+//            refreshLabel.text = "Current List of Axons On Github"
         }
-
+        
         
     }
         
@@ -46,10 +52,13 @@ class NervousnetSpaceTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return 1
+        }
         return TableData.count
     }
     
@@ -57,7 +66,9 @@ class NervousnetSpaceTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        if indexPath.section == 0 {
+            return tableView.dequeueReusableCell(withIdentifier: "reloadingCell")!
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: "appstoreCell", for: indexPath)
         
         let imageData = NSData(base64Encoded: TableData[indexPath.row].icon, options: NSData.Base64DecodingOptions(rawValue: 0))
@@ -68,7 +79,7 @@ class NervousnetSpaceTableViewController: UITableViewController {
         let lbl : UILabel? = cell.contentView.viewWithTag(1) as? UILabel
         lbl?.text = TableData[indexPath.row].name
         
-        let txtv : UITextView? = cell.contentView.viewWithTag(2) as? UITextView
+        let txtv : UILabel? = cell.contentView.viewWithTag(2) as? UILabel
         txtv?.text = TableData[indexPath.row].description
         
         let imgview : UIImageView? = cell.contentView.viewWithTag(3) as? UIImageView
