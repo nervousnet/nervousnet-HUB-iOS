@@ -41,6 +41,7 @@
 		3825C5581DE74238000FD8EE /* AxonStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3825C5571DE74238000FD8EE /* AxonStore.swift */; };
 		383CAC1E1E0AB0B10053BECB /* VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383CAC1D1E0AB0B10053BECB /* VM.swift */; };
 		383CAC2A1E0ACF920053BECB /* VMConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383CAC291E0ACF920053BECB /* VMConstants.swift */; };
+		38406C071ED33ABC0085DEEE /* AboutScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38406C061ED33ABC0085DEEE /* AboutScreenViewController.swift */; };
 		38B521411DEEE59E001015BF /* AxonServerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B521401DEEE59E001015BF /* AxonServerController.swift */; };
 		38B5214E1DEEECF7001015BF /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 38B5214D1DEEECF7001015BF /* Assets */; };
 		38DA7DB31E0172F000D34864 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DA7DB21E0172F000D34864 /* DBManager.swift */; };
@@ -108,6 +109,7 @@
 		3825C5571DE74238000FD8EE /* AxonStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AxonStore.swift; sourceTree = "<group>"; };
 		383CAC1D1E0AB0B10053BECB /* VM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VM.swift; sourceTree = "<group>"; };
 		383CAC291E0ACF920053BECB /* VMConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VMConstants.swift; sourceTree = "<group>"; };
+		38406C061ED33ABC0085DEEE /* AboutScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutScreenViewController.swift; sourceTree = "<group>"; };
 		38B521401DEEE59E001015BF /* AxonServerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AxonServerController.swift; sourceTree = "<group>"; };
 		38B5214D1DEEECF7001015BF /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
 		38DA7DB21E0172F000D34864 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				0781DE4C1E9BA73C00C25BE8 /* Settings */,
 				0781DE4E1E9BA76600C25BE8 /* NervousnetSpace */,
 				0794371C1E76E3B5009DDBEF /* WebTestViewController.swift */,
+				38406C061ED33ABC0085DEEE /* AboutScreenViewController.swift */,
 				22A68B001D92DD9B00E75C04 /* LaunchScreen.storyboard */,
 				075418341DE75B2300327B41 /* Main.storyboard */,
 			);
@@ -512,6 +515,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38406C071ED33ABC0085DEEE /* AboutScreenViewController.swift in Sources */,
 				075418331DE75A6B00327B41 /* FrequencyTableViewCell.swift in Sources */,
 				071844B41E2650AD00FFF319 /* BasicSensorConfiguration.swift in Sources */,
 				383CAC1E1E0AB0B10053BECB /* VM.swift in Sources */,
