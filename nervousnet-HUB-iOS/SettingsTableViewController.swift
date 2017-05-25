@@ -48,6 +48,15 @@ class SettingsTableViewController: UITableViewController {
         cell.parentViewController = self
         cell.label.text = subSettings[indexPath.row]
         cell.imageLeft.image = subImages[indexPath.row]
+        
+        if cell.label.text != "Collection Rate"{
+            if let first = cell.contentView.viewWithTag(101) as? UILabel, let second = cell.contentView.viewWithTag(102) as? UIButton{
+                first.numberOfLines = 2
+                first.text! += "\nComing Soon"
+                first.isEnabled = false
+                second.isEnabled=false
+            }
+        }
         return cell
     }
     
