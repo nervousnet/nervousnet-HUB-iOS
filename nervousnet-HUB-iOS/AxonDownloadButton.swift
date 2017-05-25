@@ -19,14 +19,15 @@ class AxonDownloadButton: UIButton {
     
     var axonDetail : AxonDetails?
     var buttonState : DownloadState = DownloadState.initializing
+    var openButton : UIButton?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.updateState()
         log.debug("I awoke")
-        self.addTarget(nil, action: #selector(AxonDownloadButton.pressed), for: UIControlEvents.primaryActionTriggered)
-        self.tintColor = UIColor.orange
+        self.addTarget(nil, action: #selector(AxonDownloadButton.pressed), for: UIControlEvents.primaryActionTriggered)    
     }
+    
     
     /*
     // Only override draw() if you perform custom drawing.
@@ -63,12 +64,16 @@ class AxonDownloadButton: UIButton {
             
             if(localaxon.title == self.axonDetail?.title){
                 self.buttonState = DownloadState.downloaded
+                self.openButton?.isEnabled = true
                 self.setTitle(buttonState.rawValue, for: UIControlState.normal)
                 break
             }
             
         }
         self.setTitle(buttonState.rawValue, for: UIControlState.normal)
+        if self.buttonState == DownloadState.downloaded {
+            self.openButton?.isEnabled = true
+        }
+        else {self.openButton?.isEnabled = false}
     }
-    
 }

@@ -14,6 +14,7 @@ class AxonDetailViewController: UIViewController {
     
     @IBOutlet weak var axonImageView: UIImageView!
     @IBOutlet weak var downloadButton: AxonDownloadButton!
+    @IBOutlet weak var openButton: UIButton!
     
     @IBOutlet weak var axonTextView: UITextView!
     @IBOutlet weak var axonSubtitle: UILabel!
@@ -41,12 +42,43 @@ class AxonDetailViewController: UIViewController {
       
         downloadButton.axonDetail = axon
         downloadButton.updateState()
+        downloadButton.openButton = openButton
         
+        for localaxon in AxonStore.getInstalledAxonsList() {
+            
+            if(localaxon.title == self.axonDetails?.title){
+                self.openButton.isEnabled = true
+            }
+        }
+
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    @IBAction func openAxon(_ sender: Any) {
+        
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        log.info("preparing for segue")
+        
+        if segue.identifier == "openAxonSegue" {
+            
+
+            let urlHandler = segue.destination as! WebTestViewController
+            
+            if let axDet = self.axonDetails{
+                urlHandler.req = URLRequest(url: URL(string: "http://localhost:8080/axon-res/\(axDet.name)/axon.html")!)
+                //url: AxonStore.getLocalAxonURL(axonName: "axon-acctest") as! URL)
+            }
+            else {log.debug("STOP ABUSING OPTIONALS")}
+        }
     }
 
 }

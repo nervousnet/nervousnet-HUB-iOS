@@ -755,12 +755,12 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xam-Y6-U4i">
+                                        <button opaque="NO" tag="4" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xam-Y6-U4i">
                                             <rect key="frame" x="319" y="36" width="38" height="30"/>
                                             <color key="tintColor" red="0.91372549020000005" green="0.28235294119999998" blue="0.078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <state key="normal" title="Open"/>
                                             <connections>
-                                                <segue destination="dVE-t5-M9T" kind="show" identifier="testWebViewControllerSegue" id="246-Ci-PnZ"/>
+                                                <segue destination="dVE-t5-M9T" kind="show" identifier="openAxonSegue" id="246-Ci-PnZ"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AppDescription" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="jPR-l7-NXC">
@@ -878,12 +878,22 @@
                                 <rect key="frame" x="137" y="144" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jsG-h4-i5V">
+                                <rect key="frame" x="191" y="144" width="38" height="30"/>
+                                <state key="normal" title="Open"/>
+                                <connections>
+                                    <action selector="openAxon:" destination="7yS-lr-pYs" eventType="touchUpInside" id="4DP-Xe-pLs"/>
+                                    <segue destination="dVE-t5-M9T" kind="show" identifier="openAxonSegue" id="Nod-7B-SCO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="hFG-4G-DpW" firstAttribute="leading" secondItem="uVc-vo-Qny" secondAttribute="trailing" constant="37" id="0P7-aB-xq3"/>
+                            <constraint firstItem="jsG-h4-i5V" firstAttribute="baseline" secondItem="bWl-Au-1Vz" secondAttribute="baseline" id="1yg-7n-GgH"/>
                             <constraint firstItem="5Zx-Nf-BVg" firstAttribute="top" secondItem="uVc-vo-Qny" secondAttribute="bottom" constant="15.5" id="4bk-so-4HY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5Zx-Nf-BVg" secondAttribute="trailing" id="551-l0-byh"/>
+                            <constraint firstItem="jsG-h4-i5V" firstAttribute="leading" secondItem="bWl-Au-1Vz" secondAttribute="trailing" constant="8" symbolic="YES" id="D8O-PT-I9p"/>
                             <constraint firstItem="TGZ-zP-UmL" firstAttribute="top" secondItem="dyl-xA-5I0" secondAttribute="bottom" constant="30" id="Dbk-rp-gN2"/>
                             <constraint firstItem="lul-Q6-d11" firstAttribute="top" secondItem="5Zx-Nf-BVg" secondAttribute="bottom" constant="8" id="HBZ-YI-aCg"/>
                             <constraint firstItem="bWl-Au-1Vz" firstAttribute="bottom" secondItem="uVc-vo-Qny" secondAttribute="bottom" id="JwA-WI-T9o"/>
@@ -905,6 +915,7 @@
                         <outlet property="axonTitle" destination="TGZ-zP-UmL" id="dUS-g7-G7M"/>
                         <outlet property="axonURL" destination="lul-Q6-d11" id="1Jo-2A-9dV"/>
                         <outlet property="downloadButton" destination="bWl-Au-1Vz" id="4IR-oe-oPT"/>
+                        <outlet property="openButton" destination="jsG-h4-i5V" id="EpM-uF-5Ua"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AuG-8Q-swZ" userLabel="First Responder" sceneMemberID="firstResponder"/>

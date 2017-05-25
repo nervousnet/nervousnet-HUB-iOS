@@ -30,11 +30,13 @@ class NervousnetSpaceTableViewController: UITableViewController {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
                 self.tableView.reloadRows(at: self.tableView.indexPathsForVisibleRows!, with: UITableViewRowAnimation.right)
+                let refreshCell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0))
+                let refreshLabel = refreshCell?.viewWithTag(47) as! UILabel
+                refreshLabel.text = "Current List of Axons On Github"
             }
-//            let refreshCell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0))
-//            let refreshLabel = refreshCell?.viewWithTag(47) as! UILabel
-//            log.debug(refreshLabel.text.debugDescription)
-//            refreshLabel.text = "Current List of Axons On Github"
+            
+            
+            
         }
         
         
@@ -85,6 +87,17 @@ class NervousnetSpaceTableViewController: UITableViewController {
         let imgview : UIImageView? = cell.contentView.viewWithTag(3) as? UIImageView
         imgview?.image = image
         
+        for localaxon in AxonStore.getInstalledAxonsList() {
+            
+            if(localaxon.title == TableData[indexPath.row].title) {
+                if let openButton = cell.contentView.viewWithTag(4) as? UIButton{
+                openButton.isEnabled = true
+            
+                }
+            }
+        }
+        
+        
         return cell
     }
     
@@ -102,7 +115,7 @@ class NervousnetSpaceTableViewController: UITableViewController {
             }
         }
         
-        if segue.identifier == "testWebViewControllerSegue" {
+        if segue.identifier == "openAxonSegue" {
             
             var idxPath : IndexPath?
             
@@ -120,7 +133,7 @@ class NervousnetSpaceTableViewController: UITableViewController {
                 urlHandler.req = URLRequest(url: URL(string: "http://localhost:8080/axon-res/\(TableData[idx].name)/axon.html")!)
                 //url: AxonStore.getLocalAxonURL(axonName: "axon-acctest") as! URL)
             }
-            else {log.debug("STOP ABUSING OPTIONALS U MORONS")}
+            else {log.debug("STOP ABUSING OPTIONALS")}
         }
     }
 
