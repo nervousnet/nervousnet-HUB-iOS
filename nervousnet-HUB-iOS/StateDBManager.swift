@@ -127,7 +127,7 @@ class StateDBManager {
              * the state values. Done by trying to get state info and storing default upon cought error
              */
             do { _ = try getNervousnetState() } catch DBError.NoSuchElementException {
-                storeNervousNetState(state: VMConstants.STATE_RUNNING)
+                storeNervousNetState(state: VMConstants.STATE_RUNNING) //default --> running
             }
             
             

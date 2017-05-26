@@ -125,7 +125,7 @@ class AxonServerController {
                     //log.info("serving request from axon \(axon)")
                     return .ok(.json(dataDict))
                 } catch {
-                    log.error(error.localizedDescription)
+                    //log.error(error.localizedDescription)
                     return .internalServerError
                 }
                 

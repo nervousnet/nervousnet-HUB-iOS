@@ -325,6 +325,12 @@ class DBManager {
         
         
     }
+    
+    
+    /* Invalidate latest reading of a sensor */
+    public func removeLatestReading(for sensorID : Int64) {
+        LATEST_SENSOR_DATA.removeValue(forKey: sensorID)
+    }
  
     
     

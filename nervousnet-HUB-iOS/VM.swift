@@ -276,14 +276,20 @@ public class VM {
         
         do {
             let oldState = try configManager.getSensorState(sensorID: sensorID)
-        
+            let nervousState = configManager.getNervousnetState()
             if state != oldState {
                 try configManager.setSensorState(sensorID: sensorID, state: state)                                  //update state
-                if state == VMConstants.SENSOR_STATE_AVAILABLE_BUT_OFF { stopSensor(withID: sensorID) }             //turn off
-                else if oldState == VMConstants.SENSOR_STATE_AVAILABLE_BUT_OFF { startSensor(withID: sensorID) }    //turn on
-                else { //frequency change, restart sensor with new ID
-                    stopSensor(withID: sensorID)
-                    startSensor(withID: sensorID)
+                if nervousState != VMConstants.STATE_PAUSED { //if not paused restart sensors with new settings
+                    if state == VMConstants.SENSOR_STATE_AVAILABLE_BUT_OFF { stopSensor(withID: sensorID) }             //turn off
+                    else if oldState == VMConstants.SENSOR_STATE_AVAILABLE_BUT_OFF { startSensor(withID: sensorID) }    //turn on
+                    else { //frequency change, restart sensor with new ID
+                        stopSensor(withID: sensorID)
+                        startSensor(withID: sensorID)
+                    }
+                }
+                
+                if state == VMConstants.SENSOR_STATE_AVAILABLE_BUT_OFF {
+                    dbManager.removeLatestReading(for : sensorID)
                 }
             }
         } catch _ {
