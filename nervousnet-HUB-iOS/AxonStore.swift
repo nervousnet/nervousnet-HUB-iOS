@@ -29,6 +29,22 @@ class AxonStore : NSObject {
     static private let updateInterval = 3600.0 //seconds
     
     
+    //now it gets really ugly, blacklisted axons by name as used on github axon repository
+    //https://github.com/nervousnet/nervousnet-axons/tree/master/testing
+    //TODO: at least move this into a file, or do something cleverer
+    // (issue ticket: https://github.com/nervousnet/nervousnet-HUB-iOS/issues/19)
+    static private let blacklistedAxons = ["axon-acctest",
+                                           //"axon-graph",
+                                           "axon-lewin",
+                                           "axon-one",
+                                           "axon-pat",
+                                           "axon-prasad",
+                                           "axon-sid",
+                                           "axon-survive",
+                                           "axon-traveasy",
+                                           //"delta-kit-logger",
+                                           "my-town"]
+    
     
     class func getInstalledAxonsList() -> Array<AxonDetails>{
         var installedAxons = Array<AxonDetails>()
@@ -247,7 +263,9 @@ class AxonStore : NSObject {
                                               icon:             axon["icon"].stringValue,
                                               repository_url:   axon["repository"]["url"].stringValue,
                                               author:           axon["author"].stringValue)
-                resultList.append(axonDetails)
+                if !blacklistedAxons.contains(axonDetails.name) {
+                    resultList.append(axonDetails)
+                }
             }
         }else{
             log.error("cannot download remote axon list")
