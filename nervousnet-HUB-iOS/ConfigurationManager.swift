@@ -12,15 +12,15 @@
  * for storing the state when some sensor collection configuration changes and restoring
  * the state when the application turns back on. This is necessary because application
  * crashes can appear. The idea is that the whole state is managed by ConfigurationManager.
- * <br/>
+ 
  * At the initialization of the ConfigurationManager, the manager goes through the
  * configuration file, that holds all sensors' configurations, and initializes sensors
  * according to the configurations. Then, it checks database and restores states of the
  * sensors that are stored before the app crashes or is shut down - default states form configuration file
  * are overwritten. If there is nothing to be restored, the states from configuration file persist.
- * <br/>
+
  * All configurations are hold in hashmap that map sensors' IDs into their configuration.
- * <br/>
+
  * TODO: To make this class a singleton. At the current development
  * stage, this is not the case yet.
  * TODO: There may be better solutions for database management.

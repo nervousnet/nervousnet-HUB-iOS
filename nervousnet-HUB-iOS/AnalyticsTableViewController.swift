@@ -8,6 +8,8 @@
 
 import UIKit
 
+//class currently not functional
+
 class AnalyticsTableViewController: UITableViewController {
     
     let sensors : [String] = ["Accelerometer", "Battery", "Gyroscope", "Location", "Light", "Noise", "Proximity"]

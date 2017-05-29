@@ -10,21 +10,29 @@ import UIKit
 import SwiftyJSON
 import Zip
 
+//This class controls the front end of the Axonstore and dispatches the fetches from github
+
 class NervousnetSpaceTableViewController: UITableViewController {
     
     
     var TableData = [AxonDetails]()
+    
+    //Just an operationQueue for the tasks we are going to do to keep the main queue clean
     let operationQueue = OperationQueue.init()
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
         //self.navigationController?.navigationBar.viewWithTag(97)?.isHidden = true
+        
+        
+        //Deprecated library for displaying a progressview
         
         //MRProgressOverlayView.showOverlayAddedTo(self.view, title: "Getting Axons..", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
         
-        // download app store listing in the background and hide progress bar
+        //get the list of available axons from github and refresh the tableview accordingly
         operationQueue.addOperation {
             self.TableData = AxonStore.getRemoteAxonList()
             DispatchQueue.main.async {
@@ -53,10 +61,13 @@ class NervousnetSpaceTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     
+    
+    //Section 0 for indicating status, Section 1 for diplaying actual list of axons
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     
+    //One Indicator cell, otherwise all axons that are available. Blacklisting is handled by the AxonStore
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
@@ -68,16 +79,20 @@ class NervousnetSpaceTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        //Prototypes from Main.Storyboard for populating the tableView
         if indexPath.section == 0 {
             return tableView.dequeueReusableCell(withIdentifier: "reloadingCell")!
         }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "appstoreCell", for: indexPath)
         
+        //Get encoded image from Data and make it usable as UIImage
         let imageData = NSData(base64Encoded: TableData[indexPath.row].icon, options: NSData.Base64DecodingOptions(rawValue: 0))
         let image = UIImage(data: imageData! as Data)
         
         
-        //get labels within the cell
+        //get contents of the cell and assign values to objects
         let lbl : UILabel? = cell.contentView.viewWithTag(1) as? UILabel
         lbl?.text = TableData[indexPath.row].name
         
@@ -87,8 +102,12 @@ class NervousnetSpaceTableViewController: UITableViewController {
         let imgview : UIImageView? = cell.contentView.viewWithTag(3) as? UIImageView
         imgview?.image = image
         
+        //debugging only
+        let installedAxons = AxonStore.getInstalledAxonsList()
+        
+        
+        //Check whether axon is available to decide whether to allow opening or not
         for localaxon in AxonStore.getInstalledAxonsList() {
-            
             if(localaxon.title == TableData[indexPath.row].title) {
                 if let openButton = cell.contentView.viewWithTag(4) as? UIButton{
                 openButton.isEnabled = true
@@ -102,12 +121,18 @@ class NervousnetSpaceTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
         log.info("preparing for segue")
         
+        
+        //This is triggered by clicking any of the appstoreCells and presents a more detailed view by passing the axonDetails stored in TableData
         if segue.identifier == "axonDetailViewControllerSegue" {
+            
             let idxPath = self.tableView.indexPathForSelectedRow
+            
             if let idx = idxPath?.row, let nextVC = segue.destination as? AxonDetailViewController {
                 nextVC.axonDetails = TableData[idx]
             } else {
@@ -115,10 +140,12 @@ class NervousnetSpaceTableViewController: UITableViewController {
             }
         }
         
+        //Extracts the URL for the locally stored axon and passes it to the WebView on WebTestViewcontroller
+        //TODO: Make a nicer ViewController for presenting Axons, maybe even with API controls
         if segue.identifier == "openAxonSegue" {
             
             var idxPath : IndexPath?
-            
+
             if let senderButton = sender as? UIButton {
                 if let superview = senderButton.superview {
                     if let cell = superview.superview as? UITableViewCell {
@@ -131,6 +158,7 @@ class NervousnetSpaceTableViewController: UITableViewController {
             
             if let idx = idxPath?.row {
                 urlHandler.req = URLRequest(url: URL(string: "http://localhost:8080/axon-res/\(TableData[idx].name)/axon.html")!)
+                //Sample of what this may look like:
                 //url: AxonStore.getLocalAxonURL(axonName: "axon-acctest") as! URL)
             }
             else {log.debug("STOP ABUSING OPTIONALS")}

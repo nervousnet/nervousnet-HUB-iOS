@@ -8,14 +8,16 @@
 
 import Foundation
 
+/* this the specification of the most basic Form sensorConfigurations might take in the real world*/
 public class BasicSensorConfiguration : GeneralSensorConfiguration {
     
+    //I am not quite sure what the first one is for. The Array takes a number of samplingrates, which can be selected by chosing a state. More details in the constants.
     public private(set) var samplingrate : Int64
     public private(set) var samplingrates : [Int64]
     public private(set) var state : Int
     
     
-    
+    //init and set appropriate state
     init(sensorID : Int64, sensorName : String, parameterDef : [String : String], samplingrates : [Int64], state: Int) {
         self.samplingrate = 0
         self.state = state
@@ -26,7 +28,7 @@ public class BasicSensorConfiguration : GeneralSensorConfiguration {
     }
     
     
-    
+    //set at which rate the sensor will aggregate data
     func setState(state : Int){
         
         switch state{
@@ -50,10 +52,12 @@ public class BasicSensorConfiguration : GeneralSensorConfiguration {
         }
     }
     
+    //TODO
     public func getWrapperName ()  -> String {
         return "dummyString"
     }
     
+    //converts the current configuration to a string for use outside swift
     public override func toString() -> String{
         var returnString : String = "ConfigurationClass{"
             returnString +=         ("sensorName=" + self.sensorName)
