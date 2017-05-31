@@ -8,6 +8,8 @@
 
 import UIKit
 
+//Diplays Detailed information on an Axon and contains self-managed button to download/install and uninstall said axon
+
 class AxonDetailViewController: UIViewController {
     
     var axonDetails : AxonDetails?
@@ -22,8 +24,11 @@ class AxonDetailViewController: UIViewController {
     
     @IBOutlet weak var axonURL: UITextView!
     
+    /*Should axondetails have been defined at initialization, UI elements are updated accordingly. Relies on external setting of UI Elements otherwise (Not really sure why, Legacy android design)*/
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         guard let axon = axonDetails else {
             return

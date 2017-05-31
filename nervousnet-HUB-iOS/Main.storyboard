@@ -324,7 +324,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tcr-YC-xiz">
                                                     <rect key="frame" x="0.0" y="0.0" width="187.5" height="175.5"/>
                                                     <connections>
-                                                        <segue destination="dVE-t5-M9T" kind="show" id="6Lu-0O-sNa"/>
+                                                        <segue destination="1cF-LP-I8h" kind="show" id="JMv-zK-usK"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -922,6 +922,108 @@
             </objects>
             <point key="canvasLocation" x="1435.5" y="-187.5"/>
         </scene>
+        <!--About Screen View Controller-->
+        <scene sceneID="RYq-sC-5d1">
+            <objects>
+                <viewController storyboardIdentifier="AboutScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1cF-LP-I8h" customClass="AboutScreenViewController" customModule="nervousnet_HUB_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZHx-GS-Pmd"/>
+                        <viewControllerLayoutGuide type="bottom" id="OFW-lF-ijf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CXt-na-PEA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Z7-36-elX">
+                                <rect key="frame" x="19" y="57" width="338" height="1"/>
+                                <color key="backgroundColor" red="0.94318324330000003" green="0.37167876960000001" blue="0.093940682710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6D-ks-naA">
+                                <rect key="frame" x="37" y="607" width="300" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Terms of Use"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8iV-vd-dbp">
+                                <rect key="frame" x="37" y="557" width="300" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Rate App"/>
+                                <connections>
+                                    <action selector="openAppRating" destination="1cF-LP-I8h" eventType="touchUpInside" id="K7Z-86-16w"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3I1-M0-X14">
+                                <rect key="frame" x="27" y="100" width="320" height="168"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="168" id="GK8-ye-tiQ"/>
+                                </constraints>
+                                <string key="text">ETH Zürich,
+Departement of Humanities and Social Sciences (D-GESS)
+Professorship of Computational Social Science (COSS)
+Clausiusstrasse 50,
+8092 Zürich,
+Switzerland</string>
+                                <color key="textColor" white="0.28512912330000001" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nervousnet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UUY-Tr-dWp">
+                                <rect key="frame" x="74" y="66" width="227" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="9CF-0a-3C0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="www.nervousnet.info" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="S6d-W1-03L">
+                                <rect key="frame" x="78" y="276" width="218" height="33"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNF-zK-1ts">
+                                <rect key="frame" x="128" y="37" width="119" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="8Ev-bw-Edm"/>
+                                    <constraint firstAttribute="width" constant="119" id="BmV-An-efi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3I1-M0-X14" firstAttribute="centerX" secondItem="S6d-W1-03L" secondAttribute="centerX" id="0eH-Ak-sO7"/>
+                            <constraint firstItem="8iV-vd-dbp" firstAttribute="trailing" secondItem="d6D-ks-naA" secondAttribute="trailing" id="3m0-ej-9Rb"/>
+                            <constraint firstItem="LNF-zK-1ts" firstAttribute="centerX" secondItem="0Z7-36-elX" secondAttribute="centerX" id="6JI-7a-WGK"/>
+                            <constraint firstItem="LNF-zK-1ts" firstAttribute="top" secondItem="ZHx-GS-Pmd" secondAttribute="bottom" constant="17" id="CId-qf-ifd"/>
+                            <constraint firstItem="0Z7-36-elX" firstAttribute="centerX" secondItem="UUY-Tr-dWp" secondAttribute="centerX" id="HqG-pD-ZPv"/>
+                            <constraint firstItem="0Z7-36-elX" firstAttribute="top" secondItem="ZHx-GS-Pmd" secondAttribute="bottom" constant="37" id="JPs-CI-Bmk"/>
+                            <constraint firstItem="3I1-M0-X14" firstAttribute="top" secondItem="UUY-Tr-dWp" secondAttribute="bottom" constant="13" id="MMH-XH-LCS"/>
+                            <constraint firstItem="S6d-W1-03L" firstAttribute="centerX" secondItem="8iV-vd-dbp" secondAttribute="centerX" id="NAi-NW-sia"/>
+                            <constraint firstItem="UUY-Tr-dWp" firstAttribute="leading" secondItem="CXt-na-PEA" secondAttribute="leadingMargin" constant="58" id="RR4-jf-GZH"/>
+                            <constraint firstItem="8iV-vd-dbp" firstAttribute="leading" secondItem="CXt-na-PEA" secondAttribute="leadingMargin" constant="21" id="Ry7-Y8-qK0"/>
+                            <constraint firstItem="S6d-W1-03L" firstAttribute="leading" secondItem="CXt-na-PEA" secondAttribute="leadingMargin" constant="62" id="SGI-6x-gHp"/>
+                            <constraint firstItem="d6D-ks-naA" firstAttribute="top" secondItem="8iV-vd-dbp" secondAttribute="bottom" constant="14" id="SNw-ZO-cx2"/>
+                            <constraint firstItem="OFW-lF-ijf" firstAttribute="top" secondItem="d6D-ks-naA" secondAttribute="bottom" constant="24" id="cqb-GP-oeZ"/>
+                            <constraint firstItem="S6d-W1-03L" firstAttribute="top" secondItem="3I1-M0-X14" secondAttribute="bottom" constant="8" symbolic="YES" id="cyW-QB-ngK"/>
+                            <constraint firstItem="8iV-vd-dbp" firstAttribute="leading" secondItem="d6D-ks-naA" secondAttribute="leading" id="cz4-pK-sKc"/>
+                            <constraint firstItem="3I1-M0-X14" firstAttribute="centerX" secondItem="CXt-na-PEA" secondAttribute="centerX" id="evR-mt-LP4"/>
+                            <constraint firstItem="0Z7-36-elX" firstAttribute="leading" secondItem="CXt-na-PEA" secondAttribute="leadingMargin" constant="3" id="iQB-V0-Q3j"/>
+                            <constraint firstItem="UUY-Tr-dWp" firstAttribute="top" secondItem="LNF-zK-1ts" secondAttribute="bottom" constant="8" symbolic="YES" id="nfQ-gS-UDE"/>
+                            <constraint firstItem="UUY-Tr-dWp" firstAttribute="top" secondItem="0Z7-36-elX" secondAttribute="bottom" constant="8" symbolic="YES" id="xRS-AC-uYp"/>
+                            <constraint firstItem="3I1-M0-X14" firstAttribute="leading" secondItem="CXt-na-PEA" secondAttribute="leadingMargin" constant="11" id="zS7-q5-iBe"/>
+                            <constraint firstItem="UUY-Tr-dWp" firstAttribute="centerX" secondItem="3I1-M0-X14" secondAttribute="centerX" id="zkH-5d-pdg"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ngX-ZT-8bH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1098" y="1521"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ic_about" width="512" height="512"/>
@@ -933,7 +1035,7 @@
         <image name="second" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6Lu-0O-sNa"/>
+        <segue reference="Nod-7B-SCO"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.94318324327468872" green="0.37167876958847046" blue="0.093940682709217072" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
