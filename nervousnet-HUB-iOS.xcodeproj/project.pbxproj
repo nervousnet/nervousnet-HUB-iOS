@@ -29,6 +29,7 @@
 		075418331DE75A6B00327B41 /* FrequencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0754182C1DE75A6B00327B41 /* FrequencyTableViewCell.swift */; };
 		075418351DE75B2300327B41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 075418341DE75B2300327B41 /* Main.storyboard */; };
 		07604C711E7ED4AD004CDFCA /* locationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07604C701E7ED4AD004CDFCA /* locationTest.swift */; };
+		078092AB1EE03B64004B2BCF /* SensorStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078092AA1EE03B64004B2BCF /* SensorStatisticsViewController.swift */; };
 		0781DE4B1E9B94F800C25BE8 /* AxonDownloadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0781DE4A1E9B94F800C25BE8 /* AxonDownloadButton.swift */; };
 		0794371D1E76E3B5009DDBEF /* WebTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794371C1E76E3B5009DDBEF /* WebTestViewController.swift */; };
 		07CADB0C1E6EE32C002F1DCE /* CoreMotionSensors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CADB0B1E6EE32C002F1DCE /* CoreMotionSensors.swift */; };
@@ -90,6 +91,7 @@
 		0754182C1DE75A6B00327B41 /* FrequencyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrequencyTableViewCell.swift; sourceTree = "<group>"; };
 		075418341DE75B2300327B41 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		07604C701E7ED4AD004CDFCA /* locationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = locationTest.swift; sourceTree = "<group>"; };
+		078092AA1EE03B64004B2BCF /* SensorStatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorStatisticsViewController.swift; sourceTree = "<group>"; };
 		0781DE4A1E9B94F800C25BE8 /* AxonDownloadButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AxonDownloadButton.swift; sourceTree = "<group>"; };
 		0794371C1E76E3B5009DDBEF /* WebTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebTestViewController.swift; sourceTree = "<group>"; };
 		07CADB0B1E6EE32C002F1DCE /* CoreMotionSensors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreMotionSensors.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				075418271DE75A6B00327B41 /* RootTableViewController.swift */,
+				078092AA1EE03B64004B2BCF /* SensorStatisticsViewController.swift */,
 				075418261DE75A6B00327B41 /* SensorPageViewController.swift */,
 				075418281DE75A6B00327B41 /* AnalyticsTableViewController.swift */,
 				0781DE4C1E9BA73C00C25BE8 /* Settings */,
@@ -516,6 +519,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				38406C071ED33ABC0085DEEE /* AboutScreenViewController.swift in Sources */,
+				078092AB1EE03B64004B2BCF /* SensorStatisticsViewController.swift in Sources */,
 				075418331DE75A6B00327B41 /* FrequencyTableViewCell.swift in Sources */,
 				071844B41E2650AD00FFF319 /* BasicSensorConfiguration.swift in Sources */,
 				383CAC1E1E0AB0B10053BECB /* VM.swift in Sources */,

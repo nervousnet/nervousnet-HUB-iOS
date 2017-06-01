@@ -28,7 +28,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1177" y="-268"/>
+            <point key="canvasLocation" x="-978" y="-269"/>
         </scene>
         <!--Home-->
         <scene sceneID="RpW-XJ-dKw">
@@ -287,8 +287,11 @@
                                                         <constraint firstAttribute="width" secondItem="ARf-S0-AqI" secondAttribute="height" id="K8d-w4-nc1"/>
                                                     </constraints>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Gx-6V-373">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Gx-6V-373">
                                                     <rect key="frame" x="0.0" y="0.0" width="187.5" height="174.5"/>
+                                                    <connections>
+                                                        <segue destination="gvF-Bq-Sny" kind="show" id="Ovs-J9-ibo"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -375,7 +378,7 @@
                 <pageViewController storyboardIdentifier="Sensors" autoresizesArchivedViewToFullSize="NO" title="Sensors" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="u4A-Q6-agM" customClass="SensorPageViewController" customModule="nervousnet_HUB_iOS" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ezn-iQ-nRJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2630" y="-269"/>
+            <point key="canvasLocation" x="-2366" y="-269"/>
         </scene>
         <!--Settings-->
         <scene sceneID="fY4-Bb-FOh">
@@ -443,7 +446,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pnG-uG-5YZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="466" y="546"/>
+            <point key="canvasLocation" x="156" y="546"/>
         </scene>
         <!--Web Test View Controller-->
         <scene sceneID="3sd-nz-0cH">
@@ -476,7 +479,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="anM-VC-EKg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1553" y="1656"/>
+            <point key="canvasLocation" x="2457" y="-269"/>
         </scene>
         <!--Analytics-->
         <scene sceneID="FQF-L2-bTX">
@@ -605,6 +608,39 @@
             </objects>
             <point key="canvasLocation" x="-199" y="1521"/>
         </scene>
+        <!--Sensor Statistics View Controller-->
+        <scene sceneID="qqr-yS-dar">
+            <objects>
+                <viewController id="gvF-Bq-Sny" customClass="SensorStatisticsViewController" customModule="nervousnet_HUB_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tlE-Xg-ufS"/>
+                        <viewControllerLayoutGuide type="bottom" id="db2-5d-Y4x"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OU4-lg-7TE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView userInteractionEnabled="NO" contentMode="scaleToFill" restorationIdentifier="SensorGraphDisplay" translatesAutoresizingMaskIntoConstraints="NO" id="eJ8-9U-VhL">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eJ8-9U-VhL" firstAttribute="centerX" secondItem="OU4-lg-7TE" secondAttribute="centerX" id="6fT-38-J0k"/>
+                            <constraint firstItem="eJ8-9U-VhL" firstAttribute="width" secondItem="OU4-lg-7TE" secondAttribute="width" id="JOf-3a-2wN"/>
+                            <constraint firstItem="eJ8-9U-VhL" firstAttribute="centerY" secondItem="OU4-lg-7TE" secondAttribute="centerY" id="UFT-rU-OTO"/>
+                            <constraint firstItem="eJ8-9U-VhL" firstAttribute="height" secondItem="OU4-lg-7TE" secondAttribute="height" id="gca-nM-9o8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="eJ8-9U-VhL" id="syU-PL-BZB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vOh-UD-1RM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-199" y="2210"/>
+        </scene>
         <!--Frequency-->
         <scene sceneID="mga-bE-OId">
             <objects>
@@ -669,7 +705,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fu1-Hz-4Kq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1292" y="546"/>
+            <point key="canvasLocation" x="910" y="546"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="86B-UH-Fnq">
@@ -687,7 +723,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qau-Xb-bMP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1836" y="-268"/>
+            <point key="canvasLocation" x="-1666" y="-269"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="X4g-TA-bjB">
@@ -721,7 +757,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H7V-RQ-f2N" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-526" y="-269"/>
+            <point key="canvasLocation" x="-308" y="-269"/>
         </scene>
         <!--nervousnet Space-->
         <scene sceneID="WtF-g8-cWi">
@@ -826,7 +862,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MXd-R7-jWK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="647" y="-162"/>
+            <point key="canvasLocation" x="910" y="-269"/>
         </scene>
         <!--Axon Detail View Controller-->
         <scene sceneID="dnf-4K-8RU">
@@ -920,7 +956,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AuG-8Q-swZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1435.5" y="-187.5"/>
+            <point key="canvasLocation" x="1706" y="-269"/>
         </scene>
         <!--About Screen View Controller-->
         <scene sceneID="RYq-sC-5d1">
@@ -935,7 +971,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Z7-36-elX">
-                                <rect key="frame" x="19" y="57" width="338" height="1"/>
+                                <rect key="frame" x="19" y="101" width="338" height="1"/>
                                 <color key="backgroundColor" red="0.94318324330000003" green="0.37167876960000001" blue="0.093940682710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6D-ks-naA">
@@ -952,7 +988,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3I1-M0-X14">
-                                <rect key="frame" x="27" y="100" width="320" height="168"/>
+                                <rect key="frame" x="27" y="144" width="320" height="168"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="168" id="GK8-ye-tiQ"/>
@@ -968,7 +1004,7 @@ Switzerland</string>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nervousnet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UUY-Tr-dWp">
-                                <rect key="frame" x="74" y="66" width="227" height="21"/>
+                                <rect key="frame" x="74" y="110" width="227" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="9CF-0a-3C0"/>
                                 </constraints>
@@ -977,14 +1013,14 @@ Switzerland</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="www.nervousnet.info" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="S6d-W1-03L">
-                                <rect key="frame" x="78" y="276" width="218" height="33"/>
+                                <rect key="frame" x="78" y="320" width="218" height="33"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNF-zK-1ts">
-                                <rect key="frame" x="128" y="37" width="119" height="21"/>
+                                <rect key="frame" x="128" y="81" width="119" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="8Ev-bw-Edm"/>
                                     <constraint firstAttribute="width" constant="119" id="BmV-An-efi"/>
@@ -1022,7 +1058,7 @@ Switzerland</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ngX-ZT-8bH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1098" y="1521"/>
+            <point key="canvasLocation" x="-1767" y="1308"/>
         </scene>
     </scenes>
     <resources>

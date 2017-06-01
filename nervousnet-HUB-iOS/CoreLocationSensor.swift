@@ -28,6 +28,8 @@ class CoreLocationSensor : BaseSensor, CLLocationManagerDelegate {
     
     var timer : Timer = Timer.init()
     
+    let operationQueue = OperationQueue.init()
+
     
     required public init (conf: BasicSensorConfiguration) {
         //TODO: check if parameter Dimension is as required 3
@@ -83,7 +85,16 @@ class CoreLocationSensor : BaseSensor, CLLocationManagerDelegate {
             let speed = data!.speed
 //            print(lat, long, speed)
             do {
-                super.push(reading: try SensorReading(config: super.configuration, values: [lat, long, speed], timestamp: timestamp))
+                let sensorReading =  try SensorReading(config: super.configuration, values: [lat, long, speed], timestamp: timestamp)
+                super.push(reading: sensorReading)
+                if let navController  = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController{
+                    if let visualizer = navController.visibleViewController as? SensorStatisticsViewController{
+                        DispatchQueue.main.async {
+                            visualizer.updateGraph(sensorReading: sensorReading)
+                        }
+                    }
+                }
+
             } catch _ {
                 log.error("This should not happen. 'values' count does not match param dimension. Pushing empty 'SensorReading'")
                 super.push(reading: SensorReading(config: super.configuration, timestamp: timestamp))
