@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mlY-cD-Y48">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mlY-cD-Y48">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -94,7 +94,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_sensors" translatesAutoresizingMaskIntoConstraints="NO" id="YUN-RR-gFy">
-                                                    <rect key="frame" x="42" y="19" width="104.5" height="104.5"/>
+                                                    <rect key="frame" x="42.5" y="19" width="104.5" height="104.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="YUN-RR-gFy" secondAttribute="height" id="K2T-72-4fC"/>
                                                     </constraints>
@@ -131,7 +131,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_analytics" translatesAutoresizingMaskIntoConstraints="NO" id="hqc-vX-kih">
-                                                    <rect key="frame" x="41.5" y="19" width="105.5" height="105.5"/>
+                                                    <rect key="frame" x="42" y="19" width="105.5" height="105.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="hqc-vX-kih" secondAttribute="height" id="ZWR-4f-xIJ"/>
                                                     </constraints>
@@ -188,7 +188,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_apps" translatesAutoresizingMaskIntoConstraints="NO" id="1qP-cC-fQu">
-                                                    <rect key="frame" x="42" y="19" width="104.5" height="104.5"/>
+                                                    <rect key="frame" x="42.5" y="19" width="104.5" height="104.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="1qP-cC-fQu" secondAttribute="height" id="WC5-8E-Avu"/>
                                                     </constraints>
@@ -225,7 +225,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_settings" translatesAutoresizingMaskIntoConstraints="NO" id="AdY-bV-37t">
-                                                    <rect key="frame" x="41.5" y="19" width="105.5" height="105.5"/>
+                                                    <rect key="frame" x="42" y="19" width="105.5" height="105.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="AdY-bV-37t" secondAttribute="height" id="YFy-dH-UAd"/>
                                                     </constraints>
@@ -282,7 +282,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_help" translatesAutoresizingMaskIntoConstraints="NO" id="ARf-S0-AqI">
-                                                    <rect key="frame" x="42" y="19" width="104.5" height="104.5"/>
+                                                    <rect key="frame" x="42.5" y="19" width="104.5" height="104.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="ARf-S0-AqI" secondAttribute="height" id="K8d-w4-nc1"/>
                                                     </constraints>
@@ -319,7 +319,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_about" translatesAutoresizingMaskIntoConstraints="NO" id="7bp-1t-h5e">
-                                                    <rect key="frame" x="41.5" y="19" width="105.5" height="105.5"/>
+                                                    <rect key="frame" x="42" y="19" width="105.5" height="105.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="7bp-1t-h5e" secondAttribute="height" id="kUW-X8-5qu"/>
                                                     </constraints>
@@ -526,7 +526,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_analytics" translatesAutoresizingMaskIntoConstraints="NO" id="Xdf-a4-7nL">
-                                                    <rect key="frame" x="42" y="19" width="105" height="105"/>
+                                                    <rect key="frame" x="41.5" y="19" width="105" height="105"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="Xdf-a4-7nL" secondAttribute="height" id="GYA-CL-6yP"/>
                                                     </constraints>
@@ -560,7 +560,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_analytics" translatesAutoresizingMaskIntoConstraints="NO" id="0Hb-61-2wL">
-                                                    <rect key="frame" x="41.5" y="19" width="105.5" height="106"/>
+                                                    <rect key="frame" x="42" y="19" width="105.5" height="106"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="0Hb-61-2wL" secondAttribute="height" id="eCr-g0-rlm"/>
                                                     </constraints>
@@ -837,7 +837,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="47" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Refreshing Axons" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RPi-sz-srk">
-                                            <rect key="frame" x="-0.5" y="36" width="375" height="29"/>
+                                            <rect key="frame" x="0.0" y="36" width="375" height="29"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -971,16 +971,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Z7-36-elX">
-                                <rect key="frame" x="19" y="101" width="338" height="1"/>
+                                <rect key="frame" x="19" y="101" width="339" height="1"/>
                                 <color key="backgroundColor" red="0.94318324330000003" green="0.37167876960000001" blue="0.093940682710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6D-ks-naA">
-                                <rect key="frame" x="37" y="607" width="300" height="36"/>
+                                <rect key="frame" x="37" y="607" width="301" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Terms of Use"/>
+                                <connections>
+                                    <segue destination="9nq-c5-AAb" kind="show" id="Kgm-Qa-lcr"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8iV-vd-dbp">
-                                <rect key="frame" x="37" y="557" width="300" height="36"/>
+                                <rect key="frame" x="37" y="557" width="301" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Rate App"/>
                                 <connections>
@@ -988,7 +991,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3I1-M0-X14">
-                                <rect key="frame" x="27" y="144" width="320" height="168"/>
+                                <rect key="frame" x="27" y="144" width="321" height="168"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="168" id="GK8-ye-tiQ"/>
@@ -1004,7 +1007,7 @@ Switzerland</string>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nervousnet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UUY-Tr-dWp">
-                                <rect key="frame" x="74" y="110" width="227" height="21"/>
+                                <rect key="frame" x="74" y="110" width="228" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="9CF-0a-3C0"/>
                                 </constraints>
@@ -1013,14 +1016,14 @@ Switzerland</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="www.nervousnet.info" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="S6d-W1-03L">
-                                <rect key="frame" x="78" y="320" width="218" height="33"/>
+                                <rect key="frame" x="78" y="320" width="219" height="33"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNF-zK-1ts">
-                                <rect key="frame" x="128" y="81" width="119" height="21"/>
+                                <rect key="frame" x="128.5" y="81" width="119" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="8Ev-bw-Edm"/>
                                     <constraint firstAttribute="width" constant="119" id="BmV-An-efi"/>
@@ -1059,6 +1062,65 @@ Switzerland</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ngX-ZT-8bH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1767" y="1308"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="wKu-ME-cLM">
+            <objects>
+                <viewController id="9nq-c5-AAb" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ge2-Sc-C1k"/>
+                        <viewControllerLayoutGuide type="bottom" id="sDs-gk-kME"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="AuO-N9-ugz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TERMS OF USE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2e-yp-55q">
+                                <rect key="frame" x="18.5" y="81" width="337.5" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lA-vM-h50">
+                                <rect key="frame" x="19" y="126" width="337.5" height="521"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <mutableString key="text">This Software application ("App") serves to jointly produce real-time data about our world to create new opportunities for everyone. In particular, you may run other apps on top of the Nervousnet platform, including gaming applications!
+
+Nervousnet measures data as you provide it by opening up virtual or real sensors in your smartphone, other smart devices, or external sensors you have chosen to add to this Internet-of-Things kind of system.
+
+The control panel of the Nervousnet 1.0 Beta App offers two privacy control levels for each sensor: you can decide to store information on your own device only, or share it with others. If you choose the latter, the data are shared in an anonymized way. We make efforts to overlay filters to measurement sensors that we feel would otherwise be too privacy-intrusive (such as the microphone) and to be transparent about our code and what it does, and about the measurements, too. For this reason, the backend of Nervousnet 1.0 Beta is open source under the GPLv3 licence.
+
+The data measured by this App may provide information about your environment and/or activities, and it may be further processed for personal, scientific, not-for-profit or commercial use. If you choose to share your measurement data, you consent to such processing and uses. This policy serves to enable an information-, innovation- and application-ecosystem that can unleash the power of information for you and everyone.
+
+By using Nervousnet and/or the data produced by it, you agree and ensure to use it only in lawful ways. In case of violations of laws, you take full legal responsibility for any consequences and you may be excluded from using Nervousnet and the data produced by it.
+
+This Software ("App") and related data are provided "as is", without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. In no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the Software or the use or other dealings in the Software, including the gathering, production, storage, processing, and use of data, or any loss of data.
+
+ FURTHER NOTES
+
+The Nervousnet community aims to: - create participatory opportunities - support informational self-control - increase distributed design and control elements - add transparency for the sake of trust - reduce information biases and noise - enable user-controlled information filters - support socio-economic diversity - increase interoperability and innovation - build coordination tools - create digital assistants - support collective/"swarm" intelligence - measure and consider externalities - enable favorable feedback loops - support fair value exchange - increase digital literacy and awareness
+
+Accordingly, in future we are planning to extend the functionality of the App and user control of the data you have decided to share. It will take time though to provide all functionality we have in mind and to continuously increase security standards. This will be gradually done, as announced on the Nervousnet-related forums and websites http://nervousnet.ethz.ch, and we would like to cordially invite you to contribute to the development of this system, which we envisage to a system by for citizens, similar to Wikipedia or OpenStreetMap. So, please test Nervousnet 1.0 beta, give us feedback nervousnet@ethz.ch, and help!</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0lA-vM-h50" firstAttribute="top" secondItem="H2e-yp-55q" secondAttribute="bottom" constant="24" id="9zz-gT-4t3"/>
+                            <constraint firstItem="0lA-vM-h50" firstAttribute="width" secondItem="AuO-N9-ugz" secondAttribute="width" multiplier="0.9" id="Ho7-hf-awL"/>
+                            <constraint firstItem="H2e-yp-55q" firstAttribute="top" secondItem="Ge2-Sc-C1k" secondAttribute="bottom" constant="17" id="QrG-sF-Kn1"/>
+                            <constraint firstItem="sDs-gk-kME" firstAttribute="top" secondItem="0lA-vM-h50" secondAttribute="bottom" constant="20" id="SmL-Ab-XCS"/>
+                            <constraint firstItem="0lA-vM-h50" firstAttribute="centerX" secondItem="AuO-N9-ugz" secondAttribute="centerX" id="U6K-ib-sze"/>
+                            <constraint firstItem="H2e-yp-55q" firstAttribute="width" secondItem="AuO-N9-ugz" secondAttribute="width" multiplier="0.9" id="Xx5-R4-ohO"/>
+                            <constraint firstItem="H2e-yp-55q" firstAttribute="centerX" secondItem="AuO-N9-ugz" secondAttribute="centerX" id="c0B-HF-SFa"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g1V-pF-IMJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1767.2" y="2023.5382308845578"/>
         </scene>
     </scenes>
     <resources>
