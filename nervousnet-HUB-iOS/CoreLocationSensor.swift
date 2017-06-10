@@ -58,7 +58,6 @@ class CoreLocationSensor : BaseSensor, CLLocationManagerDelegate {
         
         if  authorizationStatus  != CLAuthorizationStatus.restricted && authorizationStatus != CLAuthorizationStatus.denied {
             locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
             timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(super.configuration.samplingrate), repeats: true, block: {timer in self.locationManager.requestLocation()})
             return true
         }
@@ -77,7 +76,8 @@ class CoreLocationSensor : BaseSensor, CLLocationManagerDelegate {
     func locHandler (data : CLLocation?, time : Date, error: Error?) -> Void {
         log.debug(data.debugDescription)
         
-        let timestamp = Int64(time.timeIntervalSince1970 * 1000)
+       // let timestamp = Int64(time.timeIntervalSince1970 * 1000)
+        let timestamp = Int64(Date().timeIntervalSince1970 * 1000)
         
         if data != nil {
             let lat = data!.coordinate.latitude

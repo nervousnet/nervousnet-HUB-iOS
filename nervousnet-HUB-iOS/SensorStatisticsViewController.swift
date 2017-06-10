@@ -85,7 +85,7 @@ class SensorStatisticsViewController : UIViewController {
     
     func updateGraph (sensorReading : SensorReading) {
         switch sensorReading.sensorConfig.sensorID {
-        case 1003:
+        case 1000:
             
             let date = Date(timeIntervalSinceReferenceDate: (Double(sensorReading.timestampEpoch)/1000.0 - Date.timeIntervalBetween1970AndReferenceDate))
             let calendar = Calendar.current
