@@ -33,7 +33,8 @@ class AxonStore : NSObject {
     //https://github.com/nervousnet/nervousnet-axons/tree/master/testing
     //TODO: at least move this into a file, or do something cleverer
     // (issue ticket: https://github.com/nervousnet/nervousnet-HUB-iOS/issues/19)
-    static private let blacklistedAxons = ["axon-acctest",
+    static private let blacklistedAxons = ["axon-one"]
+        /*["axon-acctest",
                                            //"axon-graph",
                                            "axon-lewin",
                                            "axon-one",
@@ -43,7 +44,7 @@ class AxonStore : NSObject {
                                            "axon-survive",
                                            "axon-traveasy",
                                            //"delta-kit-logger",
-                                           "my-town"]
+                                           "my-town"]*/
     
     
     class func getInstalledAxonsList() -> Array<AxonDetails>{

@@ -48,14 +48,14 @@ class SensorStatisticsViewController : UIViewController {
                     let lastAcc = try SensorReading(config: ConfigurationManager().getConfiguration(sensorID: 1000), values: [Float(1), Float(2), Float(3) ], timestamp: Int64(timestamp) )
             
                     let javascript_global_variables =
-                        "var unit_of_meas = " + "'m/s^2';" +
-                        "var first_curve_name = " + "'X axis';" +
-                        "var second_curve_name = " + "'Y axis';" +
-                        "var third_curve_name = " + "'Z axis';" +
+                        "var unit_of_meas = " + "'latlongms';" +
+                        "var first_curve_name = " + "'lat';" +
+                        "var second_curve_name = " + "'long';" +
+                        "var third_curve_name = " + "'speed';" +
                         "var x_axis_title = " + "'Date';" +
-                        "var y_axis_title = " + "'Acceleration (m/s^2)';" +
-                        "var plot_title = " + "'Acceleration data';" +
-                        "var plot_subtitle = " + "'along axes x,y,z';"
+                        "var y_axis_title = " + "'latlongms';" +
+                        "var plot_title = " + "'lat,long,m/s';" +
+                        "var plot_subtitle = " + "'current location and speed';"
                     webView.stringByEvaluatingJavaScript(from: "javascript:" + javascript_global_variables)
                     
                     let urlpath = "\(Bundle.main.resourcePath!)/Assets/Highcharts/webview_charts_3_lines_live_data_over_time.html"
@@ -85,7 +85,7 @@ class SensorStatisticsViewController : UIViewController {
     
     func updateGraph (sensorReading : SensorReading) {
         switch sensorReading.sensorConfig.sensorID {
-        case 1000:
+        case 1003:
             
             let date = Date(timeIntervalSinceReferenceDate: (Double(sensorReading.timestampEpoch)/1000.0 - Date.timeIntervalBetween1970AndReferenceDate))
             let calendar = Calendar.current
