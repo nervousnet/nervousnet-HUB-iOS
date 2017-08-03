@@ -60,7 +60,7 @@ class FrequencyTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return (tableView.frame.height - navigationController!.navigationBar.frame.height) / 7.0
+            return (tableView.frame.height - navigationController!.navigationBar.frame.height) / 4.0
         }
         return (tableView.frame.height - navigationController!.navigationBar.frame.height) / 5.0
 

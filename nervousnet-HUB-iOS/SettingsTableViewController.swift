@@ -10,8 +10,8 @@ import UIKit
 
 class SettingsTableViewController: UITableViewController {
     
-    let subSettings : [String] = ["General", "Collection Rate", "Sharing Nodes", "SensorPermissions"]
-    let subImages: [UIImage] = [#imageLiteral(resourceName: "ic_settings"), #imageLiteral(resourceName: "ic_sensors"), #imageLiteral(resourceName: "ic_nodes1"), #imageLiteral(resourceName: "ic_perm")]
+    let subSettings : [String] = ["Collection Rate", "Sharing Nodes"]
+    let subImages: [UIImage] = [#imageLiteral(resourceName: "ic_sensors"), #imageLiteral(resourceName: "ic_nodes1")]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +62,7 @@ class SettingsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return (tableView.frame.height - navigationController!.navigationBar.frame.height - UIApplication.shared.statusBarFrame.height) / CGFloat(subSettings.count)
+            return (tableView.frame.height - navigationController!.navigationBar.frame.height - UIApplication.shared.statusBarFrame.height) / (2.0*CGFloat(subSettings.count))
         }
         return (tableView.frame.height - navigationController!.navigationBar.frame.height) / 5.0
 

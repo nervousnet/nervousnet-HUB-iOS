@@ -66,8 +66,8 @@ class SensorStatisticsViewController : UIViewController {
 
                     webView.stringByEvaluatingJavaScript(from: "javascript:"
                         + "point0 = [Date.UTC(" + year.description + "," + month.description + "," + day.description + "," + hour.description + "," + minute.description + "," + second.description + ")," + (lastLoc.values["lat"] as! Double).description + "];"
-                        + "point1 = [Date.UTC(" + year.description + "," + month.description + "," + day.description + "," + hour.description + "," + minute.description + "," + second.description + ")," + (lastLoc.values["speed"] as! Double).description + "];"
-                        + "point2 = [Date.UTC(" + year.description + "," + month.description + "," + day.description + "," + hour.description + "," + minute.description + "," + second.description + ")," + (lastLoc.values["long"] as! Double).description + "];"
+                        + "point1 = [Date.UTC(" + year.description + "," + month.description + "," + day.description + "," + hour.description + "," + minute.description + "," + second.description + ")," + (lastLoc.values["long"] as! Double).description + "];"
+                        + "point2 = [Date.UTC(" + year.description + "," + month.description + "," + day.description + "," + hour.description + "," + minute.description + "," + second.description + ")," + (lastLoc.values["speed"] as! Double).description + "];"
                     )
 
             } catch {LocalizedError.self}

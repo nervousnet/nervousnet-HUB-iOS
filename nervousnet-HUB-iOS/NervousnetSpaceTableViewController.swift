@@ -64,12 +64,12 @@ class NervousnetSpaceTableViewController: UITableViewController {
     
     //Section 0 for indicating status, Section 1 for diplaying actual list of axons
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     //One Indicator cell, otherwise all axons that are available. Blacklisting is handled by the AxonStore
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
+        if section == 0 || section == 1{
             return 1
         }
         return TableData.count
@@ -83,6 +83,10 @@ class NervousnetSpaceTableViewController: UITableViewController {
         //Prototypes from Main.Storyboard for populating the tableView
         if indexPath.section == 0 {
             return tableView.dequeueReusableCell(withIdentifier: "reloadingCell")!
+        }
+        
+        if indexPath.section == 1 {
+            return tableView.dequeueReusableCell(withIdentifier: "swarmPulse")!
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "appstoreCell", for: indexPath)
