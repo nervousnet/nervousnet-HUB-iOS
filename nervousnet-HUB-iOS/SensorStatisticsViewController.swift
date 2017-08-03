@@ -38,10 +38,10 @@ class SensorStatisticsViewController : UIViewController {
             
         case "Location":
             
+            log.debug("actually visualizing location")
             //get the current frequency
             do{
                 
-                do{
                     let lastLoc = try nVM.getLatestReading(sensorID: 1003)
                     
                     //let lastLoc = try SensorReading(config: ConfigurationManager().getConfiguration(sensorID: 1003), values: [Float(1), Float(2), Float(3) ], timestamp: Int64(timestamp) )
@@ -70,7 +70,6 @@ class SensorStatisticsViewController : UIViewController {
                         + "point2 = [Date.UTC(" + year.description + "," + month.description + "," + day.description + "," + hour.description + "," + minute.description + "," + second.description + ")," + (lastLoc.values["speed"] as! Double).description + "];"
                     )
 
-            } catch {LocalizedError.self}
         } catch {LocalizedError.self}
         
         case "Magnetometer":
@@ -78,7 +77,6 @@ class SensorStatisticsViewController : UIViewController {
             //get the current frequency
             do{
                 
-                do{
                     let lastMag = try nVM.getLatestReading(sensorID: 1002)
                     
                     //let lastMag = try SensorReading(config: ConfigurationManager().getConfiguration(sensorID: 1002), values: [Float(1), Float(2), Float(3) ], timestamp: Int64(timestamp) )
@@ -107,7 +105,6 @@ class SensorStatisticsViewController : UIViewController {
                         + "point2 = [Date.UTC(" + year.description + "," + month.description + "," + day.description + "," + hour.description + "," + minute.description + "," + second.description + ")," + (lastMag.values["z"] as! Double).description + "];"
                     )
                     
-                } catch {LocalizedError.self}
             } catch {LocalizedError.self}
     
             
@@ -116,7 +113,6 @@ class SensorStatisticsViewController : UIViewController {
             //get the current frequency
             do{
                 
-                do{
                     let lastGyr = try nVM.getLatestReading(sensorID: 1001)
                     
                     //let lastGyr = try SensorReading(config: ConfigurationManager().getConfiguration(sensorID: 1002), values: [Float(1), Float(2), Float(3) ], timestamp: Int64(timestamp) )
@@ -146,14 +142,12 @@ class SensorStatisticsViewController : UIViewController {
                     )
                     
                 } catch {LocalizedError.self}
-            } catch {LocalizedError.self}
             
         case "Accelerometer":
             
             //get the current frequency
             do{
                 
-                do{
                     let lastAcc = try nVM.getLatestReading(sensorID: 1000)
                     
                     //let lastAcc = try SensorReading(config: ConfigurationManager().getConfiguration(sensorID: 1000), values: [Float(1), Float(2), Float(3) ], timestamp: Int64(timestamp) )
@@ -182,7 +176,6 @@ class SensorStatisticsViewController : UIViewController {
                         + "point2 = [Date.UTC(" + year.description + "," + month.description + "," + day.description + "," + hour.description + "," + minute.description + "," + second.description + ")," + (lastAcc.values["accZ"] as! Double).description + "];"
                     )
                     
-                } catch {LocalizedError.self}
             } catch {LocalizedError.self}
 
         
