@@ -827,8 +827,63 @@
                                     <segue destination="7yS-lr-pYs" kind="show" identifier="axonDetailViewControllerSegue" id="MW3-yC-Jwk"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reloadingCell" rowHeight="102" id="WSJ-jN-N27" userLabel="reloadingCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="swarmPulse" selectionStyle="none" indentationWidth="10" reuseIdentifier="swarmPulse" rowHeight="102" id="qA7-tO-cWr">
                                 <rect key="frame" x="0.0" y="130" width="375" height="102"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qA7-tO-cWr" id="DBZ-xh-oiz">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="101.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nn_logo_1024" translatesAutoresizingMaskIntoConstraints="NO" id="DzU-XC-tku">
+                                            <rect key="frame" x="8" y="6" width="90" height="90"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="90" id="5Uh-VW-Sim"/>
+                                                <constraint firstAttribute="width" constant="90" id="X8U-eM-XUm"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swarmpulse" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3K-u1-45C">
+                                            <rect key="frame" x="106" y="20.5" width="99" height="21"/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <accessibilityTraits key="traits" staticText="YES" header="YES"/>
+                                            </accessibility>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" tag="4" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TIW-Gm-tTu">
+                                            <rect key="frame" x="319" y="36" width="38" height="30"/>
+                                            <color key="tintColor" red="0.91372549020000005" green="0.28235294119999998" blue="0.078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <state key="normal" title="Open"/>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Join the swarm." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="s5H-5k-Tla">
+                                            <rect key="frame" x="106" y="46.5" width="187.5" height="47"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="m3K-u1-45C" firstAttribute="leading" secondItem="DzU-XC-tku" secondAttribute="trailing" constant="8" id="0jM-o6-5es"/>
+                                        <constraint firstItem="s5H-5k-Tla" firstAttribute="leading" secondItem="m3K-u1-45C" secondAttribute="leading" id="3Jp-wy-IPf"/>
+                                        <constraint firstItem="TIW-Gm-tTu" firstAttribute="centerY" secondItem="DBZ-xh-oiz" secondAttribute="centerY" id="7hp-L3-e7u"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="s5H-5k-Tla" secondAttribute="bottom" id="9vw-Le-G8M"/>
+                                        <constraint firstItem="m3K-u1-45C" firstAttribute="leading" secondItem="DzU-XC-tku" secondAttribute="trailing" constant="5" id="FwI-fM-tgs"/>
+                                        <constraint firstItem="s5H-5k-Tla" firstAttribute="top" secondItem="m3K-u1-45C" secondAttribute="bottom" constant="5" id="JnX-c7-7re"/>
+                                        <constraint firstItem="DzU-XC-tku" firstAttribute="centerY" secondItem="DBZ-xh-oiz" secondAttribute="centerY" id="OjT-4a-DOz"/>
+                                        <constraint firstItem="m3K-u1-45C" firstAttribute="centerY" secondItem="DBZ-xh-oiz" secondAttribute="centerY" constant="-20" id="YdP-6z-33z"/>
+                                        <constraint firstItem="s5H-5k-Tla" firstAttribute="width" secondItem="DBZ-xh-oiz" secondAttribute="width" multiplier="1/2" id="gzG-Nt-1Sy"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="TIW-Gm-tTu" secondAttribute="trailing" constant="10" id="h1f-pJ-V8Q"/>
+                                        <constraint firstItem="DzU-XC-tku" firstAttribute="leading" secondItem="DBZ-xh-oiz" secondAttribute="leadingMargin" id="teB-No-to8"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="FwI-fM-tgs"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="reloadingCell" rowHeight="102" id="WSJ-jN-N27" userLabel="reloadingCell">
+                                <rect key="frame" x="0.0" y="232" width="375" height="102"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WSJ-jN-N27" id="Ioo-eO-cmT">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="101.5"/>
@@ -846,27 +901,6 @@
                                         <constraint firstItem="RPi-sz-srk" firstAttribute="width" secondItem="Ioo-eO-cmT" secondAttribute="width" id="71Y-aZ-b6W"/>
                                         <constraint firstItem="RPi-sz-srk" firstAttribute="centerY" secondItem="Ioo-eO-cmT" secondAttribute="centerY" id="IdT-eT-0Bj"/>
                                         <constraint firstItem="RPi-sz-srk" firstAttribute="centerX" secondItem="Ioo-eO-cmT" secondAttribute="centerX" id="Kpu-mA-hor"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="swarmPulse" rowHeight="102" id="TSe-fO-q7n" userLabel="swarmPulse">
-                                <rect key="frame" x="0.0" y="232" width="375" height="102"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TSe-fO-q7n" id="VtP-9G-oWQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="101.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="47" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swarmpulse" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIn-wR-2AL">
-                                            <rect key="frame" x="0.0" y="36" width="375" height="29"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                            <color key="textColor" red="0.94509803920000002" green="0.37254901959999998" blue="0.094117647060000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="oIn-wR-2AL" firstAttribute="centerX" secondItem="VtP-9G-oWQ" secondAttribute="centerX" id="487-sE-m52"/>
-                                        <constraint firstItem="oIn-wR-2AL" firstAttribute="width" secondItem="VtP-9G-oWQ" secondAttribute="width" id="n38-6M-EDk"/>
-                                        <constraint firstItem="oIn-wR-2AL" firstAttribute="centerY" secondItem="VtP-9G-oWQ" secondAttribute="centerY" id="zKZ-hg-yCZ"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -1150,6 +1184,7 @@ Accordingly, in future we are planning to extend the functionality of the App an
         <image name="ic_help" width="512" height="512"/>
         <image name="ic_sensors" width="512" height="512"/>
         <image name="ic_settings" width="512" height="512"/>
+        <image name="nn_logo_1024" width="1024" height="1024"/>
         <image name="second" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
