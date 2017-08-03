@@ -12,7 +12,7 @@ import UIKit
 
 class AnalyticsTableViewController: UITableViewController {
     
-    let sensors : [String] = ["Accelerometer", "Battery", "Gyroscope", "Location", "Light", "Noise", "Proximity"]
+    let sensors : [String] = ["Accelerometer", "Magnetometer", "Gyroscope", "Location"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,9 +74,7 @@ class AnalyticsTableViewController: UITableViewController {
 //        return (tableView.bounds.height - navigationController!.navigationBar.bounds.height)/10.0
 //    }
     
-    func titlePressed (sender: UIButton!){
-        log.debug("Hello, it worked")
-    }
+    
     
     /*
     // Override to support conditional editing of the table view.
@@ -113,14 +111,24 @@ class AnalyticsTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "VisualizationSegue"){
+            if let visualizer = segue.destination as? SensorStatisticsViewController{
+                if let selection = tableView.indexPathForSelectedRow?.row {
+                    visualizer.sensorId = sensors [selection]
+                }
+                else {
+                    log.debug("Please Select")
+                }
+            }
+            else{log.debug("No visualizer found")}
+        }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }

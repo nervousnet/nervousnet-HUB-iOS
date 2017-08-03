@@ -39,8 +39,7 @@ class AxonDownloadButton: UIButton {
     
     //TODO: Interrupt Download
     func pressed () -> Void {
-        log.debug(self.buttonState.rawValue)
-        log.debug(self.axonDetail?.name)
+       
         switch buttonState {
             //TODO: This has to be asynchronous in AxonStore (we should NOT handle this in the UI like last time)
             case DownloadState.download:

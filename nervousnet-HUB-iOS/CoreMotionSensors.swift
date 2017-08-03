@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreMotion
+import UIKit
 
 //This is the raw data. Apple offers some processing to remove known sources of noise, which we should discuss
 
@@ -70,7 +71,6 @@ class CoreMotionSensor : BaseSensor {
     }
     
     func accHandler (data : CMAccelerometerData?, error: Error?) -> Void {
-        log.debug(data.debugDescription)
         
         let timestamp = getTimeStampMilliseconds()
         
@@ -80,7 +80,16 @@ class CoreMotionSensor : BaseSensor {
             let z = data!.acceleration.z
             
             do {
-                super.push(reading: try SensorReading(config: super.configuration, values: [x, y, z], timestamp: timestamp))
+                let sensorReading =  try SensorReading(config: super.configuration, values: [x, y, z], timestamp: timestamp)
+                super.push(reading: sensorReading)
+                if let navController  = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController{
+                    if let visualizer = navController.visibleViewController as? SensorStatisticsViewController{
+                        DispatchQueue.main.async {
+                            visualizer.updateGraph(sensorReading: sensorReading)
+                        }
+                    }
+                }
+
             } catch _ {
                 log.error("This should not happen. 'values' count does not match param dimension. Pushing empty 'SensorReading'")
                 super.push(reading: SensorReading(config: super.configuration, timestamp: timestamp))
@@ -92,34 +101,58 @@ class CoreMotionSensor : BaseSensor {
     }
     
     func gyrHandler (data : CMGyroData?, error: Error?) -> Void {
-        log.debug(data.debugDescription)
 
         let timestamp = getTimeStampMilliseconds()
         
         if data != nil {
-            
+            let x = data!.rotationRate.x
+            let y = data!.rotationRate.y
+            let z = data!.rotationRate.z
+            //Mark
             do {
-                super.push(reading: try SensorReading(config: super.configuration, values: [data!.rotationRate.x, data!.rotationRate.y, data!.rotationRate.z], timestamp: timestamp))
+                let sensorReading =  try SensorReading(config: super.configuration, values: [x, y, z], timestamp: timestamp)
+                super.push(reading: sensorReading)
+                if let navController  = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController{
+                    if let visualizer = navController.visibleViewController as? SensorStatisticsViewController{
+                        DispatchQueue.main.async {
+                            visualizer.updateGraph(sensorReading: sensorReading)
+                        }
+                    }
+                }
+                
             } catch _ {
                 log.error("This should not happen. 'values' count does not match param dimension. Pushing empty 'SensorReading'")
                 super.push(reading: SensorReading(config: super.configuration, timestamp: timestamp))
             }
         }
+            
+            
+            
         else {
             super.push(reading: SensorReading(config: super.configuration, timestamp: timestamp))
         }
     }
     
     func magHandler (data : CMMagnetometerData?, error: Error?) -> Void {
-        log.debug(data.debugDescription)
 
         let timestamp = getTimeStampMilliseconds()
         
-        
         if data != nil {
-            
+            let x = data!.magneticField.x
+            let y = data!.magneticField.y
+            let z = data!.magneticField.z
+            //Mark
             do {
-                super.push(reading: try SensorReading(config: super.configuration, values: [data!.magneticField.x, data!.magneticField.y, data!.magneticField.z], timestamp: timestamp))
+                let sensorReading =  try SensorReading(config: super.configuration, values: [x, y, z], timestamp: timestamp)
+                super.push(reading: sensorReading)
+                if let navController  = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController{
+                    if let visualizer = navController.visibleViewController as? SensorStatisticsViewController{
+                        DispatchQueue.main.async {
+                            visualizer.updateGraph(sensorReading: sensorReading)
+                        }
+                    }
+                }
+                
             } catch _ {
                 log.error("This should not happen. 'values' count does not match param dimension. Pushing empty 'SensorReading'")
                 super.push(reading: SensorReading(config: super.configuration, timestamp: timestamp))
