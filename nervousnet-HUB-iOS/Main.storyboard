@@ -850,10 +850,13 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" tag="4" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TIW-Gm-tTu">
-                                            <rect key="frame" x="319" y="36" width="38" height="30"/>
+                                        <button opaque="NO" tag="4" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TIW-Gm-tTu">
+                                            <rect key="frame" x="262.5" y="36" width="94.5" height="30"/>
                                             <color key="tintColor" red="0.91372549020000005" green="0.28235294119999998" blue="0.078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <state key="normal" title="Open"/>
+                                            <state key="normal" title="Appstore"/>
+                                            <connections>
+                                                <action selector="openSwarmPulse:" destination="t1L-P3-brZ" eventType="touchUpInside" id="BzR-AS-i3g"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Join the swarm." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="s5H-5k-Tla">
                                             <rect key="frame" x="106" y="46.5" width="187.5" height="47"/>
@@ -873,6 +876,7 @@
                                         <constraint firstItem="m3K-u1-45C" firstAttribute="centerY" secondItem="DBZ-xh-oiz" secondAttribute="centerY" constant="-20" id="YdP-6z-33z"/>
                                         <constraint firstItem="s5H-5k-Tla" firstAttribute="width" secondItem="DBZ-xh-oiz" secondAttribute="width" multiplier="1/2" id="gzG-Nt-1Sy"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="TIW-Gm-tTu" secondAttribute="trailing" constant="10" id="h1f-pJ-V8Q"/>
+                                        <constraint firstItem="TIW-Gm-tTu" firstAttribute="width" secondItem="DBZ-xh-oiz" secondAttribute="width" multiplier="1/4" constant="1" id="sS9-z4-XnR"/>
                                         <constraint firstItem="DzU-XC-tku" firstAttribute="leading" secondItem="DBZ-xh-oiz" secondAttribute="leadingMargin" id="teB-No-to8"/>
                                     </constraints>
                                     <variation key="default">

@@ -64,13 +64,16 @@ class NervousnetSpaceTableViewController: UITableViewController {
     
     //Section 0 for indicating status, Section 1 for diplaying actual list of axons
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return (TableData.isEmpty ? 1 : 3)
     }
     
     //One Indicator cell, otherwise all axons that are available. Blacklisting is handled by the AxonStore
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 || section == 1{
             return 1
+        }
+        if section == 1 {
+            return (TableData.isEmpty ? 1 : 0)
         }
         return TableData.count
     }
@@ -85,8 +88,23 @@ class NervousnetSpaceTableViewController: UITableViewController {
             return tableView.dequeueReusableCell(withIdentifier: "reloadingCell")!
         }
         
-        if indexPath.section == 1 {
-            return tableView.dequeueReusableCell(withIdentifier: "swarmPulse")!
+        else if indexPath.section == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "swarmPulse")!
+            if let button = cell.contentView.viewWithTag(4) as? UIButton {
+                log.debug("testing")
+                let customURL = URL(string: "swarmpulse://")!
+                if UIApplication.shared.canOpenURL(customURL) {
+                    button.titleLabel!.text = "Open"
+                }
+                else{
+                    button.titleLabel!.text = "Appstore"
+                }
+                button.isEnabled = true
+
+            }
+            return cell
+            
+            
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "appstoreCell", for: indexPath)
@@ -170,8 +188,33 @@ class NervousnetSpaceTableViewController: UITableViewController {
     }
 
     
-    
+    @IBAction func openSwarmPulse(_ sender: Any) {
         
+        if let openButton = sender as? UIButton{
+            if (openButton.titleLabel!.text == "Appstore"){
+                UIApplication.shared.open(URL.init(string: "http://www.google.com")!)
+                return
+
+            }
+            else{
+                let customURL = URL(string: "swarmpulse://")!
+                if UIApplication.shared.canOpenURL(customURL) {
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(customURL)
+                    } else {
+                        UIApplication.shared.openURL(customURL)
+                    }
+                    return
+                }
+                else {}
+                return
+            }
+        }
+    }
+    
+    
+    
+    
     
 }
     
