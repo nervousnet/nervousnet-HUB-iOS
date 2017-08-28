@@ -18,6 +18,7 @@
 		071844C81E2653CC00FFF319 /* BatterySensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071844C71E2653CC00FFF319 /* BatterySensor.swift */; };
 		071844CA1E2653DB00FFF319 /* NoiseSensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071844C91E2653DB00FFF319 /* NoiseSensor.swift */; };
 		071844CC1E2654ED00FFF319 /* SensorReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071844CB1E2654ED00FFF319 /* SensorReading.swift */; };
+		074023A11F541C5F00599114 /* SharingNodesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074023A01F541C5F00599114 /* SharingNodesTableViewController.swift */; };
 		07409A651E72CBFB0055AB6E /* NervousnetSpaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07409A641E72CBFB0055AB6E /* NervousnetSpaceTableViewController.swift */; };
 		07409A691E72D47F0055AB6E /* AxonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07409A681E72D47F0055AB6E /* AxonDetailViewController.swift */; };
 		0754182D1DE75A6B00327B41 /* SensorPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075418261DE75A6B00327B41 /* SensorPageViewController.swift */; };
@@ -80,6 +81,7 @@
 		071844C71E2653CC00FFF319 /* BatterySensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatterySensor.swift; sourceTree = "<group>"; };
 		071844C91E2653DB00FFF319 /* NoiseSensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoiseSensor.swift; sourceTree = "<group>"; };
 		071844CB1E2654ED00FFF319 /* SensorReading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorReading.swift; sourceTree = "<group>"; };
+		074023A01F541C5F00599114 /* SharingNodesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharingNodesTableViewController.swift; sourceTree = "<group>"; };
 		07409A641E72CBFB0055AB6E /* NervousnetSpaceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NervousnetSpaceTableViewController.swift; sourceTree = "<group>"; };
 		07409A681E72D47F0055AB6E /* AxonDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AxonDetailViewController.swift; sourceTree = "<group>"; };
 		075418261DE75A6B00327B41 /* SensorPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorPageViewController.swift; sourceTree = "<group>"; };
@@ -198,9 +200,18 @@
 			name = sensors;
 			sourceTree = "<group>";
 		};
+		074023A21F541C6600599114 /* SharingNodes */ = {
+			isa = PBXGroup;
+			children = (
+				074023A01F541C5F00599114 /* SharingNodesTableViewController.swift */,
+			);
+			name = SharingNodes;
+			sourceTree = "<group>";
+		};
 		0781DE4C1E9BA73C00C25BE8 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				074023A21F541C6600599114 /* SharingNodes */,
 				0781DE4D1E9BA74700C25BE8 /* Frequency */,
 				075418291DE75A6B00327B41 /* SettingsTableViewController.swift */,
 				0754182B1DE75A6B00327B41 /* SettingsTableViewCell.swift */,
@@ -472,13 +483,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-nervousnet-HUB-iOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D135D9F0D66FFD7B30085CCF /* [CP] Embed Pods Frameworks */ = {
@@ -487,9 +501,24 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-nervousnet-HUB-iOS/Pods-nervousnet-HUB-iOS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
+				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
+				"${BUILT_PRODUCTS_DIR}/Swifter/Swifter.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/XCGLogger/XCGLogger.framework",
+				"${BUILT_PRODUCTS_DIR}/Zip/Zip.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swifter.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XCGLogger.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Zip.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -545,6 +574,7 @@
 				071844CC1E2654ED00FFF319 /* SensorReading.swift in Sources */,
 				07CADB0C1E6EE32C002F1DCE /* CoreMotionSensors.swift in Sources */,
 				38B521411DEEE59E001015BF /* AxonServerController.swift in Sources */,
+				074023A11F541C5F00599114 /* SharingNodesTableViewController.swift in Sources */,
 				075418301DE75A6B00327B41 /* SettingsTableViewController.swift in Sources */,
 				071844C61E2653B900FFF319 /* BaseSensor.swift in Sources */,
 				38DA7DB91E01953100D34864 /* DBConstants.swift in Sources */,

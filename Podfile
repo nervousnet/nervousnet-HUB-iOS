@@ -8,4 +8,5 @@ target 'nervousnet-HUB-iOS' do
   pod 'SwiftyJSON', '~> 3.1.3' # used in the AxonServerController
   pod 'XCGLogger', '~> 4.0.0' # generall Logger class
   pod 'SQLite.swift', '~> 0.11.1' # Layer for SQLite3
+  pod 'Parse'
 end

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Parse
 
 public class BaseSensor : NSObject {
     
@@ -45,6 +46,15 @@ public class BaseSensor : NSObject {
         if (reading.timestampEpoch >= nextSampling && configuration.samplingrate >= 0) {
             nextSampling = reading.timestampEpoch + self.configuration.samplingrate
             dataBaseHandler.store(reading: reading)
+            
+            //Stores Sensorreading to Server
+            log.debug(reading.sensorConfig.sensorName)
+            var serverData = PFObject(className: reading.sensorConfig.sensorName)
+            for value in reading.values {
+                serverData[value.key] = value.value
+            }
+            serverData.saveInBackground()
+            
         }
         
    

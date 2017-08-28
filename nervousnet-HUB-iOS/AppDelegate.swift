@@ -8,6 +8,7 @@
 
 import UIKit
 import XCGLogger
+import Parse
 
 let log = XCGLogger.default
 
@@ -20,13 +21,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let axonController = AxonServerController()
     
-
+    
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         log.setup(level: .debug, showThreadName: true, showLevel: true, showFileNames: true, showLineNumbers: true, fileLevel: .debug)
 
         AxonStore.installLocalIncludedAxons()
+        
+        let configuration = ParseClientConfiguration {
+            $0.applicationId = "nervousnet"
+            $0.server = "http://207.154.242.197:1337/parse"
+        }
+        Parse.initialize(with: configuration)
         
         //The nVM.run is only a dummy method there to ensure that nVM is initialzed asap
         //Since nVM.sharedInstance is a static variable and swift lazily initializes static variables

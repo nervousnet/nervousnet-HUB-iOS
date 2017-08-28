@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class RootTableViewController: UITableViewController {
 
@@ -101,28 +102,12 @@ class RootTableViewController: UITableViewController {
     }
     
     func titlePressed (sender: UIButton!){
-        log.debug("Hello, it worked")
-        
-        
-        
-        let dbManager = DBManager.sharedInstance
-        
-        let sID : Int64 = 6544654
-        let sName = "accelerometer"
-        let paramDef = ["accX" : "double",
-                        "accY" : "double",
-                        "accZ" : "double"]
-        
-        //let vm = VM() //TODO: initializing needs to handle DB connections (make sure they are available)
-        
-        let config = BasicSensorConfiguration(sensorID: sID, sensorName: sName, parameterDef: paramDef, samplingrates: [1, 2, 3], state: 1)
-        
-        
-        let list = try! dbManager.getReadings(with: config)
-        
-        for r in list {
-            log.debug("\(r.values.debugDescription)")
-        }
+        log.debug("saving")
+        var gameScore = PFObject(className:"Accelerometer")
+        gameScore["x"] = 54321
+        gameScore["y"] =  12345
+        gameScore["z"] = 34512
+        gameScore.saveInBackground()
     }
     
     /*
@@ -131,6 +116,8 @@ class RootTableViewController: UITableViewController {
         // Return false if you do not want the specified item to be editable.
         return true
     }
+     
+     
     */
 
     /*

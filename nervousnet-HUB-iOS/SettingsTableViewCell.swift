@@ -35,6 +35,11 @@ class SettingsTableViewCell: UITableViewCell {
                     
                     self.parentViewController.navigationController?.pushViewController(vc, animated:true)
                 
+                case "Sharing Nodes":
+                    let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "SharingNodes") as! SharingNodesTableViewController
+                    
+                    self.parentViewController.navigationController?.pushViewController(vc, animated:true)
+                
                 default: print("pleaseInsertViewcontroller" + label.text!)
                 
                 
