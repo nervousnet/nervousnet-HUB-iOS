@@ -102,12 +102,7 @@ class RootTableViewController: UITableViewController {
     }
     
     func titlePressed (sender: UIButton!){
-        log.debug("saving")
-        var gameScore = PFObject(className:"Accelerometer")
-        gameScore["x"] = 54321
-        gameScore["y"] =  12345
-        gameScore["z"] = 34512
-        gameScore.saveInBackground()
+            VM.sharedInstance.cacheToServer()
     }
     
     /*

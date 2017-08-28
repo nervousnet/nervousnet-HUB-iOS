@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Parse
 
 public class VM {
     
@@ -92,7 +93,7 @@ public class VM {
         }
         
         guard config.samplingrate >= 0 else {   //samplingrate is guaranteed to be positive for the rest of this function
-            log.error("Negative sampling rate, sensor not initialized")
+            log.error("Negative sampling rate, sensor not initialized" + config.sensorName)
             throw VMErrors.SensorIsOffException
         }
         
@@ -221,6 +222,49 @@ public class VM {
     
     
     //TODO: getReading and getReadings with a callback function
+    
+    
+    //Save Cached Data to remote Server
+    func cacheToServer() -> Void {
+        
+        for sensor in configManager.getAllConfigurations() {
+            let query = PFQuery(className:sensor.sensorName)
+            query.fromPin(withName: sensor.sensorName)
+            query.findObjectsInBackground().continue({
+                (task: BFTask!) -> AnyObject! in
+                let scores = task.result!
+                for score in scores {
+                    (score as AnyObject).saveInBackground().continue(successBlock: {
+                        (task: BFTask!) -> AnyObject! in
+                        log.debug("IT WORKED")
+                        return (score as AnyObject).unpinInBackground()
+                    })
+                }
+                return task
+            })
+
+        }
+    }
+    
+    func cacheToServer(sensorName : String) -> Void {
+        
+        let query = PFQuery(className: sensorName)
+        query.fromPin(withName: sensorName)
+        query.findObjectsInBackground().continue({
+            (task: BFTask!) -> AnyObject! in
+            let scores = task.result!
+            for score in scores {
+                (score as AnyObject).saveInBackground().continue(successBlock: {
+                    (task: BFTask!) -> AnyObject! in
+                    return (score as AnyObject).unpinInBackground()
+                })
+            }
+            return task
+        })
+            
+        
+    }
+
     
     
     

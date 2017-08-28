@@ -32,8 +32,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let configuration = ParseClientConfiguration {
             $0.applicationId = "nervousnet"
             $0.server = "http://207.154.242.197:1337/parse"
+            $0.isLocalDatastoreEnabled = true
         }
         Parse.initialize(with: configuration)
+        
         
         //The nVM.run is only a dummy method there to ensure that nVM is initialzed asap
         //Since nVM.sharedInstance is a static variable and swift lazily initializes static variables
@@ -60,6 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
