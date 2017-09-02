@@ -15,4 +15,9 @@ struct Constants {
     // TODO: change interface such that adding new axon here does not require adding new viewcontroller
     static let PREINSTALLED_AXON_NAMES = ["Accelerometer", "Gyroscope", "Magnetometer"]
     
+    static let SERVER_STATE_KEY = "serverstate"
+    static let SERVER_STATE_DEFAULT = VMConstants.STATE_RUNNING
+    static let SERVER_CONFIG_KEY = "serverconfig"
+    
+    
 }

@@ -44,7 +44,7 @@ class SharingNodesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return (tableView.frame.height - navigationController!.navigationBar.frame.height) / 5.0
+        return (tableView.frame.height - navigationController!.navigationBar.frame.height) / 2.5
         
     }
     

@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let axonController = AxonServerController()
     
+    let defaults = UserDefaults.standard
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -29,13 +30,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         AxonStore.installLocalIncludedAxons()
         
-        let configuration = ParseClientConfiguration {
-            $0.applicationId = "nervousnet"
-            $0.server = "http://207.154.242.197:1337/parse"
-            $0.isLocalDatastoreEnabled = true
+        //TODO: MOVE (to appropriate Location)
+        if let serverConfigDict = defaults.value(forKey: Constants.SERVER_CONFIG_KEY) as? [String : Any] {
+            initServer(withConfig: dictToServer(dict: serverConfigDict))
         }
-        Parse.initialize(with: configuration)
         
+        else {
+            let serverConfigDict : [String:Any] = [
+                "applicationId" : "nervousnet",
+                "server" : "http://207.154.242.197:1337/parse",
+                "isLocalDatastoreEnabled" : true
+            ]
+            
+            defaults.set(serverConfigDict, forKey: Constants.SERVER_CONFIG_KEY)
+            
+            
+            initServer(withConfig: dictToServer(dict: serverConfigDict))
+        }
+
         
         //The nVM.run is only a dummy method there to ensure that nVM is initialzed asap
         //Since nVM.sharedInstance is a static variable and swift lazily initializes static variables
@@ -44,6 +56,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         nVM.run()
         
         return true
+    }
+    
+    func initServer (withConfig: ParseClientConfiguration){
+        
+        if let serverState = defaults.value(forKey: Constants.SERVER_STATE_KEY) as? Int {
+            if (serverState == VMConstants.STATE_RUNNING){
+                Parse.initialize(with: withConfig)
+            }
+                
+            else {log.debug("not initializing server")}
+        }
+            
+        else {
+            defaults.set(Constants.SERVER_STATE_DEFAULT, forKey: Constants.SERVER_STATE_KEY)
+            if let serverState = defaults.value(forKey: Constants.SERVER_STATE_KEY) as? Int {
+                if (serverState == VMConstants.STATE_RUNNING){
+                    Parse.initialize(with: withConfig)
+                }
+                    
+                else {log.debug("not initializing server")}
+            }
+        }
+    
+    }
+    
+    func dictToServer(dict : [String:Any]) -> ParseClientConfiguration{
+        return ParseClientConfiguration {
+            $0.applicationId = dict["applicationId"] as! String
+            $0.server = dict["server"] as! String
+            $0.isLocalDatastoreEnabled = dict["isLocalDatastoreEnabled"] as! Bool
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
