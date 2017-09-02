@@ -44,6 +44,13 @@ class SharingNodeTableViewCell: UITableViewCell {
     }
     
     @IBAction func apply(_ sender: Any) {
+        if let button = sender as? UIButton{
+            log.debug(UserDefaults.standard.value(forKey: Constants.SERVER_CONFIG_KEY))
+        }
+        if var configDict = UserDefaults.standard.dictionary(forKey: Constants.SERVER_CONFIG_KEY){
+            configDict[Constants.SERVER_CONFIG_VALUES[1]] = addressField.text
+            UserDefaults.standard.set(configDict, forKey: Constants.SERVER_CONFIG_KEY)
+        }
     }
 
     @IBAction func defaultPressed(_ sender: Any) {

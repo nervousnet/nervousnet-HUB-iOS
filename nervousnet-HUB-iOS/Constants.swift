@@ -18,6 +18,7 @@ struct Constants {
     static let SERVER_STATE_KEY = "serverstate"
     static let SERVER_STATE_DEFAULT = VMConstants.STATE_RUNNING
     static let SERVER_CONFIG_KEY = "serverconfig"
-    
+    static let SERVER_CONFIG_VALUES = ["applicationId", "server", "isLocalDatastoreEnabled" ]
+
     
 }
