@@ -30,6 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         AxonStore.installLocalIncludedAxons()
         
+        defaults.addObserver(self, forKeyPath: Constants.SERVER_CONFIG_KEY, options: NSKeyValueObservingOptions.new, context: nil)
+        
         //TODO: MOVE (to appropriate Location)
         if let serverConfigDict = defaults.value(forKey: Constants.SERVER_CONFIG_KEY) as? [String : Any] {
             initServer(withConfig: dictToServer(dict: serverConfigDict))
@@ -87,6 +89,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             $0.server = dict["server"] as! String
             $0.isLocalDatastoreEnabled = dict["isLocalDatastoreEnabled"] as! Bool
         }
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?,
+                      of object: Any?,
+                      change: [NSKeyValueChangeKey : Any]?,
+                      context: UnsafeMutableRawPointer?){
+        log.debug("Changed Config to" + change!.debugDescription)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

@@ -18,7 +18,10 @@ struct Constants {
     static let SERVER_STATE_KEY = "serverstate"
     static let SERVER_STATE_DEFAULT = VMConstants.STATE_RUNNING
     static let SERVER_CONFIG_KEY = "serverconfig"
-    static let SERVER_CONFIG_VALUES = ["applicationId", "server", "isLocalDatastoreEnabled" ]
+    static let SERVER_CONFIG_KEYS = ["applicationId", "server", "isLocalDatastoreEnabled" ]
+    static let SERVER_CONFIG_DEFAULTS : [String:Any] = ["applicationId" : "nervousnet",
+                                       "server" : "http://207.154.242.197:1337/parse",
+                                       "isLocalDatastoreEnabled" : true]
 
     
 }

@@ -44,15 +44,31 @@ class SharingNodeTableViewCell: UITableViewCell {
     }
     
     @IBAction func apply(_ sender: Any) {
-        if let button = sender as? UIButton{
-            log.debug(UserDefaults.standard.value(forKey: Constants.SERVER_CONFIG_KEY))
-        }
+        
+        
         if var configDict = UserDefaults.standard.dictionary(forKey: Constants.SERVER_CONFIG_KEY){
-            configDict[Constants.SERVER_CONFIG_VALUES[1]] = addressField.text
+            configDict[Constants.SERVER_CONFIG_KEYS[1]] = addressField.text
             UserDefaults.standard.set(configDict, forKey: Constants.SERVER_CONFIG_KEY)
+            if let button = sender as? UIButton{
+                button.setTitle("Restart App", for: UIControlState.normal)
+            }
         }
+        if let text = UserDefaults.standard.dictionary(forKey: Constants.SERVER_CONFIG_KEY) {
+            addressField.text = text["server"] as! String
+        }
+        
     }
 
     @IBAction func defaultPressed(_ sender: Any) {
+        if var configDict = UserDefaults.standard.dictionary(forKey: Constants.SERVER_CONFIG_KEY){
+            for i in Constants.SERVER_CONFIG_KEYS {
+                configDict[i] = Constants.SERVER_CONFIG_DEFAULTS[i]
+            }
+            
+            UserDefaults.standard.set(configDict, forKey: Constants.SERVER_CONFIG_KEY)
+        }
+        if let text = UserDefaults.standard.dictionary(forKey: Constants.SERVER_CONFIG_KEY) {
+            addressField.text = text["server"] as! String
+        }
     }
 }
