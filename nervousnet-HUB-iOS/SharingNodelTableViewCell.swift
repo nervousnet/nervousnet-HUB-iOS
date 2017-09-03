@@ -12,6 +12,7 @@ class SharingNodeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var addressField: UITextField!
     @IBOutlet weak var toggle: UISwitch!
+    @IBOutlet weak var applyButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -50,7 +51,7 @@ class SharingNodeTableViewCell: UITableViewCell {
             configDict[Constants.SERVER_CONFIG_KEYS[1]] = addressField.text
             UserDefaults.standard.set(configDict, forKey: Constants.SERVER_CONFIG_KEY)
             if let button = sender as? UIButton{
-                button.setTitle("Restart App", for: UIControlState.normal)
+                button.setTitle("Applied", for: UIControlState.normal)
             }
         }
         if let text = UserDefaults.standard.dictionary(forKey: Constants.SERVER_CONFIG_KEY) {
@@ -59,6 +60,19 @@ class SharingNodeTableViewCell: UITableViewCell {
         
     }
 
+    @IBAction func textChanged(_ sender: Any) {
+        applyButton.setTitle("Apply", for: UIControlState.normal)
+    }
+    @IBAction func primaryAction(_ sender: Any) {
+        log.debug("PRIMARYACTION")
+        if let source = sender as? UITextField{
+            source.resignFirstResponder()
+        }
+        
+    }
+    
+    
+    
     @IBAction func defaultPressed(_ sender: Any) {
         if var configDict = UserDefaults.standard.dictionary(forKey: Constants.SERVER_CONFIG_KEY){
             for i in Constants.SERVER_CONFIG_KEYS {

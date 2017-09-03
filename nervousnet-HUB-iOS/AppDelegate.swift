@@ -38,11 +38,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         else {
-            let serverConfigDict : [String:Any] = [
-                "applicationId" : "nervousnet",
-                "server" : "http://207.154.242.197:1337/parse",
-                "isLocalDatastoreEnabled" : true
-            ]
+            log.debug("setting default server")
+            var serverConfigDict = [String:Any].init()
+            for i in Constants.SERVER_CONFIG_KEYS {
+                serverConfigDict[i] = Constants.SERVER_CONFIG_DEFAULTS[i]
+            }
+            
             
             defaults.set(serverConfigDict, forKey: Constants.SERVER_CONFIG_KEY)
             
@@ -63,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func initServer (withConfig: ParseClientConfiguration){
         
         if let serverState = defaults.value(forKey: Constants.SERVER_STATE_KEY) as? Int {
-            if (serverState == VMConstants.STATE_RUNNING){
+            if (true){ //serverState == VMConstants.STATE_RUNNING
                 Parse.initialize(with: withConfig)
             }
                 
@@ -73,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         else {
             defaults.set(Constants.SERVER_STATE_DEFAULT, forKey: Constants.SERVER_STATE_KEY)
             if let serverState = defaults.value(forKey: Constants.SERVER_STATE_KEY) as? Int {
-                if (serverState == VMConstants.STATE_RUNNING){
+                if (true){ //serverState == VMConstants.STATE_RUNNING
                     Parse.initialize(with: withConfig)
                 }
                     

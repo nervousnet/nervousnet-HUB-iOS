@@ -25,7 +25,6 @@ public class BaseSensor : NSObject {
     
 
     public private(set) var nextSampling : Int64 = 0
-    public private(set) var nextPushing : Int64 = 0
 
     
 
@@ -50,26 +49,17 @@ public class BaseSensor : NSObject {
             nextSampling = reading.timestampEpoch + self.configuration.samplingrate
             dataBaseHandler.store(reading: reading)
             
-//            if (reading.timestampEpoch >= nextPushing) {
-//                nextPushing = reading.timestampEpoch + 10*self.configuration.samplingrate
-//                VM.sharedInstance.cacheToServer(sensorName: reading.sensorConfig.sensorName)
-//            }
-            
-            //Stores Sensorreading to Server
-            var serverData = PFObject(className: reading.sensorConfig.sensorName)
-            for value in reading.values {
-                serverData[value.key] = value.value
+            if UserDefaults.standard.integer(forKey: Constants.SERVER_STATE_KEY) != VMConstants.STATE_PAUSED {
+                //Stores Sensorreading to Server
+                var serverData = PFObject(className: reading.sensorConfig.sensorName)
+                for value in reading.values {
+                    serverData[value.key] = value.value
+                }
+                serverData["timestamp"] = reading.timestampEpoch
+                serverData.saveEventually()
             }
-            serverData["timestamp"] = reading.timestampEpoch
-            serverData.saveEventually()
-//            serverData.saveInBackground() {(succeeded, error) -> Void in
-//                if succeeded {
-//                } else {
-//
-//                    serverData.pinInBackground(withName: reading.sensorConfig.sensorName)
-//                }
-//            
-//            }
+            
+            
         }
    
     }

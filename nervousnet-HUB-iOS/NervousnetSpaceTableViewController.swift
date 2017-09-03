@@ -191,8 +191,15 @@ class NervousnetSpaceTableViewController: UITableViewController {
     @IBAction func openSwarmPulse(_ sender: Any) {
         
         if let openButton = sender as? UIButton{
+            
+            let customURL = URL(string: "swarmpulse://")!
+            if UIApplication.shared.canOpenURL(customURL) {
+                openButton.setTitle("Open", for: UIControlState.normal)
+                return
+            }
+            
             if (openButton.titleLabel!.text == "Appstore"){
-                UIApplication.shared.open(URL.init(string: "http://www.google.com")!)
+                UIApplication.shared.open(URL.init(string: "https://itunes.apple.com/us/app/swarmpulse/id1053129873?mt=8")!)
                 return
 
             }

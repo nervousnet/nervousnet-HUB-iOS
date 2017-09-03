@@ -16,7 +16,7 @@ struct Constants {
     static let PREINSTALLED_AXON_NAMES = ["Accelerometer", "Gyroscope", "Magnetometer"]
     
     static let SERVER_STATE_KEY = "serverstate"
-    static let SERVER_STATE_DEFAULT = VMConstants.STATE_RUNNING
+    static let SERVER_STATE_DEFAULT = VMConstants.STATE_PAUSED
     static let SERVER_CONFIG_KEY = "serverconfig"
     static let SERVER_CONFIG_KEYS = ["applicationId", "server", "isLocalDatastoreEnabled" ]
     static let SERVER_CONFIG_DEFAULTS : [String:Any] = ["applicationId" : "nervousnet",
